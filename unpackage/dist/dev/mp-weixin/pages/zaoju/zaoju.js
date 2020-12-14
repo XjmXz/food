@@ -2,7 +2,7 @@
 
 /***/ 42:
 /*!******************************************************************************!*\
-  !*** C:/Users/pangqiu/Desktop/ROKI/main.js?{"page":"pages%2Fzaoju%2Fzaoju"} ***!
+  !*** C:/Users/pangqiu/Desktop/Roki/main.js?{"page":"pages%2Fzaoju%2Fzaoju"} ***!
   \******************************************************************************/
 /*! no static exports found */
 /***/ (function(module, exports, __webpack_require__) {
@@ -18,7 +18,7 @@ createPage(_zaoju.default);
 
 /***/ 43:
 /*!***********************************************************!*\
-  !*** C:/Users/pangqiu/Desktop/ROKI/pages/zaoju/zaoju.vue ***!
+  !*** C:/Users/pangqiu/Desktop/Roki/pages/zaoju/zaoju.vue ***!
   \***********************************************************/
 /*! no static exports found */
 /***/ (function(module, __webpack_exports__, __webpack_require__) {
@@ -29,7 +29,7 @@ __webpack_require__.r(__webpack_exports__);
 /* harmony import */ var _zaoju_vue_vue_type_script_lang_js___WEBPACK_IMPORTED_MODULE_1__ = __webpack_require__(/*! ./zaoju.vue?vue&type=script&lang=js& */ 46);
 /* harmony reexport (unknown) */ for(var __WEBPACK_IMPORT_KEY__ in _zaoju_vue_vue_type_script_lang_js___WEBPACK_IMPORTED_MODULE_1__) if(__WEBPACK_IMPORT_KEY__ !== 'default') (function(key) { __webpack_require__.d(__webpack_exports__, key, function() { return _zaoju_vue_vue_type_script_lang_js___WEBPACK_IMPORTED_MODULE_1__[key]; }) }(__WEBPACK_IMPORT_KEY__));
 /* harmony import */ var _zaoju_vue_vue_type_style_index_0_lang_less___WEBPACK_IMPORTED_MODULE_2__ = __webpack_require__(/*! ./zaoju.vue?vue&type=style&index=0&lang=less& */ 48);
-/* harmony import */ var _D_HBuilderX_plugins_uniapp_cli_node_modules_dcloudio_vue_cli_plugin_uni_packages_vue_loader_lib_runtime_componentNormalizer_js__WEBPACK_IMPORTED_MODULE_3__ = __webpack_require__(/*! ./node_modules/@dcloudio/vue-cli-plugin-uni/packages/vue-loader/lib/runtime/componentNormalizer.js */ 11);
+/* harmony import */ var _D_HBuilderX_plugins_uniapp_cli_node_modules_dcloudio_vue_cli_plugin_uni_packages_vue_loader_lib_runtime_componentNormalizer_js__WEBPACK_IMPORTED_MODULE_3__ = __webpack_require__(/*! ./node_modules/@dcloudio/vue-cli-plugin-uni/packages/vue-loader/lib/runtime/componentNormalizer.js */ 10);
 
 var renderjs
 
@@ -59,7 +59,7 @@ component.options.__file = "pages/zaoju/zaoju.vue"
 
 /***/ 44:
 /*!******************************************************************************************!*\
-  !*** C:/Users/pangqiu/Desktop/ROKI/pages/zaoju/zaoju.vue?vue&type=template&id=48f65b24& ***!
+  !*** C:/Users/pangqiu/Desktop/Roki/pages/zaoju/zaoju.vue?vue&type=template&id=48f65b24& ***!
   \******************************************************************************************/
 /*! exports provided: render, staticRenderFns, recyclableRender, components */
 /***/ (function(module, __webpack_exports__, __webpack_require__) {
@@ -81,7 +81,7 @@ __webpack_require__.r(__webpack_exports__);
 
 /***/ 45:
 /*!******************************************************************************************************************************************************************************************************************************************************************************************************************************************************************************************************************************************************************************************************************************************************************************************************************!*\
-  !*** ./node_modules/@dcloudio/vue-cli-plugin-uni/packages/vue-loader/lib/loaders/templateLoader.js??vue-loader-options!./node_modules/@dcloudio/vue-cli-plugin-uni/packages/webpack-preprocess-loader??ref--16-0!./node_modules/@dcloudio/webpack-uni-mp-loader/lib/template.js!./node_modules/@dcloudio/vue-cli-plugin-uni/packages/webpack-uni-app-loader/page-meta.js!./node_modules/@dcloudio/vue-cli-plugin-uni/packages/vue-loader/lib??vue-loader-options!./node_modules/@dcloudio/webpack-uni-mp-loader/lib/style.js!C:/Users/pangqiu/Desktop/ROKI/pages/zaoju/zaoju.vue?vue&type=template&id=48f65b24& ***!
+  !*** ./node_modules/@dcloudio/vue-cli-plugin-uni/packages/vue-loader/lib/loaders/templateLoader.js??vue-loader-options!./node_modules/@dcloudio/vue-cli-plugin-uni/packages/webpack-preprocess-loader??ref--16-0!./node_modules/@dcloudio/webpack-uni-mp-loader/lib/template.js!./node_modules/@dcloudio/vue-cli-plugin-uni/packages/webpack-uni-app-loader/page-meta.js!./node_modules/@dcloudio/vue-cli-plugin-uni/packages/vue-loader/lib??vue-loader-options!./node_modules/@dcloudio/webpack-uni-mp-loader/lib/style.js!C:/Users/pangqiu/Desktop/Roki/pages/zaoju/zaoju.vue?vue&type=template&id=48f65b24& ***!
   \******************************************************************************************************************************************************************************************************************************************************************************************************************************************************************************************************************************************************************************************************************************************************************************************************************/
 /*! exports provided: render, staticRenderFns, recyclableRender, components */
 /***/ (function(module, __webpack_exports__, __webpack_require__) {
@@ -108,7 +108,7 @@ render._withStripped = true
 
 /***/ 46:
 /*!************************************************************************************!*\
-  !*** C:/Users/pangqiu/Desktop/ROKI/pages/zaoju/zaoju.vue?vue&type=script&lang=js& ***!
+  !*** C:/Users/pangqiu/Desktop/Roki/pages/zaoju/zaoju.vue?vue&type=script&lang=js& ***!
   \************************************************************************************/
 /*! no static exports found */
 /***/ (function(module, __webpack_exports__, __webpack_require__) {
@@ -124,7 +124,7 @@ __webpack_require__.r(__webpack_exports__);
 
 /***/ 47:
 /*!*******************************************************************************************************************************************************************************************************************************************************************************************************************************************************************************************************************************!*\
-  !*** ./node_modules/babel-loader/lib!./node_modules/@dcloudio/vue-cli-plugin-uni/packages/webpack-preprocess-loader??ref--12-1!./node_modules/@dcloudio/webpack-uni-mp-loader/lib/script.js!./node_modules/@dcloudio/vue-cli-plugin-uni/packages/vue-loader/lib??vue-loader-options!./node_modules/@dcloudio/webpack-uni-mp-loader/lib/style.js!C:/Users/pangqiu/Desktop/ROKI/pages/zaoju/zaoju.vue?vue&type=script&lang=js& ***!
+  !*** ./node_modules/babel-loader/lib!./node_modules/@dcloudio/vue-cli-plugin-uni/packages/webpack-preprocess-loader??ref--12-1!./node_modules/@dcloudio/webpack-uni-mp-loader/lib/script.js!./node_modules/@dcloudio/vue-cli-plugin-uni/packages/vue-loader/lib??vue-loader-options!./node_modules/@dcloudio/webpack-uni-mp-loader/lib/style.js!C:/Users/pangqiu/Desktop/Roki/pages/zaoju/zaoju.vue?vue&type=script&lang=js& ***!
   \*******************************************************************************************************************************************************************************************************************************************************************************************************************************************************************************************************************************/
 /*! no static exports found */
 /***/ (function(module, exports, __webpack_require__) {
@@ -148,30 +148,47 @@ Object.defineProperty(exports, "__esModule", { value: true });exports.default = 
 
 
 
-var _request = __webpack_require__(/*! @/utils/request.js */ 21);function _interopRequireDefault(obj) {return obj && obj.__esModule ? obj : { default: obj };}function asyncGeneratorStep(gen, resolve, reject, _next, _throw, key, arg) {try {var info = gen[key](arg);var value = info.value;} catch (error) {reject(error);return;}if (info.done) {resolve(value);} else {Promise.resolve(value).then(_next, _throw);}}function _asyncToGenerator(fn) {return function () {var self = this,args = arguments;return new Promise(function (resolve, reject) {var gen = fn.apply(self, args);function _next(value) {asyncGeneratorStep(gen, resolve, reject, _next, _throw, "next", value);}function _throw(err) {asyncGeneratorStep(gen, resolve, reject, _next, _throw, "throw", err);}_next(undefined);});};}var _default =
+
+
+
+var _request = __webpack_require__(/*! @/utils/request.js */ 21);function _interopRequireDefault(obj) {return obj && obj.__esModule ? obj : { default: obj };}function asyncGeneratorStep(gen, resolve, reject, _next, _throw, key, arg) {try {var info = gen[key](arg);var value = info.value;} catch (error) {reject(error);return;}if (info.done) {resolve(value);} else {Promise.resolve(value).then(_next, _throw);}}function _asyncToGenerator(fn) {return function () {var self = this,args = arguments;return new Promise(function (resolve, reject) {var gen = fn.apply(self, args);function _next(value) {asyncGeneratorStep(gen, resolve, reject, _next, _throw, "next", value);}function _throw(err) {asyncGeneratorStep(gen, resolve, reject, _next, _throw, "throw", err);}_next(undefined);});};}var uniIcons = function uniIcons() {Promise.all(/*! require.ensure | components/uni/uni-icons/uni-icons */[__webpack_require__.e("common/vendor"), __webpack_require__.e("components/uni/uni-icons/uni-icons")]).then((function () {return resolve(__webpack_require__(/*! @/components/uni/uni-icons/uni-icons.vue */ 89));}).bind(null, __webpack_require__)).catch(__webpack_require__.oe);};var _default =
+
 
 
 
 {
   data: function data() {
-    return {};
-
+    return {
+      cookbooks: [] };
 
   },
+  components: {
+    uniIcons: uniIcons },
+
   onLoad: function onLoad() {
     this.getZaoJu();
   },
   methods: {
-    getZaoJu: function getZaoJu() {return _asyncToGenerator( /*#__PURE__*/_regenerator.default.mark(function _callee() {var res;return _regenerator.default.wrap(function _callee$(_context) {while (1) {switch (_context.prev = _context.next) {case 0:_context.next = 2;return (
-                  (0, _request.myRequestPost)("/api/cookbook/details/get-by-id"));case 2:res = _context.sent;
-                console.log(res);case 4:case "end":return _context.stop();}}}, _callee);}))();
+    getZaoJu: function getZaoJu() {var _this = this;return _asyncToGenerator( /*#__PURE__*/_regenerator.default.mark(function _callee() {var res;return _regenerator.default.wrap(function _callee$(_context) {while (1) {switch (_context.prev = _context.next) {case 0:_context.next = 2;return (
+                  (0, _request.myRequestPost)("/api/cookbook/grounding/get-by-dc", {
+                    "dc": "RRQZ",
+                    "cookbookType": "all",
+                    "lang": "cn",
+                    "start": 0,
+                    "limit": 50,
+                    "userId": null }));case 2:res = _context.sent;
+
+                _this.cookbooks = res.cookbooks;case 4:case "end":return _context.stop();}}}, _callee);}))();
+    },
+    dianZan: function dianZan() {
+
     } } };exports.default = _default;
 
 /***/ }),
 
 /***/ 48:
 /*!*********************************************************************************************!*\
-  !*** C:/Users/pangqiu/Desktop/ROKI/pages/zaoju/zaoju.vue?vue&type=style&index=0&lang=less& ***!
+  !*** C:/Users/pangqiu/Desktop/Roki/pages/zaoju/zaoju.vue?vue&type=style&index=0&lang=less& ***!
   \*********************************************************************************************/
 /*! no static exports found */
 /***/ (function(module, __webpack_exports__, __webpack_require__) {
@@ -187,7 +204,7 @@ __webpack_require__.r(__webpack_exports__);
 
 /***/ 49:
 /*!*****************************************************************************************************************************************************************************************************************************************************************************************************************************************************************************************************************************************************************************************************************************************************************************************************************************************************************************************************************************************************************************************************!*\
-  !*** ./node_modules/mini-css-extract-plugin/dist/loader.js??ref--10-oneOf-1-0!./node_modules/css-loader/dist/cjs.js??ref--10-oneOf-1-1!./node_modules/@dcloudio/vue-cli-plugin-uni/packages/vue-loader/lib/loaders/stylePostLoader.js!./node_modules/@dcloudio/vue-cli-plugin-uni/packages/webpack-preprocess-loader??ref--10-oneOf-1-2!./node_modules/postcss-loader/src??ref--10-oneOf-1-3!./node_modules/less-loader/dist/cjs.js??ref--10-oneOf-1-4!./node_modules/@dcloudio/vue-cli-plugin-uni/packages/webpack-preprocess-loader??ref--10-oneOf-1-5!./node_modules/@dcloudio/vue-cli-plugin-uni/packages/vue-loader/lib??vue-loader-options!./node_modules/@dcloudio/webpack-uni-mp-loader/lib/style.js!C:/Users/pangqiu/Desktop/ROKI/pages/zaoju/zaoju.vue?vue&type=style&index=0&lang=less& ***!
+  !*** ./node_modules/mini-css-extract-plugin/dist/loader.js??ref--10-oneOf-1-0!./node_modules/css-loader/dist/cjs.js??ref--10-oneOf-1-1!./node_modules/@dcloudio/vue-cli-plugin-uni/packages/vue-loader/lib/loaders/stylePostLoader.js!./node_modules/@dcloudio/vue-cli-plugin-uni/packages/webpack-preprocess-loader??ref--10-oneOf-1-2!./node_modules/postcss-loader/src??ref--10-oneOf-1-3!./node_modules/less-loader/dist/cjs.js??ref--10-oneOf-1-4!./node_modules/@dcloudio/vue-cli-plugin-uni/packages/webpack-preprocess-loader??ref--10-oneOf-1-5!./node_modules/@dcloudio/vue-cli-plugin-uni/packages/vue-loader/lib??vue-loader-options!./node_modules/@dcloudio/webpack-uni-mp-loader/lib/style.js!C:/Users/pangqiu/Desktop/Roki/pages/zaoju/zaoju.vue?vue&type=style&index=0&lang=less& ***!
   \*****************************************************************************************************************************************************************************************************************************************************************************************************************************************************************************************************************************************************************************************************************************************************************************************************************************************************************************************************************************************************************************************************/
 /*! no static exports found */
 /***/ (function(module, exports, __webpack_require__) {

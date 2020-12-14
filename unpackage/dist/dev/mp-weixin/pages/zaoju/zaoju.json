@@ -1,4 +1,6 @@
 {
   "navigationBarTitleText": "灶具菜谱",
-  "usingComponents": {}
+  "usingComponents": {
+    "uni-icons": "/components/uni/uni-icons/uni-icons"
+  }
 }

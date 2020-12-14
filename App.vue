@@ -1,5 +1,5 @@
 <script>
-	import './static/iconfont-weapp-icon.css';
+	
 	export default {
 		onLaunch: function() {
 			console.log('App Launch')
@@ -15,4 +15,5 @@
 
 <style>
 	/*每个页面公共css */
+	
 </style>

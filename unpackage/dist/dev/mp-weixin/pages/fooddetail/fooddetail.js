@@ -2,7 +2,7 @@
 
 /***/ 56:
 /*!****************************************************************************************!*\
-  !*** C:/Users/pangqiu/Desktop/ROKI/main.js?{"page":"pages%2Ffooddetail%2Ffooddetail"} ***!
+  !*** C:/Users/pangqiu/Desktop/Roki/main.js?{"page":"pages%2Ffooddetail%2Ffooddetail"} ***!
   \****************************************************************************************/
 /*! no static exports found */
 /***/ (function(module, exports, __webpack_require__) {
@@ -18,7 +18,7 @@ createPage(_fooddetail.default);
 
 /***/ 57:
 /*!*********************************************************************!*\
-  !*** C:/Users/pangqiu/Desktop/ROKI/pages/fooddetail/fooddetail.vue ***!
+  !*** C:/Users/pangqiu/Desktop/Roki/pages/fooddetail/fooddetail.vue ***!
   \*********************************************************************/
 /*! no static exports found */
 /***/ (function(module, __webpack_exports__, __webpack_require__) {
@@ -28,7 +28,7 @@ __webpack_require__.r(__webpack_exports__);
 /* harmony import */ var _fooddetail_vue_vue_type_template_id_e86d8834___WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! ./fooddetail.vue?vue&type=template&id=e86d8834& */ 58);
 /* harmony import */ var _fooddetail_vue_vue_type_script_lang_js___WEBPACK_IMPORTED_MODULE_1__ = __webpack_require__(/*! ./fooddetail.vue?vue&type=script&lang=js& */ 60);
 /* harmony reexport (unknown) */ for(var __WEBPACK_IMPORT_KEY__ in _fooddetail_vue_vue_type_script_lang_js___WEBPACK_IMPORTED_MODULE_1__) if(__WEBPACK_IMPORT_KEY__ !== 'default') (function(key) { __webpack_require__.d(__webpack_exports__, key, function() { return _fooddetail_vue_vue_type_script_lang_js___WEBPACK_IMPORTED_MODULE_1__[key]; }) }(__WEBPACK_IMPORT_KEY__));
-/* harmony import */ var _D_HBuilderX_plugins_uniapp_cli_node_modules_dcloudio_vue_cli_plugin_uni_packages_vue_loader_lib_runtime_componentNormalizer_js__WEBPACK_IMPORTED_MODULE_2__ = __webpack_require__(/*! ./node_modules/@dcloudio/vue-cli-plugin-uni/packages/vue-loader/lib/runtime/componentNormalizer.js */ 11);
+/* harmony import */ var _D_HBuilderX_plugins_uniapp_cli_node_modules_dcloudio_vue_cli_plugin_uni_packages_vue_loader_lib_runtime_componentNormalizer_js__WEBPACK_IMPORTED_MODULE_2__ = __webpack_require__(/*! ./node_modules/@dcloudio/vue-cli-plugin-uni/packages/vue-loader/lib/runtime/componentNormalizer.js */ 10);
 
 var renderjs
 
@@ -57,7 +57,7 @@ component.options.__file = "pages/fooddetail/fooddetail.vue"
 
 /***/ 58:
 /*!****************************************************************************************************!*\
-  !*** C:/Users/pangqiu/Desktop/ROKI/pages/fooddetail/fooddetail.vue?vue&type=template&id=e86d8834& ***!
+  !*** C:/Users/pangqiu/Desktop/Roki/pages/fooddetail/fooddetail.vue?vue&type=template&id=e86d8834& ***!
   \****************************************************************************************************/
 /*! exports provided: render, staticRenderFns, recyclableRender, components */
 /***/ (function(module, __webpack_exports__, __webpack_require__) {
@@ -79,7 +79,7 @@ __webpack_require__.r(__webpack_exports__);
 
 /***/ 59:
 /*!****************************************************************************************************************************************************************************************************************************************************************************************************************************************************************************************************************************************************************************************************************************************************************************************************************************!*\
-  !*** ./node_modules/@dcloudio/vue-cli-plugin-uni/packages/vue-loader/lib/loaders/templateLoader.js??vue-loader-options!./node_modules/@dcloudio/vue-cli-plugin-uni/packages/webpack-preprocess-loader??ref--16-0!./node_modules/@dcloudio/webpack-uni-mp-loader/lib/template.js!./node_modules/@dcloudio/vue-cli-plugin-uni/packages/webpack-uni-app-loader/page-meta.js!./node_modules/@dcloudio/vue-cli-plugin-uni/packages/vue-loader/lib??vue-loader-options!./node_modules/@dcloudio/webpack-uni-mp-loader/lib/style.js!C:/Users/pangqiu/Desktop/ROKI/pages/fooddetail/fooddetail.vue?vue&type=template&id=e86d8834& ***!
+  !*** ./node_modules/@dcloudio/vue-cli-plugin-uni/packages/vue-loader/lib/loaders/templateLoader.js??vue-loader-options!./node_modules/@dcloudio/vue-cli-plugin-uni/packages/webpack-preprocess-loader??ref--16-0!./node_modules/@dcloudio/webpack-uni-mp-loader/lib/template.js!./node_modules/@dcloudio/vue-cli-plugin-uni/packages/webpack-uni-app-loader/page-meta.js!./node_modules/@dcloudio/vue-cli-plugin-uni/packages/vue-loader/lib??vue-loader-options!./node_modules/@dcloudio/webpack-uni-mp-loader/lib/style.js!C:/Users/pangqiu/Desktop/Roki/pages/fooddetail/fooddetail.vue?vue&type=template&id=e86d8834& ***!
   \****************************************************************************************************************************************************************************************************************************************************************************************************************************************************************************************************************************************************************************************************************************************************************************************************************************/
 /*! exports provided: render, staticRenderFns, recyclableRender, components */
 /***/ (function(module, __webpack_exports__, __webpack_require__) {
@@ -106,7 +106,7 @@ render._withStripped = true
 
 /***/ 60:
 /*!**********************************************************************************************!*\
-  !*** C:/Users/pangqiu/Desktop/ROKI/pages/fooddetail/fooddetail.vue?vue&type=script&lang=js& ***!
+  !*** C:/Users/pangqiu/Desktop/Roki/pages/fooddetail/fooddetail.vue?vue&type=script&lang=js& ***!
   \**********************************************************************************************/
 /*! no static exports found */
 /***/ (function(module, __webpack_exports__, __webpack_require__) {
@@ -122,7 +122,7 @@ __webpack_require__.r(__webpack_exports__);
 
 /***/ 61:
 /*!*****************************************************************************************************************************************************************************************************************************************************************************************************************************************************************************************************************************************!*\
-  !*** ./node_modules/babel-loader/lib!./node_modules/@dcloudio/vue-cli-plugin-uni/packages/webpack-preprocess-loader??ref--12-1!./node_modules/@dcloudio/webpack-uni-mp-loader/lib/script.js!./node_modules/@dcloudio/vue-cli-plugin-uni/packages/vue-loader/lib??vue-loader-options!./node_modules/@dcloudio/webpack-uni-mp-loader/lib/style.js!C:/Users/pangqiu/Desktop/ROKI/pages/fooddetail/fooddetail.vue?vue&type=script&lang=js& ***!
+  !*** ./node_modules/babel-loader/lib!./node_modules/@dcloudio/vue-cli-plugin-uni/packages/webpack-preprocess-loader??ref--12-1!./node_modules/@dcloudio/webpack-uni-mp-loader/lib/script.js!./node_modules/@dcloudio/vue-cli-plugin-uni/packages/vue-loader/lib??vue-loader-options!./node_modules/@dcloudio/webpack-uni-mp-loader/lib/style.js!C:/Users/pangqiu/Desktop/Roki/pages/fooddetail/fooddetail.vue?vue&type=script&lang=js& ***!
   \*****************************************************************************************************************************************************************************************************************************************************************************************************************************************************************************************************************************************/
 /*! no static exports found */
 /***/ (function(module, exports, __webpack_require__) {

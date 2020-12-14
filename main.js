@@ -1,6 +1,7 @@
 import Vue from 'vue'
 import App from './App'
-// import '@/static/fonts/iconfont.css'
+import "@/static/font/iconfont.css"
+import '@/static/font/iconfont-weapp/iconfont-weapp-icon.css';
 Vue.config.productionTip = false
 
 App.mpType = 'app'

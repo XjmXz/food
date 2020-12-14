@@ -48,22 +48,22 @@
 			return {
 				swipers: [],
 				navs: [{
-						icons: "t-icon t-icon-xiaolongbao",
+						icons: "t-icon t-icon---",
 						title: "灶具菜谱",
 						path: "/pages/zaoju/zaoju"
 					},
 					{
-						icons: "t-icon t-icon-weibolu",
+						icons: "t-icon t-icon-chufang",
 						title: "烤箱菜谱",
 						path: "/pages/zaoju/zaoju"
 					},
 					{
-						icons: "t-icon t-icon-guotiex",
+						icons: "t-icon t-icon-ziyuan",
 						title: "蒸汽炉菜谱",
 						path: "/pages/zaoju/zaoju"
 					},
 					{
-						icons: "t-icon t-icon-wan",
+						icons: "t-icon t-icon-kaoxiang",
 						title: "微波炉菜谱",
 						path: "/pages/zaoju/zaoju"
 					}
@@ -86,7 +86,6 @@
 					"pageNo": 0,
 					"pageSize": 25
 				})
-				console.log(res.cookbooks)
 				this.menus=res.cookbooks
 			},
 			goZaoju(item) {

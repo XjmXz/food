@@ -1,0 +1,37 @@
+{
+  "id": "2266160",
+  "name": "uniapp",
+  "font_family": "iconfont",
+  "css_prefix_text": "icon-",
+  "description": "",
+  "glyphs": [
+    {
+      "icon_id": "5184110",
+      "name": "菜单",
+      "font_class": "--",
+      "unicode": "e611",
+      "unicode_decimal": 58897
+    },
+    {
+      "icon_id": "5979875",
+      "name": "厨房",
+      "font_class": "chufang",
+      "unicode": "e626",
+      "unicode_decimal": 58918
+    },
+    {
+      "icon_id": "9341165",
+      "name": "微波炉",
+      "font_class": "ziyuan",
+      "unicode": "e61a",
+      "unicode_decimal": 58906
+    },
+    {
+      "icon_id": "3897864",
+      "name": "烤箱",
+      "font_class": "kaoxiang",
+      "unicode": "e616",
+      "unicode_decimal": 58902
+    }
+  ]
+}

@@ -1,14 +1,17 @@
 <template>
 	<view>
-		<image src="../../static/tabs/1.png" mode=""></image>
-		<view class="recommend">
-			<view class="" >
+		<image src="../../static/tabs/灶具.png" mode=""></image>
+		<view class="recommend" v-for=" item in cookbooks" :key="item.id">
+			<view class="">
 				<view class="recommend-img">
-					<image src="../../static/tabs/1.png" mode=""></image>
+					<image :src="item.imgLarge" mode=""></image>
 				</view>
 				<view class="recommend-foot">
-					<text>111111</text>
-					<text>1111111</text>
+					<text>{{item.name}}</text>
+					<view>
+						<uni-icons type="heart-filled" size="20" @click="dianZan"></uni-icons>
+						<text>{{item.collectCount}}人收藏</text>
+					</view>
 				</view>
 			</view>
 		</view>
@@ -20,31 +23,47 @@
 		myRequest,
 		myRequestPost
 	} from "@/utils/request.js"
+	import uniIcons from "@/components/uni/uni-icons/uni-icons.vue"
 	export default {
 		data() {
 			return {
-
+				cookbooks: [],
 			};
+		},
+		components: {
+			uniIcons
 		},
 		onLoad() {
 			this.getZaoJu()
 		},
-		methods:{
-			async getZaoJu(){
-				let res=await myRequestPost("/api/cookbook/details/get-by-id")
-				console.log(res)
-				}
+		methods: {
+			async getZaoJu() {
+				let res = await myRequestPost("/api/cookbook/grounding/get-by-dc", {
+					"dc": "RRQZ",
+					"cookbookType": "all",
+					"lang": "cn",
+					"start": 0,
+					"limit": 50,
+					"userId": null
+				})
+				this.cookbooks = res.cookbooks;
+			},
+			dianZan(){
+				
 			}
+		}
 	}
 </script>
 
 <style lang="less">
-	image{
+	image {
 		width: 100%;
 	}
-    .recommend {
+
+	.recommend {
 		width: 95%;
 		margin: 20rpx auto;
+
 		.recommend-img {
 			margin: 0 auto;
 
@@ -60,6 +79,9 @@
 			justify-content: space-between;
 			color: #885e46;
 			font-family: sans-serif;
+			.uni-icons{
+				vertical-align: -10%;
+			}
 		}
 	}
 </style>

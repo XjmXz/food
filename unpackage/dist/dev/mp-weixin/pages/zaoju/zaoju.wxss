@@ -24,4 +24,7 @@ image {
   color: #885e46;
   font-family: sans-serif;
 }
+.recommend .recommend-foot .uni-icons {
+  vertical-align: -10%;
+}
 
