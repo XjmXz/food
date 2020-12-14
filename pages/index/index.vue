@@ -12,25 +12,12 @@
 				<text>{{item.title}}</text>
 			</uni-grid-item>
 		</uni-grid>
-		<view class="recommend">
+		<view class="main">
 			<view class="title">
 				菜谱推荐
 			</view>
 			<!-- 菜谱列表 -->
-			<view v-for="item in menu" :key="item.id" class="item" >
-				<view class="item-main">
-					<image :src="item.imgLarge" @click="itemClick(item)"></image>
-					<view class="item-text">
-						<view>
-							<text>{{item.name}}</text>
-						</view>
-						<view>
-							<uni-icons type="heart" size="20"></uni-icons>
-							<text class="text-right">{{item.collectCount}}人收藏</text>
-						</view>
-					</view>
-				</view>
-			</view>
+			<foodlist :menu="menu"></foodlist>
 		</view>
 	</view>
 </template>
@@ -39,7 +26,8 @@
 	import uniSearchBar from '@/components/uni/uni-search-bar/uni-search-bar.vue';
 	import uniGrid from "@/components/uni/uni-grid/uni-grid.vue"
 	import uniGridItem from "@/components/uni/uni-grid-item/uni-grid-item.vue";
-	import uniIcons from "@/components/uni/uni-icons/uni-icons.vue"
+	import uniIcons from "@/components/uni/uni-icons/uni-icons.vue";
+	import foodlist from '@/components/foodlist/foodlist.vue'
 	import {
 		myRequestPost
 	} from '@/utils/request.js'
@@ -48,7 +36,8 @@
 			uniSearchBar,
 			uniGrid,
 			uniGridItem,
-			uniIcons
+			uniIcons,
+			foodlist
 		},
 		data() {
 			return {
@@ -80,6 +69,7 @@
 		onLoad() {
 			this.getSwipers(),
 				this.getMenu()
+				
 		},
 		methods: {
 			async getSwipers() {
@@ -139,37 +129,13 @@
 			}
 		}
 
-		.recommend {
+		.main {
 			.title {
 				border-top: 1px solid #ccc;
 				padding: 15rpx 0;
 				margin: 10rpx 10rpx 10rpx 25rpx;
 				font-size: 50rpx;
 				font-weight: 700;
-			}
-
-			.item {
-				.item-main {
-					margin: 0 25rpx;
-
-					image {
-						width: 700rpx;
-						height: 450rpx;
-						border-radius: 20rpx;
-					}
-
-					.item-text {
-						display: flex;
-						justify-content: space-between;
-						margin: 15rpx 0 15rpx 10rpx;
-						font-size: 30rpx;
-
-						.text-right {
-							float: right;
-							margin-right: 30rpx;
-						}
-					}
-				}
 			}
 		}
 	}

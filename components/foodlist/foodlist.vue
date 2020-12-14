@@ -8,7 +8,7 @@
 						<text>{{item.name}}</text>
 					</view>
 					<view>
-						<uni-icons type="heart" size="20"></uni-icons>
+						<uni-icons :type="flag?'heart-filled':'heart'" size="20" color="red"></uni-icons>
 						<text class="text-right">{{item.collectCount}}人收藏</text>
 					</view>
 				</view>
@@ -29,9 +29,14 @@
 			uniIcons
 		},
 		data() {
-			return {};
+			return {
+				flag: false
+			};
 		},
 		methods: {
+			likeTap() {
+				this.flag = !this.flag;
+			},
 			itemClick(item) {
 				uni.navigateTo({
 					url: '/pages/fooddetail/fooddetail?id=' + item.id
@@ -43,14 +48,6 @@
 
 <style lang="scss">
 	.recommend {
-		.title {
-			border-top: 1px solid #ccc;
-			padding: 15rpx 0;
-			margin: 10rpx 10rpx 10rpx 25rpx;
-			font-size: 50rpx;
-			font-weight: 700;
-		}
-
 		.item {
 			.item-main {
 				margin: 0 25rpx;

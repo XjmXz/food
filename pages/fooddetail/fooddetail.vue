@@ -16,13 +16,20 @@
 			<text>{{detail.introduction}}</text>
 		</view>
 		<!-- 菜谱用料 -->
-		<view v-for="item in detail.materials.accessory" :key="item.id" class="food-ingred" mode="widthFix">
-			<text>{{item.name}}</text>
-			<text class="text-right">{{item.standardWeight+item.standardUnit}}</text>
-		</view>
-		<view v-for="item in detail.materials.main" :key="item.id" class="food-ingred" mode="widthFix">
-			<text>{{item.name}}</text>
-			<text class="text-right">{{item.standardWeight+item.standardUnit}}</text>
+		<view class="meterials">
+			<view class="inrduc-center">
+				<view class="indruc-l"></view>
+				<text>用料</text>
+				<view class="indruc-r"></view>
+			</view>
+			<view v-for="item in detail.materials.accessory" :key="item.id" class="food-ingred" mode="widthFix">
+				<text>{{item.name}}</text>
+				<text class="text-right">{{item.standardWeight+item.standardUnit}}</text>
+			</view>
+			<view v-for="item in detail.materials.main" :key="item.id" class="food-ingred" mode="widthFix">
+				<text>{{item.name}}</text>
+				<text class="text-right">{{item.standardWeight+item.standardUnit}}</text>
+			</view>
 		</view>
 		<!-- 做法步骤 -->
 		<view class="food-step">
@@ -43,9 +50,15 @@
 			<view v-for="item in detail.steps" :key="item.id" mode="widthFix" class="food-step-main">
 				<image :src="item.image"></image>
 				<view class="steps">
-					<text>{{item.no}}/</text>
-					<text>{{detail.steps.length}}{{item.desc}}</text>
+					<text style="color: orange;font-size: 30px;">{{item.no}}</text>
+					<text>/</text>
+					<text style="color: orange;">{{detail.steps.length}}</text>
+					<text>{{item.desc}}</text>
 				</view>
+			</view>
+			<!-- 底部导航 -->
+			<view class="goods_nav">
+				<uni-goods-nav :fill="true" :options="options" :button-group="buttonGroup" @click="onClick" @buttonClick="buttonClick"></uni-goods-nav>
 			</view>
 		</view>
 	</view>
@@ -55,11 +68,37 @@
 	import {
 		myRequestPost
 	} from '@/utils/request.js';
+	import uniGoodsNav from '@/components/uni/uni-goods-nav/uni-goods-nav.vue';
 	export default {
+		components: {
+			uniGoodsNav
+		},
 		data() {
 			return {
 				id: "",
-				detail: []
+				detail: [],
+				options: [{
+					icon: 'heart',
+					text: '收藏'
+				}, {
+					icon: 'home',
+					text: '首页',
+
+				}, {
+					icon: 'redo',
+					text: '分享',
+				}],
+				buttonGroup: [{
+						text: '加入购物车',
+						backgroundColor: '#ff0000',
+						color: '#fff'
+					},
+					{
+						text: '立即购买',
+						backgroundColor: '#ffa200',
+						color: '#fff'
+					}
+				]
 			}
 		},
 		onLoad(options) {
@@ -80,12 +119,46 @@
 				console.log(imageUrl) // http://192.168.100.251:8970/6_1597822634094.png
 				var images = [];
 				images.push(imageUrl);
-				console.log(images) 
+				console.log(images)
 				uni.previewImage({ // 预览图片  图片路径必须是一个数组 => ["http://192.168.100.251:8970/6_1597822634094.png"]
 					current: 0,
 					urls: images
 				});
 			},
+			onClick(e) {
+				uni.showToast({
+					title: `点击${e.content.text}`,
+					icon: 'none',
+
+				})
+				console.log(e.index)
+				if (e.index == 0) {
+					console.log(点击了收藏)
+				} else if (e.index == 1) {
+					uni.switchTab({
+						url: '/pages/index/index'
+					})
+				} else {
+					uni.share({
+						provider: "weixin",
+						title: "uniapp",
+						scene: "WXSceneSession",
+						type: 1,
+						summary: "我正在使用HBuilderX开发uni-app，赶紧跟我一起来体验！",
+						success: function(res) {
+							console.log("success:" + JSON.stringify(res));
+						},
+						fail: function(err) {
+							console.log("fail:" + JSON.stringify(err));
+						}
+					})
+					console.log("点击了分享")
+				}
+			},
+			buttonClick(e) {
+				console.log(e)
+				this.options[2].info++
+			}
 		}
 	}
 </script>
@@ -122,6 +195,22 @@
 			margin-top: 100rpx;
 			margin-left: 10px;
 			color: #979797;
+		}
+
+		.meterials {
+			margin-left: 20rpx;
+
+			.inrduc-center {
+				text {
+					margin-left: 30rpx;
+				}
+			}
+		}
+
+		.goods_nav {
+			position: fixed;
+			bottom: 0;
+			width: 100%;
 		}
 
 		.inrduc-center {

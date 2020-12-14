@@ -1,20 +1,6 @@
 <template>
 	<view>
 		这是菜谱列表页面
-		<!-- <view v-for="item in menu" :key="item.id" class="items" mode="widthFix">
-			<view class="item-main">
-				<image :src="item.imgLarge" @click="itemClick(item)"></image>
-				<view class="item-text">
-					<view>
-						<text>{{item.name}}</text>
-					</view>
-					<view>
-						<uni-icons type="heart" size="20"></uni-icons>
-						<text class="text-right">{{item.collectCount}}人收藏</text>
-					</view>
-				</view>
-			</view>
-		</view> -->
 		<foodlist :menu="menu"></foodlist>
 		<uni-load-more v-if="!flag" :status="'loading'"></uni-load-more>
 		<uni-load-more v-else :status="'noMore'"></uni-load-more>
@@ -43,7 +29,6 @@
 			};
 		},
 		onLoad(options) {
-			this.dc = options.dc;
 			this.id = options.id;
 			this.getSwipers()
 		},
