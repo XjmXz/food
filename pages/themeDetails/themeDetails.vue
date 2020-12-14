@@ -18,7 +18,7 @@
 					<text class="left">{{item.name}}</text>
 					<view class="right">
 						<uni-icons type="heart" size="20"></uni-icons>
-						<text>{{item.collectCount}}人收藏</text>
+						<text class="collect">{{item.collectCount}}人收藏</text>
 					</view>
 				</view>
 			</view>
@@ -86,10 +86,9 @@
 
 <style lang="less">
 	page {
-		width: 100%;
+		width: 750rpx;
 		height: 100%;
 		font-family: "楷体";
-
 		.continer {
 			width: 700rpx;
 			height: 100%;
@@ -122,7 +121,7 @@
 				padding: 0;
 				border: none;
 
-				.button_item {
+				button{
 					height: 30rpx;
 					margin-left: 10rpx;
 					padding: 0 10rpx 0 10rpx;
@@ -154,21 +153,13 @@
 						justify-content: space-between;
 
 						.right {
-							text {
-								line-height: 40rpx;
-							}
-
 							uni-icons {
 								margin-top: 10rpx;
 							}
-
 						}
 					}
 				}
 			}
-
-
-
 		}
 	}
 </style>
