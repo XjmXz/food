@@ -11,29 +11,21 @@
   "appid": "touristappid",
   "projectname": "ROKI",
   "condition": {
-    "plugin": {
+    "search": {
+      "current": -1,
+      "list": []
+    },
+    "conversation": {
+      "current": -1,
       "list": []
     },
     "game": {
-      "list": []
-    },
-    "gamePlugin": {
+      "current": -1,
       "list": []
     },
     "miniprogram": {
-      "list": [
-        {
-          "name": "pages/video/video",
-          "pathName": "pages/video/video",
-          "query": "",
-          "scene": null
-        },
-        {
-          "name": "pages/vediodetail/vediodetail",
-          "pathName": "pages/vediodetail/vediodetail",
-          "scene": null
-        }
-      ]
+      "current": -1,
+      "list": []
     }
   }
 }

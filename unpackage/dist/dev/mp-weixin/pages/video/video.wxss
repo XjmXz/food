@@ -24,7 +24,7 @@
   width: 100%;
 }
 .box .title .box_bottom {
-  padding-top: 20rpx ;
+  padding-top: 20rpx;
   height: 135rpx;
 }
 .box .title .box_bottom .fl {
@@ -32,14 +32,19 @@
 }
 .box .title .box_bottom .fl .fl_top {
   font-weight: 700;
-  font-size: 20px;
+  font-size: 40rpx;
   margin-bottom: 10rpx;
 }
 .box .title .box_bottom .fl .fl_bottom {
-  font-size: 14px;
+  font-size: 28rpx;
   color: #b9b9b9;
 }
 .box .title .box_bottom .fr {
   float: right;
+}
+.box .title .box_bottom .fr .sc {
+  display: inline-block;
+  font-size: 50rpx;
+  color: red;
 }
 

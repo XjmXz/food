@@ -734,7 +734,7 @@ function initData(vueOptions, context) {
     try {
       data = data.call(context); // 支持 Vue.prototype 上挂的数据
     } catch (e) {
-      if (Object({"NODE_ENV":"development","VUE_APP_PLATFORM":"mp-weixin","BASE_URL":"/"}).VUE_APP_DEBUG) {
+      if (Object({"VUE_APP_PLATFORM":"mp-weixin","NODE_ENV":"development","BASE_URL":"/"}).VUE_APP_DEBUG) {
         console.warn('根据 Vue 的 data 函数初始化小程序 data 失败，请尽量确保 data 函数中不访问 vm 对象，否则可能影响首次数据渲染速度。', data);
       }
     }
@@ -1528,7 +1528,7 @@ uni$1;exports.default = _default;
 
 /***/ }),
 
-/***/ 108:
+/***/ 101:
 /*!************************************************************************************!*\
   !*** C:/Users/Shen Zhaoli/Desktop/learngit/food/components/uni/uni-icons/icons.js ***!
   \************************************************************************************/
@@ -7281,7 +7281,7 @@ function type(obj) {
 
 function flushCallbacks$1(vm) {
     if (vm.__next_tick_callbacks && vm.__next_tick_callbacks.length) {
-        if (Object({"NODE_ENV":"development","VUE_APP_PLATFORM":"mp-weixin","BASE_URL":"/"}).VUE_APP_DEBUG) {
+        if (Object({"VUE_APP_PLATFORM":"mp-weixin","NODE_ENV":"development","BASE_URL":"/"}).VUE_APP_DEBUG) {
             var mpInstance = vm.$scope;
             console.log('[' + (+new Date) + '][' + (mpInstance.is || mpInstance.route) + '][' + vm._uid +
                 ']:flushCallbacks[' + vm.__next_tick_callbacks.length + ']');
@@ -7302,14 +7302,14 @@ function nextTick$1(vm, cb) {
     //1.nextTick 之前 已 setData 且 setData 还未回调完成
     //2.nextTick 之前存在 render watcher
     if (!vm.__next_tick_pending && !hasRenderWatcher(vm)) {
-        if(Object({"NODE_ENV":"development","VUE_APP_PLATFORM":"mp-weixin","BASE_URL":"/"}).VUE_APP_DEBUG){
+        if(Object({"VUE_APP_PLATFORM":"mp-weixin","NODE_ENV":"development","BASE_URL":"/"}).VUE_APP_DEBUG){
             var mpInstance = vm.$scope;
             console.log('[' + (+new Date) + '][' + (mpInstance.is || mpInstance.route) + '][' + vm._uid +
                 ']:nextVueTick');
         }
         return nextTick(cb, vm)
     }else{
-        if(Object({"NODE_ENV":"development","VUE_APP_PLATFORM":"mp-weixin","BASE_URL":"/"}).VUE_APP_DEBUG){
+        if(Object({"VUE_APP_PLATFORM":"mp-weixin","NODE_ENV":"development","BASE_URL":"/"}).VUE_APP_DEBUG){
             var mpInstance$1 = vm.$scope;
             console.log('[' + (+new Date) + '][' + (mpInstance$1.is || mpInstance$1.route) + '][' + vm._uid +
                 ']:nextMPTick');
@@ -7385,7 +7385,7 @@ var patch = function(oldVnode, vnode) {
     });
     var diffData = diff(data, mpData);
     if (Object.keys(diffData).length) {
-      if (Object({"NODE_ENV":"development","VUE_APP_PLATFORM":"mp-weixin","BASE_URL":"/"}).VUE_APP_DEBUG) {
+      if (Object({"VUE_APP_PLATFORM":"mp-weixin","NODE_ENV":"development","BASE_URL":"/"}).VUE_APP_DEBUG) {
         console.log('[' + (+new Date) + '][' + (mpInstance.is || mpInstance.route) + '][' + this._uid +
           ']差量更新',
           JSON.stringify(diffData));
@@ -8605,7 +8605,7 @@ if (hadRuntime) {
 /***/ (function(module, exports, __webpack_require__) {
 
 "use strict";
-/* WEBPACK VAR INJECTION */(function(uni) {Object.defineProperty(exports, "__esModule", { value: true });exports.myRequestGet = myRequestGet;exports.myRequestPost = myRequestPost;function _defineProperty(obj, key, value) {if (key in obj) {Object.defineProperty(obj, key, { value: value, enumerable: true, configurable: true, writable: true });} else {obj[key] = value;}return obj;}var baseUrl = "https://api.myroki.com/rest";
+/* WEBPACK VAR INJECTION */(function(uni) {Object.defineProperty(exports, "__esModule", { value: true });exports.myRequestGet = myRequestGet;exports.myRequestPost = myRequestPost;var baseUrl = "https://api.myroki.com/rest";
 
 function myRequestGet(url, data) {
   return new Promise(function (resolve, reject) {
@@ -8625,25 +8625,25 @@ function myRequestGet(url, data) {
 
 
 function myRequestPost(url, data) {
-  return new Promise(function (resolve, reject) {var _uni$request;
-    uni.request((_uni$request = {
-
-      url: url }, _defineProperty(_uni$request, "url",
+  return new Promise(function (resolve, reject) {
+    uni.request({
 
 
-    baseUrl + url), _defineProperty(_uni$request, "header",
 
-    {
-      'Content-Type': 'application/json' }), _defineProperty(_uni$request, "method",
 
-    "POST"), _defineProperty(_uni$request, "data",
-    data), _defineProperty(_uni$request, "success",
-    function success(res) {
-      resolve(res.data);
-    }), _defineProperty(_uni$request, "fail",
-    function fail(err) {
-      reject(err);
-    }), _uni$request));
+      url: baseUrl + url,
+
+      header: {
+        'Content-Type': 'application/json' },
+
+      method: "POST",
+      data: data,
+      success: function success(res) {
+        resolve(res.data);
+      },
+      fail: function fail(err) {
+        reject(err);
+      } });
 
   });
 }
@@ -9557,7 +9557,7 @@ module.exports = {"_from":"@dcloudio/uni-stat@^2.0.0-alpha-24420191128001","_id"
 /***/ (function(module, exports, __webpack_require__) {
 
 "use strict";
-Object.defineProperty(exports, "__esModule", { value: true });exports.default = void 0;var _default = { "pages": { "pages/index/index": { "navigationBarTitleText": "美食", "usingComponents": { "uni-search-bar": "/components/uni/uni-search-bar/uni-search-bar", "uni-grid": "/components/uni/uni-grid/uni-grid", "uni-grid-item": "/components/uni/uni-grid-item/uni-grid-item" } }, "pages/theme/theme": { "navigationBarTitleText": "主题", "usingComponents": {} }, "pages/video/video": { "navigationBarTitleText": "视频", "enablePullDownRefresh": true, "usingComponents": { "rate": "/components/uni/uni-rate/uni-rate" } }, "pages/vediodetail/vediodetail": { "navigationBarTitleText": "视频详情", "usingComponents": {} }, "pages/my/my": { "navigationBarTitleText": "我的", "usingComponents": {} }, "pages/zaoju/zaoju": { "navigationBarTitleText": "灶具菜谱", "usingComponents": {} }, "pages/square/square": { "navigationBarTitleText": "来到广场", "usingComponents": {} }, "pages/fooddetail/fooddetail": { "navigationBarTitleText": "菜谱详情", "usingComponents": {} } }, "globalStyle": { "navigationBarTextStyle": "white", "navigationBarTitleText": "美食", "navigationBarBackgroundColor": "#E9A06F", "backgroundColor": "#F8F8F8" } };exports.default = _default;
+Object.defineProperty(exports, "__esModule", { value: true });exports.default = void 0;var _default = { "pages": { "pages/index/index": { "navigationBarTitleText": "美食", "usingComponents": { "uni-search-bar": "/components/uni/uni-search-bar/uni-search-bar", "uni-grid": "/components/uni/uni-grid/uni-grid", "uni-grid-item": "/components/uni/uni-grid-item/uni-grid-item" } }, "pages/theme/theme": { "navigationBarTitleText": "主题", "usingComponents": {} }, "pages/video/video": { "navigationBarTitleText": "视频", "enablePullDownRefresh": true, "usingComponents": {} }, "pages/vediodetail/vediodetail": { "navigationBarTitleText": "视频详情", "usingComponents": {} }, "pages/my/my": { "navigationBarTitleText": "我的", "usingComponents": {} }, "pages/zaoju/zaoju": { "navigationBarTitleText": "灶具菜谱", "usingComponents": {} }, "pages/square/square": { "navigationBarTitleText": "来到广场", "usingComponents": {} }, "pages/fooddetail/fooddetail": { "navigationBarTitleText": "菜谱详情", "usingComponents": {} } }, "globalStyle": { "navigationBarTextStyle": "white", "navigationBarTitleText": "美食", "navigationBarBackgroundColor": "#E9A06F", "backgroundColor": "#F8F8F8" } };exports.default = _default;
 
 /***/ }),
 

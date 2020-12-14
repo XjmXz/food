@@ -20,10 +20,10 @@ export function myRequestGet(url, data) {
 export function myRequestPost(url, data) {
 	return new Promise((resolve, reject) => {
 		uni.request({
-			//#ifndef H5
+			//#ifdef H5
 			url: url,
 			//#endif
-			//#ifndef MP-WEIXIN | MP-MP-ALIPAY
+			//#ifdef MP-WEIXIN | MP-ALIPAY
 			url: baseUrl + url,
 			//#endif
 			header: {

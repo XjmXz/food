@@ -1,7 +1,5 @@
 {
   "navigationBarTitleText": "视频",
   "enablePullDownRefresh": true,
-  "usingComponents": {
-    "rate": "/components/uni/uni-rate/uni-rate"
-  }
+  "usingComponents": {}
 }
