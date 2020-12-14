@@ -143,6 +143,7 @@
 						width: 670rpx;
 						height: 380rpx;
 						border-radius: 16rpx;
+						background-size: cover;
 					}
 
 					.text {

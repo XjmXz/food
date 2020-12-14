@@ -1,6 +1,9 @@
 <template>
 	<view>
-		<image :src="foodDetail.imgLarge" mode=""></image>
+		<view class="img">
+			<image :src="foodDetail.imgLarge" mode=""></image>
+		</view>
+
 		<view class="continer">
 			<view class="box">
 				<view class="name">
@@ -33,7 +36,7 @@
 				</view>
 
 			</view>
-			
+
 			<view class="materials">——备菜步骤——</view>
 			<view class="prepares" v-for="item in foodDetail.prepareSteps.steps" :key="item.desc">
 				<view class="image">
@@ -44,8 +47,8 @@
 					<text class="text_2">/</text>
 					<text class="text_3">{{length}}</text>
 					<text>{{item.desc}}</text>
-					
-				</view>	
+
+				</view>
 			</view>
 			<view class="materials">——做法步骤——</view>
 			<view class="prepares" v-for="item in make" :key="item.no">
@@ -57,13 +60,40 @@
 					<text class="text_2">/</text>
 					<text class="text_3">{{count}}</text>
 					<text>{{item.desc}}</text>
-				</view>	
+				</view>
 			</view>
+			<view class="download">下载菜谱到手机</view>
+		</view>
+
+
+		<view class="tab">
+			<view class="tab_item">
+				<uni-icons type="heart" size="20"></uni-icons>
+				<view class="">
+					收藏
+				</view>
+			</view>
+
+			<view class="tab_item">
+				<uni-icons type="home" size="20"></uni-icons>
+				<view class="">
+					首页
+				</view>
+			</view>
+
+			<view class="tab_item">
+				<uni-icons type="redo" size="20"></uni-icons>
+				<view class="">
+					分享
+				</view>
+			</view>
+
 		</view>
 	</view>
 </template>
 
 <script>
+	import uniIcons from "@/components/uni/uni-icons/uni-icons.vue";
 	import {
 		myRequestPost
 	} from "@/utils/request.js";
@@ -72,14 +102,18 @@
 			return {
 				id: "",
 				foodDetail: {},
-				length:"",
-				step_length:"",
-				make:{},
-				count:"",
-				n:0
-				
-				
+				length: "",
+				step_length: "",
+				make: {},
+				count: "",
+				n: 0
+
+
 			};
+		},
+
+		components: {
+			uniIcons
 		},
 		onLoad(options) {
 			this.id = options.id;
@@ -94,16 +128,16 @@
 				this.foodDetail = res.cookbook;
 				console.log(this.foodDetail, "bbbbbbbbbbbbbbbbbbbbbbbbbbb");
 				//step_length------备菜的步骤数组长度
-				this.length=this.foodDetail.prepareSteps.steps.length;
+				this.length = this.foodDetail.prepareSteps.steps.length;
 				//step_length------做菜的步骤数组长度
-				this.step_length=this.foodDetail.steps.length;
-				this.make=this.foodDetail.steps;
-				this.count=this.step_length;
-				
-				for(var i=0;i<this.step_length;i++){
-					for(var j=0;j<this.length;j++){
-						if(this.make[i].desc==this.foodDetail.prepareSteps.steps[j].desc){
-							this.make.splice(i,1);
+				this.step_length = this.foodDetail.steps.length;
+				this.make = this.foodDetail.steps;
+				this.count = this.step_length;
+
+				for (var i = 0; i < this.step_length; i++) {
+					for (var j = 0; j < this.length; j++) {
+						if (this.make[i].desc == this.foodDetail.prepareSteps.steps[j].desc) {
+							this.make.splice(i, 1);
 							this.count--;
 							this.n++;
 						}
@@ -121,10 +155,16 @@
 		width: 100%;
 		height: 100%;
 		font-family: "楷体";
-
-		image {
+		.img {
 			width: 750rpx;
 			height: 450rpx;
+
+			image {
+				width: 750rpx;
+				height: 450rpx;
+				background-size: cover;
+			}
+
 		}
 
 		.continer {
@@ -173,61 +213,99 @@
 			}
 
 			.materials {
-				
+
 				font-size: 40rpx;
 				color: #e9a815;
 				font-weight: bold;
-				margin:0 auto;
+				margin: 0 auto;
 				margin-top: 100rpx;
 			}
 
 			.materials_more {
 				margin-top: 40rpx;
+
 				.box_1 {
 					display: flex;
 					justify-content: space-around;
 					margin-top: 20rpx;
 					border-bottom: 1px #c8c8c8 solid;
-					
-					.left{
-						width:150rpx;
+
+					.left {
+						width: 150rpx;
 						text-align: center;
 					}
-					
-					.right{
-						width:80rpx;
+
+					.right {
+						width: 80rpx;
 						text-align: center;
 					}
 				}
 			}
-			
-			.prepares{
+
+			.prepares {
 				margin-top: 40rpx;
-				.image{
-					margin:0 auto;
-					width:650rpx;
-					height:500rpx;
-					image{
-						width:650rpx;
-						height:500rpx;
+
+				.image {
+					margin: 0 auto;
+					width: 650rpx;
+					height: 500rpx;
+
+					image {
+						width: 650rpx;
+						height: 500rpx;
 					}
+
 					margin-bottom: 30rpx;
 				}
-				.texts{
-					
-					width:600rpx;
-					margin:10rpx auto;
-					.text_1{
+
+				.texts {
+
+					width: 600rpx;
+					margin: 10rpx auto;
+
+					.text_1 {
 						color: #e9a815;
 						font-size: 40rpx;
 					}
-					
-					.text_3{
+
+					.text_3 {
 						color: #e9a815;
-						
+
 					}
 				}
 			}
+
+			.download {
+				background-color: #fb3a3a;
+				width: 600rpx;
+				height: 80rpx;
+				margin-left: 50rpx;
+				border-radius: 16rpx;
+				text-align: center;
+				color: #FFFFFF;
+				line-height: 80rpx;
+				margin-top: 50rpx;
+			}
 		}
+
+
+		.tab {
+			background-color: #E9E9E9;
+			width: 750rpx;
+			height: 100rpx;
+			display: flex;
+			position: fixed;
+			justify-content: space-around;
+			left:0;
+			bottom:0;
+			z-index:999;
+			.tab_item{
+				margin-top:10rpx;
+			}
+			view{
+				text-align: center;
+			}
+		}
+
 	}
 </style>
