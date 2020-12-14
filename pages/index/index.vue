@@ -63,12 +63,12 @@
 					{
 						icons: "t-icon t-icon-xiaolongbao",
 						title: "蒸汽炉菜谱",
-						path: "/pages/zaoju/zaoju"
+						path: "/pages/SteamMenu/SteamMenu"
 					},
 					{
 						icons: "t-icon t-icon-xiaolongbao",
 						title: "微波炉菜谱",
-						path: "/pages/MicroMenu/MicroMenu"
+						path: "/pages/MicroMenu/MicroMenu?dc='RWBL'"
 					}
 				]
 			}

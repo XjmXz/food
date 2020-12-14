@@ -1,10 +1,5 @@
 <template>
-	<view class="Micro">
-		<view class="header">
-			<text>
-				微波炉智能导航菜谱
-			</text>
-		</view>
+
 		<view class="menuAll">
 			<view @click="itemClick(item)" v-for="item in menu" :key="item.id" class="item">
 				<view class="item-all">
@@ -16,7 +11,7 @@
 				</view>
 			</view>
 		</view>
-	</view>
+
 </template>
 
 <script>
@@ -26,35 +21,13 @@
 	export default {
 		data() {
 			return {
-				menu: [],
-				dc:""
+				menu: []
 			};
 		},
-		onLoad(option) {
-			this.dc = option.dc
-			console.log("kkkkkkkkkkkkkkk",this.dc)
-		},
 		created() {
-			this.getMenu()
 		},
 		methods: {
-			async getMenu() {
-				let result = await myRequestPost("/api/cookbook/grounding/get-by-dc", {
-					"dc": "RWBL",
-					"cookbookType": "all",
-					"lang": "cn",
-					"start": 0,
-					"limit": 50,
-					"userId": null
-				})
-				console.log(result.cookbooks, "000000000")
-				this.menu = result.cookbooks
-			},
-			itemClick(item){
-				uni.navigateTo({
-				        url: '/pages/MenuDetail/MenuDetail?id=' + item.id
-				    })
-			}
+			
 		}
 	}
 </script>

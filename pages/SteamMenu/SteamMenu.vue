@@ -2,7 +2,7 @@
 	<view class="Micro">
 		<view class="header">
 			<text>
-				微波炉智能导航菜谱
+				蒸汽炉智能导航菜谱
 			</text>
 		</view>
 		<view class="menuAll">
@@ -40,7 +40,7 @@
 		methods: {
 			async getMenu() {
 				let result = await myRequestPost("/api/cookbook/grounding/get-by-dc", {
-					"dc": "RWBL",
+					"dc": "RZQL",
 					"cookbookType": "all",
 					"lang": "cn",
 					"start": 0,

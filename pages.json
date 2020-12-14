@@ -47,6 +47,10 @@
             "path" : "pages/MenuDetail/MenuDetail",
             "style" : {}
         }
+        ,{
+            "path" : "pages/SteamMenu/SteamMenu",
+            "style" : {}
+        }
     ],
 	"globalStyle": {
 		"navigationBarTextStyle": "white",

@@ -7,7 +7,9 @@
 					{{menuDetail.name}}
 				</view>
 			</view>
-			<text class="collect">收藏 {{menuDetail.collectCount}}</text>
+			<text class="collect">
+				收藏 {{menuDetail.collectCount}}
+			</text>
 			<view class="Intro">
 				<view class="intro-txt">
 					<text class="online">——</text>
@@ -40,13 +42,13 @@
 					<text class="online">——</text>
 					<text class="fuhao">▼</text>
 				</view>
-				<view class="prepare" v-for="item in menuDetail.prepareSteps.steps" :key="item.id">
+				<view class="prepare" v-for="item in prepare" :key="item.id">
 					<image :src="item.imgUrl" mode=""></image>
 					<view class="stepss">
 						<text class="no">
 							<text style="font-size: 35rpx ;font-weight: 500;">{{item.no}}</text>
 							<text style="color: #000000;">/</text>
-							<text>{{menuDetail.prepareSteps.steps.length}}</text>
+							<text>{{prepare.length}}</text>
 						</text>
 						<text class="desc">{{item.desc}}</text>
 					</view>
@@ -59,24 +61,43 @@
 					<text class="online">——</text>
 					<text class="fuhao">▼</text>
 				</view>
-				<view class="prepare" v-for="item in menuDetail.steps" :key="item.id">
+				<view class="prepare" v-for="item in step1" :key="item.id">
 					<image :src="item.image" mode=""></image>
 					<view class="stepss">
 						<text class="no">
-							<text style="font-size: 35rpx ;font-weight: 500;">{{item.no}}</text>
+							<text style="font-size: 35rpx ;font-weight: 500;">{{item.no-n}}</text>
 							<text style="color: #000000;">/</text>
-							<text>{{menuDetail.steps.length}}</text>
+							<text>{{len-n}}</text>
 						</text>
 						<text class="desc">{{item.desc}}</text>
 					</view>
-					
 				</view>
 			</view>
+			<view class="btn">
+				<button type="primary">下载菜谱到手机</button>
+			</view>
 		</view>
+		<block>
+			<view class="nav">
+				<view class="item">
+					<uni-icons type="heart" size="28"></uni-icons>
+					<text>收藏</text>
+				</view>
+				<view class="item">
+					<uni-icons type="home" size="28"></uni-icons>
+					<text>主页</text>
+				</view>
+				<view class="item">
+					<uni-icons type="upload" size="28"></uni-icons>
+					<text>分享</text>
+				</view>
+			</view>
+		</block>
 	</view>
 </template>
 
 <script>
+	import uniIcons from "@/components/uni/uni-icons/uni-icons.vue"
 	import {
 		myRequestPost
 	} from '@/utils/request.js'
@@ -84,8 +105,17 @@
 		data() {
 			return {
 				id: 0,
-				menuDetail: []
+				menuDetail: [],
+				prepare: [],
+				step1: [],
+				step2: [],
+				step3: [],
+				len: 0,
+				n: 0
 			};
+		},
+		components: {
+			uniIcons
 		},
 		onLoad(option) {
 			this.id = option.id
@@ -99,13 +129,31 @@
 				})
 				console.log(result.cookbook, "kkkkkkkkkk")
 				this.menuDetail = result.cookbook
-			},
+				this.prepare = this.menuDetail.prepareSteps.steps
+				this.step1 = this.menuDetail.steps
+				this.len = this.step1.length
+				
+				for(var i=0;i<this.menuDetail.steps.length;i++){
+					for(var j=0;j<this.menuDetail.prepareSteps.steps.length;j++){
+						if(this.step1[i].desc==this.prepare[j].desc){
+							this.step1.splice(i,1);
+							this.n++;
+						}
+					}
+				}
+
+				console.log(this.menuDetail, "00000000000"),
+					console.log(this.prepare, "111111"),
+					console.log(this.step1, "22222222")
+				console.log(this.len)
+			}
 		}
 	}
 </script>
 
 <style lang="scss">
 	.detail {
+		height: 100%;
 		display: flex;
 		flex-direction: column;
 
@@ -145,7 +193,7 @@
 				top: 50rpx;
 				right: 0;
 				color: #666;
-				font-size: 23rpx;
+				font-size: 18rpx;
 				font-weight: 700;
 			}
 
@@ -206,24 +254,27 @@
 					image {
 						height: 550rpx;
 					}
-					.stepss{
+
+					.stepss {
 						padding: 15rpx;
-						.no{
-							text{
+
+						.no {
+							text {
 								font-size: 28rpx;
 								color: orange;
 							}
 						}
-						.desc{
+
+						.desc {
 							padding-left: 5rpx;
 							letter-spacing: 2rpx;
 							line-height: 40rpx;
 							color: #666;
 						}
 					}
-					
+
 				}
-				
+
 			}
 
 			.Prep {
@@ -232,6 +283,51 @@
 
 			.Steps {
 				margin-top: 40rpx;
+			}
+
+			.btn {
+				margin: 150rpx auto;
+
+				button {
+					background-color: red;
+					width: 550rpx;
+					height: 70rpx;
+					line-height: 70rpx;
+					margin: 0 auto;
+					font-size: 28rpx;
+				}
+
+			}
+		}
+
+		.nav {
+			width: 100%;
+			height: 100rpx;
+			line-height: 100rpx;
+			background-color: #F0F0F0;
+			border-top: 1rpx solid #000;
+			display: flex;
+			position: fixed;
+			bottom: 0;
+
+			.item {
+				line-height: 100rpx;
+				flex: 1;
+				height: 100rpx;
+				display: inline-block;
+				text-align: center;
+				display: flex;
+				flex-direction: column;
+
+				uni-icons {
+					height: 50rpx;
+				}
+
+				text {
+					line-height: 60rpx;
+					overflow: hidden;
+					height: 50rpx;
+				}
 			}
 		}
 	}

@@ -1,0 +1,250 @@
+<template>
+	<view>
+		<view class="img">
+			<image :src="foodDetail.imgLarge" mode=""></image>
+		</view>
+		
+		<view class="continer">
+			<view class="box">
+				<view class="name">
+					{{foodDetail.name}}
+				</view>
+			</view>
+			<view class="brief">
+				<view class="text">——菜谱简介——</view>
+				<view class="brief_more">{{foodDetail.introduction}}</view>
+			</view>
+
+			<view class="materials">——用料——</view>
+			<view class="materials_more">
+				<view v-for="item in foodDetail.materials.main" :key="item.id" class="box_1">
+					<view class="left">
+						{{item.name}}
+					</view>
+					<view class="right">
+						{{item.standardWeight+item.standardUnit}}
+					</view>
+				</view>
+
+				<view v-for="item in foodDetail.materials.accessory" :key="item.id" class="box_1">
+					<view class="left">
+						{{item.name}}
+					</view>
+					<view class="right">
+						{{item.standardWeight+item.standardUnit}}
+					</view>
+				</view>
+
+			</view>
+			
+			<view class="materials">——备菜步骤——</view>
+			<view class="prepares" v-for="item in foodDetail.prepareSteps.steps" :key="item.desc">
+				<view class="image">
+					<image :src="item.imgUrl"></image>
+				</view>
+				<view class="texts">
+					<text class="text_1">{{item.no}}</text>
+					<text class="text_2">/</text>
+					<text class="text_3">{{length}}</text>
+					<text>{{item.desc}}</text>
+					
+				</view>	
+			</view>
+			<view class="materials">——做法步骤——</view>
+			<view class="prepares" v-for="item in make" :key="item.no">
+				<view class="image">
+					<image :src="item.image"></image>
+				</view>
+				<view class="texts">
+					<text class="text_1">{{item.no-n}}</text>
+					<text class="text_2">/</text>
+					<text class="text_3">{{count}}</text>
+					<text>{{item.desc}}</text>
+				</view>	
+			</view>
+			
+			<view class="download">下载菜谱到手机</view>
+		</view>
+	</view>
+</template>
+
+<script>
+	import {
+		myRequestPost
+	} from "@/utils/request.js";
+	export default {
+		data() {
+			return {
+				id: "",
+				foodDetail: {},
+				length:"",
+				step_length:"",
+				make:{},
+				count:"",
+				n:0
+				
+				
+			};
+		},
+		onLoad(options) {
+			this.id = options.id;
+			this.getFoodDetail();
+		},
+		methods: {
+			async getFoodDetail() {
+				const res = await myRequestPost("/api/cookbook/details/get-by-id", {
+					"cookbookId": this.id,
+				});
+				console.log(typeof(res));
+				this.foodDetail = res.cookbook;
+				console.log(this.foodDetail, "bbbbbbbbbbbbbbbbbbbbbbbbbbb");
+				//step_length------备菜的步骤数组长度
+				this.length=this.foodDetail.prepareSteps.steps.length;
+				//step_length------做菜的步骤数组长度
+				this.step_length=this.foodDetail.steps.length;
+				this.make=this.foodDetail.steps;
+				this.count=this.step_length;
+				
+				for(var i=0;i<this.step_length;i++){
+					for(var j=0;j<this.length;j++){
+						if(this.make[i].desc==this.foodDetail.prepareSteps.steps[j].desc){
+							this.make.splice(i,1);
+							this.count--;
+							this.n++;
+						}
+					}
+				}
+				console.log(this.make);
+			}
+		}
+
+	}
+</script>
+
+<style lang="less">
+	page {
+		width: 100%;
+		height: 100%;
+		font-family: "楷体";
+		.img{
+			width: 750rpx;
+			height: 450rpx;
+			image {
+				width: 750rpx;
+				height: 450rpx;
+				background-size: cover;
+			}
+		}
+		
+
+		.continer {
+			width: 700rpx;
+			margin: 20rpx;
+			display: flex;
+			flex-direction: column;
+
+			.box {
+				width: 100rpx;
+				height: 300rpx;
+				background-color: rgba(255, 255, 255, 0.5);
+				border-radius: 20rpx;
+				position: relative;
+				left: 50%;
+				margin-left: -50rpx;
+				top: 50%;
+				margin-top: -150rpx;
+
+				.name {
+					margin: 0 auto;
+					width: 80rpx;
+					height: 250rpx;
+					border: 1px solid;
+					border-radius: 30rpx;
+					font-size: 42rpx;
+					text-align: center;
+
+				}
+			}
+
+			.brief {
+				.text {
+					font-size: 40rpx;
+					width: 400rpx;
+					height: 40rpx;
+					line-height: 40rpx;
+					margin: 0 auto;
+					text-align: center;
+					font-weight: bold;
+				}
+
+				.brief_more {
+					margin-top: 20rpx;
+				}
+			}
+
+			.materials {
+				
+				font-size: 40rpx;
+				color: #e9a815;
+				font-weight: bold;
+				margin:0 auto;
+				margin-top: 100rpx;
+			}
+
+			.materials_more {
+				margin-top: 40rpx;
+				.box_1 {
+					display: flex;
+					justify-content: space-around;
+					margin-top: 20rpx;
+					border-bottom: 1px #c8c8c8 solid;
+					
+					.left{
+						width:150rpx;
+						text-align: center;
+					}
+					
+					.right{
+						width:80rpx;
+						text-align: center;
+					}
+				}
+			}
+			
+			.prepares{
+				margin-top: 40rpx;
+				.image{
+					margin:0 auto;
+					width:650rpx;
+					height:500rpx;
+					image{
+						width:650rpx;
+						height:500rpx;
+					}
+					margin-bottom: 30rpx;
+				}
+				.texts{
+					
+					width:600rpx;
+					margin:10rpx auto;
+					.text_1{
+						color: #e9a815;
+						font-size: 40rpx;
+					}
+					
+					.text_3{
+						color: #e9a815;
+						
+					}
+				}
+			}
+			
+			.download{
+				background-color:#fb3a3a ;
+				width:650rpx;
+				height:100rpx;
+				margin:100rpx auto;
+			}
+		}
+	}
+</style>
