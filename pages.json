@@ -1,0 +1,82 @@
+{
+	"pages": [ //pages数组中第一项表示应用启动页，参考：https://uniapp.dcloud.io/collocation/pages
+		{
+			"path": "pages/index/index",
+			"style": {
+				"navigationBarTitleText": "美食"
+			}
+		}, {
+			"path": "pages/theme/theme",
+			"style": {
+				"navigationBarTitleText": "主题"
+			}
+		}, {
+			"path": "pages/video/video",
+			"style": {
+				"navigationBarTitleText": "视频"
+			}
+		}, {
+			"path": "pages/my/my",
+			"style": {
+				"navigationBarTitleText": "我的"
+			}
+		}
+        ,{
+            "path" : "pages/zaoju/zaoju",
+            "style" : {
+				"navigationBarTitleText": "灶具菜谱"
+			}
+        },{
+            "path" : "pages/square/square",
+            "style" : {
+				"navigationBarTitleText": "来到广场"
+			}
+        }
+        ,{
+            "path" : "pages/fooddetail/fooddetail",
+            "style" : {
+				"navigationBarTitleText": "菜谱详情"
+			}
+        }
+        
+    ],
+	"globalStyle": {
+		"navigationBarTextStyle": "white",
+		"navigationBarTitleText": "美食",
+		"navigationBarBackgroundColor": "#E9A06F",
+		"backgroundColor": "#F8F8F8"
+	},
+	"tabBar": {
+		"list": [{
+				"text": "菜谱",
+				"pagePath": "pages/index/index",
+				"iconPath":"static/tabs/菜谱.png",
+				"selectedIconPath":"static/tabs/菜谱_active.png"
+			},
+			{
+				"text": "主题",
+				"pagePath": "pages/theme/theme",
+				"iconPath":"static/tabs/主题.png",
+				"selectedIconPath":"static/tabs/主题_active.png"
+			},
+			{
+				"text": "视频",
+				"pagePath": "pages/video/video",
+				"iconPath":"static/tabs/视频.png",
+				"selectedIconPath":"static/tabs/视频_active.png"
+			},
+			{
+				"text": "广场",
+				"pagePath": "pages/square/square",
+				"iconPath":"static/tabs/会话.png",
+				"selectedIconPath":"static/tabs/会话_active.png"
+			},
+			{
+				"text": "我的",
+				"pagePath": "pages/my/my",
+				"iconPath":"static/tabs/我的.png",
+				"selectedIconPath":"static/tabs/我的_active.png"
+			}
+		]
+	}
+}
