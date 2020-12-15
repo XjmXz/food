@@ -1,7 +1,7 @@
 <template>
 	<view>
 		<image src="../../static/tabs/灶具.png" mode=""></image>
-		<view class="recommend" v-for=" item in cookbooks" :key="item.id">
+		<view class="recommend" v-for=" item in cookbooks" :key="item.id" @click="goPractice(item)">
 			<view class="">
 				<view class="recommend-img">
 					<image :src="item.imgLarge" mode=""></image>
@@ -9,7 +9,7 @@
 				<view class="recommend-foot">
 					<text>{{item.name}}</text>
 					<view>
-						<uni-icons type="heart-filled" size="20" @click="dianZan"></uni-icons>
+						<uni-icons type="heart" size="20" @click="dianZan"></uni-icons>
 						<text>{{item.collectCount}}人收藏</text>
 					</view>
 				</view>
@@ -28,7 +28,7 @@
 		data() {
 			return {
 				cookbooks: [],
-			};
+			}
 		},
 		components: {
 			uniIcons
@@ -50,6 +50,11 @@
 			},
 			dianZan(){
 				
+			},
+			goPractice(item){
+				uni.navigateTo({
+					url:`/pages/practice/practice?id=`+item.id
+				})
 			}
 		}
 	}

@@ -48,6 +48,15 @@
             }
             
         }
+        ,{
+            "path" : "pages/practice/practice",
+            "style" :                                                                                    
+            {
+                "navigationBarTitleText": "菜谱详情",
+                "enablePullDownRefresh": false
+            }
+            
+        }
     ],
 	"globalStyle": {
 		"navigationBarTextStyle": "white",

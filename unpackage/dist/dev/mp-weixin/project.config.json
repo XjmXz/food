@@ -62,8 +62,16 @@
 			"list": [
 				{
 					"id": -1,
-					"name": "pages/zaoju/zaoju",
-					"pathName": "pages/zaoju/zaoju",
+					"name": "pages/practice/practice",
+					"pathName": "pages/practice/practice",
+					"query": "cookbookId:20",
+					"scene": null
+				},
+				{
+					"id": 1,
+					"name": "pages/practice/practice",
+					"pathName": "pages/practice/practice",
+					"query": "id=20&entranceCode=code1",
 					"scene": null
 				}
 			]
