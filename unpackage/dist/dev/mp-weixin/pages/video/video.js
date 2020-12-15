@@ -163,8 +163,8 @@ var _request = __webpack_require__(/*! @/utils/request.js */ 40);function _inter
                     "pageSize": 50 }));case 2:res = _context.sent;
 
                 this.newsList = res.datas;
-                console.log(res);case 5:case "end":return _context.stop();}}}, _callee, this);}));function getNewsList() {return _getNewsList.apply(this, arguments);}return getNewsList;}(),
-
+                // console.log(res)
+              case 4:case "end":return _context.stop();}}}, _callee, this);}));function getNewsList() {return _getNewsList.apply(this, arguments);}return getNewsList;}(),
     // goSuperMarket(item){
     // 	// console.log('111111')
     // 	uni.navigateTo({
@@ -179,14 +179,14 @@ var _request = __webpack_require__(/*! @/utils/request.js */ 40);function _inter
       uni.navigateTo({
         url: "../vediodetail/vediodetail" });
 
+    },
+    addone: function addone(e) {
+      console.log(e);var _e$currentTarget$data =
+      e.currentTarget.dataset,id = _e$currentTarget$data.id,count = _e$currentTarget$data.count;
+      console.log(id);
+      // const index=newsList.findIndex(v=>v.courseId===id);
+
     } },
-
-
-
-
-
-
-
 
   components: {} };exports.default = _default;
 /* WEBPACK VAR INJECTION */}.call(this, __webpack_require__(/*! ./node_modules/@dcloudio/uni-mp-weixin/dist/index.js */ 1)["default"]))

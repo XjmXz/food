@@ -1528,7 +1528,7 @@ uni$1;exports.default = _default;
 
 /***/ }),
 
-/***/ 101:
+/***/ 116:
 /*!************************************************************************************!*\
   !*** C:/Users/Shen Zhaoli/Desktop/learngit/food/components/uni/uni-icons/icons.js ***!
   \************************************************************************************/
@@ -8605,12 +8605,27 @@ if (hadRuntime) {
 /***/ (function(module, exports, __webpack_require__) {
 
 "use strict";
-/* WEBPACK VAR INJECTION */(function(uni) {Object.defineProperty(exports, "__esModule", { value: true });exports.myRequestGet = myRequestGet;exports.myRequestPost = myRequestPost;var baseUrl = "https://api.myroki.com/rest";
+/* WEBPACK VAR INJECTION */(function(uni) {Object.defineProperty(exports, "__esModule", { value: true });exports.myRequestGet = myRequestGet;exports.meiRequestGet = meiRequestGet;exports.myRequestPost = myRequestPost;var baseUrl = "https://api.myroki.com/rest";
 
 function myRequestGet(url, data) {
   return new Promise(function (resolve, reject) {
     uni.request({
       url: baseUrl + url,
+      method: "GET",
+      data: data,
+      success: function success(res) {
+        resolve(res.data);
+      },
+      fail: function fail(err) {
+        reject(err);
+      } });
+
+  });
+}
+function meiRequestGet(url, data) {
+  return new Promise(function (resolve, reject) {
+    uni.request({
+      url: url,
       method: "GET",
       data: data,
       success: function success(res) {
@@ -9557,7 +9572,7 @@ module.exports = {"_from":"@dcloudio/uni-stat@^2.0.0-alpha-24420191128001","_id"
 /***/ (function(module, exports, __webpack_require__) {
 
 "use strict";
-Object.defineProperty(exports, "__esModule", { value: true });exports.default = void 0;var _default = { "pages": { "pages/index/index": { "navigationBarTitleText": "美食", "usingComponents": { "uni-search-bar": "/components/uni/uni-search-bar/uni-search-bar", "uni-grid": "/components/uni/uni-grid/uni-grid", "uni-grid-item": "/components/uni/uni-grid-item/uni-grid-item" } }, "pages/theme/theme": { "navigationBarTitleText": "主题", "usingComponents": {} }, "pages/video/video": { "navigationBarTitleText": "视频", "enablePullDownRefresh": true, "usingComponents": {} }, "pages/vediodetail/vediodetail": { "navigationBarTitleText": "视频详情", "usingComponents": {} }, "pages/my/my": { "navigationBarTitleText": "我的", "usingComponents": {} }, "pages/zaoju/zaoju": { "navigationBarTitleText": "灶具菜谱", "usingComponents": {} }, "pages/square/square": { "navigationBarTitleText": "来到广场", "usingComponents": {} }, "pages/fooddetail/fooddetail": { "navigationBarTitleText": "菜谱详情", "usingComponents": {} } }, "globalStyle": { "navigationBarTextStyle": "white", "navigationBarTitleText": "美食", "navigationBarBackgroundColor": "#E9A06F", "backgroundColor": "#F8F8F8" } };exports.default = _default;
+Object.defineProperty(exports, "__esModule", { value: true });exports.default = void 0;var _default = { "pages": { "pages/index/index": { "navigationBarTitleText": "美食" }, "pages/theme/theme": { "navigationBarTitleText": "主题" }, "pages/video/video": { "navigationBarTitleText": "视频", "enablePullDownRefresh": true }, "pages/vediodetail/vediodetail": { "navigationBarTitleText": "视频详情" }, "pages/my/my": { "navigationBarTitleText": "我的" }, "pages/zaoju/zaoju": { "navigationBarTitleText": "灶具菜谱" }, "pages/square/square": { "navigationBarTitleText": "来到广场" }, "pages/fooddetail/fooddetail": { "navigationBarTitleText": "菜谱详情" }, "pages/votedetail/votedetail": { "navigationBarTitleText": "投票详情" } }, "globalStyle": { "navigationBarTextStyle": "white", "navigationBarTitleText": "美食", "navigationBarBackgroundColor": "#E9A06F", "backgroundColor": "#F8F8F8" } };exports.default = _default;
 
 /***/ }),
 

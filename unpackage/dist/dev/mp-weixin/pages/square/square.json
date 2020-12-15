@@ -1,4 +1,6 @@
 {
   "navigationBarTitleText": "来到广场",
-  "usingComponents": {}
+  "usingComponents": {
+    "zuj2": "/components/zuj2/zuj2"
+  }
 }

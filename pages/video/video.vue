@@ -9,7 +9,7 @@
 				</view>
 
 				<view class="fr">
-					<view class="sc" @click="addone" disabled="disabled">♥</view>{{item.collectCount}}个收藏
+					<view class="sc" @click="addone" :data-count="item.collectCount" :data-id="item.courseId" disabled="disabled">♥</view>{{item.collectCount}}个收藏
 				</view>
 			</view>
 		</view>
@@ -39,7 +39,7 @@
 					"pageSize": 50
 				})
 				this.newsList = res.datas
-				console.log(res)
+				// console.log(res)
 			},
 			// goSuperMarket(item){
 			// 	// console.log('111111')
@@ -56,13 +56,13 @@
 					url: `../vediodetail/vediodetail`
 				})
 			},
-			// addone(options) {
-			// 	console.log(options)
-			// 	this.setData({
+			addone(e){
+				console.log(e)
+				const {id,count}=e.currentTarget.dataset;
+				console.log(id)
+				// const index=newsList.findIndex(v=>v.courseId===id);
 				
-			// 		collectCount: this.data.collectCount + 1
-			// 	});
-			// }
+			}
 		},
 		components: {}
 	}

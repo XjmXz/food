@@ -11,21 +11,23 @@
   "appid": "touristappid",
   "projectname": "ROKI",
   "condition": {
-    "search": {
-      "current": -1,
-      "list": []
-    },
-    "conversation": {
-      "current": -1,
+    "plugin": {
       "list": []
     },
     "game": {
-      "current": -1,
+      "list": []
+    },
+    "gamePlugin": {
       "list": []
     },
     "miniprogram": {
-      "current": -1,
-      "list": []
+      "list": [
+        {
+          "name": "pages/square/square",
+          "pathName": "pages/square/square",
+          "scene": null
+        }
+      ]
     }
   }
 }

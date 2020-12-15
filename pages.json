@@ -45,7 +45,12 @@
 				"navigationBarTitleText": "菜谱详情"
 			}
         }
-        
+        ,{
+            "path" : "pages/votedetail/votedetail",
+            "style" : {
+        		"navigationBarTitleText": "投票详情"
+        	}
+        }
     ],
 	"globalStyle": {
 		"navigationBarTextStyle": "white",
