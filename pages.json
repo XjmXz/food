@@ -45,6 +45,24 @@
 				"navigationBarTitleText": "烤箱菜谱"
 			}
         }
+        ,{
+            "path" : "pages/choujiang/choujiang",
+            "style" : {
+				"navigationBarTitleText": "来的抽奖"
+			}
+        }
+        ,{
+            "path" : "pages/cart/cart",
+            "style" : {
+				"navigationBarTitleText": "我的购物车"
+			}
+        }
+        ,{
+            "path" : "pages/login/login",
+            "style" : {
+				"navigationBarTitleText": "登录中心"
+			}
+        }
     ],
 	"globalStyle": {
 		"navigationBarTextStyle": "white",

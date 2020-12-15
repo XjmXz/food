@@ -2,9 +2,9 @@
 	<view class="items">
 		<view class="food-head">
 			<image :src="detail.imgSmall" @click="previewImg(detail.imgSmall)"></image>
-		</view>
-		<view class="food-name">
-			<text>{{detail.name}}</text>
+			<view class="food-name">
+				<text>{{detail.name}}</text>
+			</view>
 		</view>
 		<!-- 菜谱简介 -->
 		<view class="food-inrduc">
@@ -13,6 +13,7 @@
 				<text>菜谱简介</text>
 				<view class="indruc-r"></view>
 			</view>
+			<text>🔻</text>
 			<text>{{detail.introduction}}</text>
 		</view>
 		<!-- 菜谱用料 -->
@@ -171,29 +172,29 @@
 		font-family: "楷体";
 
 		.food-head {
+			position: relative;
 			image {
 				width: 750rpx;
 				height: 550rpx;
+				
 			}
-		}
-
-		.food-name {
-			position: absolute;
-			top: 460rpx;
-			left: 375rpx;
-			margin-left: -30rpx;
-			width: 60rpx;
-			background-color: #fff;
-			opacity: 0.7;
-			border: 1px solid;
-			border-radius: 30rpx;
-			text-align: center;
+			.food-name {
+				position: absolute;
+				bottom: -80rpx;
+				margin-left: 365rpx;
+				width: 60rpx;
+				background-color: #fff;
+				opacity: 0.7;
+				border: 1px solid;
+				border-radius: 30rpx;
+				text-align: center;
+			}
 		}
 
 		.food-inrduc {
 			width: 710rpx;
 			margin-top: 100rpx;
-			margin-left: 10px;
+			margin-left: 20rpx;
 			color: #979797;
 		}
 
@@ -202,9 +203,10 @@
 
 			.inrduc-center {
 				text {
-					margin-left: 30rpx;
+					margin-left: 40rpx;
 				}
 			}
+			
 		}
 
 		.goods_nav {
@@ -265,7 +267,7 @@
 				height: 300px;
 				margin-left: 50rpx;
 			}
-
+			
 			.food-step-desc {
 				width: 650rpx;
 				margin-left: 60rpx;
