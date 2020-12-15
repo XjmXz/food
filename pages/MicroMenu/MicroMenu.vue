@@ -10,8 +10,11 @@
 				<view class="item-all">
 					<image :src="item.imgLarge"></image>
 					<view class="item-text">
-						<text>{{item.name}}</text>
-						<text class="second">{{item.collectCount}}人收藏</text>
+						<view>{{item.name}}</view>
+						<view class="second">
+							<uni-icons type="heart" size="28"></uni-icons>
+							<text>{{item.collectCount}}人收藏</text>
+						</view>
 					</view>
 				</view>
 			</view>
@@ -20,6 +23,7 @@
 </template>
 
 <script>
+	import uniIcons from "@/components/uni/uni-icons/uni-icons.vue"
 	import {
 		myRequestPost
 	} from '@/utils/request.js'
@@ -29,6 +33,9 @@
 				menu: [],
 				dc:""
 			};
+		},
+		components:{
+			uniIcons
 		},
 		onLoad(option) {
 			this.dc = option.dc
@@ -78,10 +85,23 @@
 					}
 			
 					.item-text {
+						width: 100%;
+						line-height: 60rpx;
 						margin: 10rpx 0 30rpx;
-			
+						display: flex;
+						flex-direction: row;
+						justify-content: space-between;
 						.second {
-							float: right;
+							height: 60rpx;
+							line-height: 60rpx;
+							uni-icons {
+								color:#bbb;
+								vertical-align: middle;
+							}
+							text{
+								line-height: 60rpx;
+							}
+							
 						}
 					}
 				}

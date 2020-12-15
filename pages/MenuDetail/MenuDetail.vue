@@ -1,12 +1,15 @@
 <template>
 	<view class="detail">
-		<image :src="menuDetail.imgLarge" mode=""></image>
-		<view class="contant-d">
+		<view class="imgtxt">
+			<image :src="menuDetail.imgLarge" mode=""></image>
 			<view class="m-name">
 				<view class="name-txt">
 					{{menuDetail.name}}
 				</view>
 			</view>
+		</view>
+		<view class="contant-d">
+			
 			<text class="collect">
 				收藏 {{menuDetail.collectCount}}
 			</text>
@@ -83,7 +86,8 @@
 					<uni-icons type="heart" size="28"></uni-icons>
 					<text>收藏</text>
 				</view>
-				<view class="item">
+				
+				<view class="item" @click="linkto">
 					<uni-icons type="home" size="28"></uni-icons>
 					<text>主页</text>
 				</view>
@@ -146,37 +150,47 @@
 					console.log(this.prepare, "111111"),
 					console.log(this.step1, "22222222")
 				console.log(this.len)
+			},
+			linkto(){
+				uni.switchTab({
+					url:"/pages/index/index"
+				})
 			}
 		}
+		
 	}
 </script>
 
 <style lang="scss">
+		
+	image{
+		width: 100%;
+		background-size: cover;
+	}
 	.detail {
 		height: 100%;
 		display: flex;
 		flex-direction: column;
-
-		image {
-			width: 100%;
-			height: 500rpx;
-		}
-
-		.contant-d {
-			margin: 0 20rpx;
-			height: 100%;
+		
+		.imgtxt{
 			position: relative;
-
+			
+			image {
+				width: 100%;
+				height: 500rpx;
+				background-size: cover;
+			}
 			.m-name {
 				position: absolute;
 				width: 60rpx;
+				min-height: auto;
 				padding: 10rpx;
 				left: 50%;
-				margin-left: -30rpx;
-				margin-top: -120rpx;
+				bottom: -90rpx;
+				margin-left: -37rpx;
 				background-color: rgba($color: #fff, $alpha: 0.81);
 				border-radius: 20rpx;
-
+			
 				.name-txt {
 					padding: 13rpx 12rpx;
 					border: 1rpx solid #000;
@@ -186,6 +200,14 @@
 					line-height: 43rpx;
 				}
 			}
+		}
+		
+
+		.contant-d {
+			margin: 0 20rpx;
+			height: 100%;
+			position: relative;
+			
 
 			.collect {
 				display: inline-block;
@@ -290,6 +312,7 @@
 
 				button {
 					background-color: red;
+					border: none;
 					width: 550rpx;
 					height: 70rpx;
 					line-height: 70rpx;
@@ -304,29 +327,30 @@
 			width: 100%;
 			height: 100rpx;
 			line-height: 100rpx;
-			background-color: #F0F0F0;
+			background-color: #E9E9E9;
 			border-top: 1rpx solid #000;
 			display: flex;
 			position: fixed;
 			bottom: 0;
 
 			.item {
-				line-height: 100rpx;
+				line-height: 110rpx;
 				flex: 1;
-				height: 100rpx;
+				height: 110rpx;
 				display: inline-block;
 				text-align: center;
 				display: flex;
 				flex-direction: column;
-
+				padding: 5rpx;
 				uni-icons {
+					color:#bbb;
+					font-size: 8rpx;
 					height: 50rpx;
 				}
 
 				text {
-					line-height: 60rpx;
+					line-height: 50rpx;
 					overflow: hidden;
-					height: 50rpx;
 				}
 			}
 		}
