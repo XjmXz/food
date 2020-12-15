@@ -12,12 +12,17 @@
 		</view>
 
 		<view class="foodsPhoto" v-for="item in themeList" :key="item.id">
-			<view class="Photo_item" @click="goFoodDetails(item)">
-				<image :src="item.imgLarge" mode=""></image>
+			<view class="Photo_item">
+				<image :src="item.imgLarge"  @click="goFoodDetails(item)"></image>
 				<view class="text">
 					<text class="left">{{item.name}}</text>
 					<view class="right">
-						<uni-icons type="heart" size="20"></uni-icons>
+						<!-- <text @click="handleCollection" v-if="isCollected"> -->
+							<uni-icons type="heart" size="20"></uni-icons>
+						<!-- </text> -->
+						<!-- <text @click="handleCollection" v-if="!isCollected">
+							<uni-icons type="heart-filled" size="20" color="red"></uni-icons>
+						</text> -->
 						<text class="collect">{{item.collectCount}}人收藏</text>
 					</view>
 				</view>
@@ -39,7 +44,9 @@
 				themeDescription: "",
 				themeName: "",
 				themesIdList: [],
-				themeList: {}
+				themeList: {},
+				isCollected: true
+
 
 			}
 		},
@@ -72,11 +79,15 @@
 				});
 				this.themeList = res1.cookbooks;
 			},
-			
-			goFoodDetails(item){
+
+			goFoodDetails(item) {
 				uni.navigateTo({
-					url:`/pages/fooddetail/fooddetail?id=${item.id}`
+					url: `/pages/fooddetail/fooddetail?id=${item.id}`
 				})
+			},
+
+			handleCollection() {
+				this.isCollected = !(this.isCollected);
 			}
 
 
@@ -89,6 +100,7 @@
 		width: 750rpx;
 		height: 100%;
 		font-family: "楷体";
+
 		.continer {
 			width: 700rpx;
 			height: 100%;
@@ -121,7 +133,7 @@
 				padding: 0;
 				border: none;
 
-				button{
+				button {
 					height: 30rpx;
 					margin-left: 10rpx;
 					padding: 0 10rpx 0 10rpx;

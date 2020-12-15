@@ -79,8 +79,18 @@
 			</view>
 
 			<view class="tab_item">
+				<!-- #ifdef H5|MP-ALIPAY-->
 				<uni-icons type="redo" size="20"></uni-icons>
 				<view class="">分享</view>
+				
+				<!-- #endif -->
+				
+				<!-- #ifdef MP-WEIXIN -->
+				<uni-icons type="redo" size="20"></uni-icons>
+				<view class="btn"><button class="share-btn" open-type="share">分享</button></view>
+				<!-- #endif -->
+				
+				
 			</view>
 		</view>
 	</view>
@@ -113,6 +123,12 @@
 			this.id = options.id;
 			this.getFoodDetail();
 		},
+		onShareAppMessage(res){
+			return{
+				title:"美食分享",
+				path:"pages/theme/theme"
+			}
+		},
 		methods: {
 			async getFoodDetail() {
 				const res = await myRequestPost("/api/cookbook/details/get-by-id", {
@@ -144,7 +160,25 @@
 				uni.switchTab({
 					url: "/pages/index/index"
 				})
-			}
+			},
+			// shareFriend(){
+			// 	uni.share({
+			// 	    provider: "weixin",
+			// 	    scene: "WXSceneSession",
+			// 	    type: 2,
+			// 	    imageUrl: this.foodDetail.imgLarge,
+			// 	    success: function (res) {
+			// 	        console.log("success:");
+			// 	    },
+			// 	    fail: function (err) {
+			// 	        console.log("fail:");
+			// 	    }
+			// 	});
+			// }
+			
+			
+			
+			
 		}
 
 	}
@@ -320,6 +354,21 @@
 
 			.tab_item {
 				margin-top: 10rpx;
+				.btn{
+					border:0;
+					.share-btn{
+						width:80rpx;
+						height:40rpx;
+						padding:0;
+						background-color: #E9E9E9;
+						line-height: 40rpx;
+					}
+					
+					button::after{
+					  border: none;
+					}
+					
+				}
 			}
 
 			view {
