@@ -2,14 +2,17 @@
 	<view>
 		<view class="img">
 			<image :src="foodDetail.imgLarge" mode=""></image>
-		</view>
-
-		<view class="continer">
 			<view class="box">
 				<view class="name">
 					{{foodDetail.name}}
 				</view>
 			</view>
+			<view class="collect">
+				<text>收藏{{foodDetail.collectCount}}</text>
+			</view>
+		</view>
+
+		<view class="continer">
 			<view class="brief">
 				<view class="text">——菜谱简介——</view>
 				<view class="brief_more">{{foodDetail.introduction}}</view>
@@ -156,44 +159,59 @@
 		.img {
 			width: 750rpx;
 			height: 450rpx;
+			position:relative;
 
 			image {
 				width: 750rpx;
 				height: 450rpx;
 				background-size: cover;
 			}
+			
+			.box {
+				width: 100rpx;
+				height: auto;
+				background-color: rgba(255, 255, 255, 0.5);
+				border-radius: 20rpx;
+				position: absolute;
+				left: 50%;
+				margin-left: -50rpx;
+				bottom:-100rpx;
+				
+			
+				.name {
+					margin: 0 auto;
+					width: 80rpx;
+					height:auto;
+					border: 1px solid;
+					border-radius: 30rpx;
+					font-size: 42rpx;
+					text-align: center;
+			
+				}
+			}
+			
+			.collect{
+				position: absolute;
+				width:150rpx;
+				height:30rpx;
+				right:-20rpx;
+				text{
+					font-size: 24rpx;
+					font-weight: bold;
+					color:#999999;
+					text-align: right;
+				}
+				
+			}
 
 		}
 
 		.continer {
 			width: 700rpx;
-			margin: 20rpx;
+			margin-top:150rpx;
+			margin-left: 25rpx;
 			display: flex;
 			flex-direction: column;
-
-			.box {
-				width: 100rpx;
-				height: 300rpx;
-				background-color: rgba(255, 255, 255, 0.5);
-				border-radius: 20rpx;
-				position: relative;
-				left: 50%;
-				margin-left: -50rpx;
-				top: 50%;
-				margin-top: -150rpx;
-
-				.name {
-					margin: 0 auto;
-					width: 80rpx;
-					height: 250rpx;
-					border: 1px solid;
-					border-radius: 30rpx;
-					font-size: 42rpx;
-					text-align: center;
-
-				}
-			}
-
 			.brief {
 				.text {
 					font-size: 40rpx;
@@ -211,12 +229,13 @@
 			}
 
 			.materials {
-
+				width:500rpx;
 				font-size: 40rpx;
 				color: #e9a815;
 				font-weight: bold;
-				margin: 0 auto;
+				margin-left: 100rpx;
 				margin-top: 100rpx;
+				text-align: center;
 			}
 
 			.materials_more {
