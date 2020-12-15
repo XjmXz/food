@@ -43,6 +43,10 @@
             "path" : "pages/themeDetails/themeDetails",
             "style" : {}
         }
+        ,{
+            "path" : "pages/search/search",
+            "style" : {}
+        }
     ],
 	"globalStyle": {
 		"navigationBarTextStyle": "white",

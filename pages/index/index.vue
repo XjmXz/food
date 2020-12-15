@@ -1,6 +1,11 @@
 <template>
 	<view class="content">
-		<uni-search-bar :radius="100" placeholder="今天想吃点啥？" @confirm="search"></uni-search-bar>
+		<view class="box">
+			<view class="icon">
+				<uni-icons type="search" size="25"></uni-icons>
+			</view>
+			<input type="text" class="search" disabled="true" @click="toSearch" placeholder="        今天想吃点什么" />
+		</view>
 		<swiper class="swiper" indicator-dots :autoplay="true" :interval="3000" circular>
 			<swiper-item v-for="item in swipers" :key="item.id">
 				<image :src="item.imageUrl"></image>
@@ -31,7 +36,8 @@
 
 <script>
 	import uniSearchBar from '@/components/uni/uni-search-bar/uni-search-bar.vue';
-	import uniGrid from "@/components/uni/uni-grid/uni-grid.vue"
+	import uniGrid from "@/components/uni/uni-grid/uni-grid.vue";
+	import uniIcons from "@/components/uni/uni-icons/uni-icons.vue";
 	import uniGridItem from "@/components/uni/uni-grid-item/uni-grid-item.vue";
 	import {
 		myRequestPost
@@ -40,7 +46,8 @@
 		components: {
 			uniSearchBar,
 			uniGrid,
-			uniGridItem
+			uniGridItem,
+			uniIcons
 		},
 		data() {
 			return {
@@ -94,6 +101,11 @@
 				uni.navigateTo({
 					url: item.path
 				})
+			},
+			toSearch(){
+				uni.navigateTo({
+					url:"/pages/search/search"
+				})
 			}
 
 		}
@@ -102,6 +114,28 @@
 
 <style lang="scss">
 	.content {
+		.box{
+			width:750rpx;
+			height:120rpx;
+			display:flex;
+			.search{
+				border:1px solid #B8B8B8 ;
+				border-radius:16rpx ;
+				width:700rpx;
+				height:80rpx;
+				justify-content: center;
+				margin:auto;
+			}
+			
+			.icon{
+				position:absolute;
+				left:40rpx;
+				top:30rpx;
+				float:left;
+				color:#B8B8B8;
+			}
+		}
+		
 		.swiper {
 			height: 380rpx;
 
