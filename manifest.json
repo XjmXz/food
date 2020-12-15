@@ -84,7 +84,7 @@
 	          "disableHostCheck" : true,
 	          "proxy" : {
 	              "/api" : {
-	                  "target" : "https://api.myroki.com/rest/cks", //目标接口域名
+	                  "target" : "https://api5.meishichina.com", //目标接口域名
 	                   "changeOrigin" : true,  //是否跨域
 	                   "secure" : false  // 设置支持https协议的代理
 	             }

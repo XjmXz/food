@@ -29,7 +29,8 @@
         },{
             "path" : "pages/square/square",
             "style" : {
-				"navigationBarTitleText": "来到广场"
+				"navigationBarTitleText": "来到广场",
+				"enablePullDownRefresh": true
 			}
         }
         ,{

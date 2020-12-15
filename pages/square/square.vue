@@ -1,22 +1,27 @@
 <template>
 	<view>
 		<uni-segmented-control :current="current" :values="items" @clickItem="onClickItem" style-type="button" active-color="#4cd964"></uni-segmented-control>
-		<view class="content">
-			<scroll-view v-if="current === 0" scroll-y>
-				选项卡1的内容
-			</scroll-view>
-			<view v-if="current === 1">
-				选项卡2的内容
-			</view>
-			<view v-if="current === 2">
-				选项卡3的内容
-			</view>
+		<view v-if="current === 0">
+			<detail :square="square"></detail>
+			<uni-load-more v-if="!flag" :status="'loading'" class=""></uni-load-more>
+			<uni-load-more v-else :status="'noMore'"></uni-load-more>
 		</view>
+		<view v-if="current === 1">
+			选项卡2的内容
+		</view>
+		<view v-if="current === 2">
+			<detail :square="square"></detail>
+			<uni-load-more v-if="!flag" :status="'loading'"></uni-load-more>
+			<uni-load-more v-else :status="'noMore'"></uni-load-more>
+		</view>
+	</view>
 	</view>
 </template>
 
 <script>
+	import uniLoadMore from "@/components/uni/uni-load-more/uni-load-more.vue"
 	import uniSegmentedControl from "@/components/uni/uni-segmented-control/uni-segmented-control.vue"
+	import detail from '@/components/foodlist/detail-xuchen.vue'
 	import {
 		myRequestGet
 	} from '@/utils/request-xuchen.js';
@@ -24,6 +29,8 @@
 		data() {
 			return {
 				id: "",
+				pageindex: 1,
+				flag: false,
 				square: [],
 				items: ['看帖', '投票', '精华'],
 				current: 0
@@ -34,7 +41,9 @@
 			this.getSquareWatch()
 		},
 		components: {
-			uniSegmentedControl
+			uniSegmentedControl,
+			uniLoadMore,
+			detail
 		},
 		methods: {
 			//https: //api5.meishichina.com/api.php?p=%7B%22m%22%3A%7B%22pai_getPaiList%22%3A%7B%22type%22%3A%22vote%22%2C%22
@@ -45,7 +54,7 @@
 						"m": {
 							"pai_getPaiList": {
 								"type": "all",
-								"pageindex": 2
+								"pageindex": this.pageindex
 							}
 						},
 						"openudid": "meishichina",
@@ -56,7 +65,17 @@
 						"session": "xcx_weixin:weixin:12656254:g4j5SkNMeV2KNerCulQ1YPuLTnGKQI1J"
 					}
 				});
-				this.square = result.pai_getPaiList.data;
+				this.square = result.pai_getPaiList.data;	
+			},
+			//通过onReachBottom来监听触底
+			onReachBottom() {
+				this.pageindex++;
+				if (this.pageindex <= 2) {
+					this.getSquareWatch();
+				} else {
+					//没有更多数据了
+					this.flag = true;
+				}
 			},
 			onClickItem(e) {
 				if (this.current !== e.currentIndex) {
@@ -67,6 +86,6 @@
 	}
 </script>
 
-<style lang="scss">
 
-</style>
+
+
