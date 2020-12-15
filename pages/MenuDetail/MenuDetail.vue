@@ -9,7 +9,7 @@
 			</view>
 		</view>
 		<view class="contant-d">
-			
+
 			<text class="collect">
 				收藏 {{menuDetail.collectCount}}
 			</text>
@@ -82,11 +82,12 @@
 		</view>
 		<block>
 			<view class="nav">
-				<view class="item">
-					<uni-icons type="heart" size="28"></uni-icons>
+				<view class="item" @click="handleflag">
+					<uni-icons type="heart" size="28" v-if="!flag"></uni-icons>
+					<uni-icons type="heart-filled" size="28" color='red' v-if="flag"></uni-icons>
 					<text>收藏</text>
 				</view>
-				
+
 				<view class="item" @click="linkto">
 					<uni-icons type="home" size="28"></uni-icons>
 					<text>主页</text>
@@ -115,7 +116,11 @@
 				step2: [],
 				step3: [],
 				len: 0,
-				n: 0
+				n: 0,
+				flag: false,
+				title:"",
+				obj:{},
+				detailStorge:""
 			};
 		},
 		components: {
@@ -125,6 +130,16 @@
 			this.id = option.id
 			console.log("pppppppp")
 			this.getMenuDetail()
+			this.detailStorge=uni.getStorageSync("flag")
+			console.log(this.detailStorge,"222222222222")
+			this.id=this.id
+			console.log(this.detailStorge[this.id],"ffffffffffffffffff")
+			if(!this.detailStorge){
+				uni.setStorageSync("flag",{})
+			}
+			if(this.detailStorge[this.id]){
+				this.flag=true
+			}
 		},
 		methods: {
 			async getMenuDetail() {
@@ -136,11 +151,11 @@
 				this.prepare = this.menuDetail.prepareSteps.steps
 				this.step1 = this.menuDetail.steps
 				this.len = this.step1.length
-				
-				for(var i=0;i<this.menuDetail.steps.length;i++){
-					for(var j=0;j<this.menuDetail.prepareSteps.steps.length;j++){
-						if(this.step1[i].desc==this.prepare[j].desc){
-							this.step1.splice(i,1);
+
+				for (var i = 0; i < this.menuDetail.steps.length; i++) {
+					for (var j = 0; j < this.menuDetail.prepareSteps.steps.length; j++) {
+						if (this.step1[i].desc == this.prepare[j].desc) {
+							this.step1.splice(i, 1);
 							this.n++;
 						}
 					}
@@ -151,35 +166,64 @@
 					console.log(this.step1, "22222222")
 				console.log(this.len)
 			},
-			linkto(){
+			linkto() {
 				uni.switchTab({
-					url:"/pages/index/index"
+					url: "/pages/index/index"
 				})
+			},
+			handleflag() {
+				
+				this.flag=!this.flag
+				this.title=this.flag?"收藏成功":"取消收藏"
+				//提示框
+				uni.showToast({
+					title: this.title,
+					icon:'success',
+					duration: 1000//1后消失
+				});
+				//缓存到本地
+				uni.getStorage({
+					key:"flag",
+					success: (datas) => {
+						console.log(datas,typeof datas,"000000000")
+						this.id=this.menuDetail.id
+						this.obj=datas.data//{}
+						this.obj[this.id]=this.flag
+						uni.setStorage({
+							key:"flag",
+							data:this.obj,
+							success: () => {
+								console.log("huancun")
+							}
+						})
+					}
+				})	
 			}
 		}
-		
+
 	}
 </script>
 
 <style lang="scss">
-		
-	image{
+	image {
 		width: 100%;
 		background-size: cover;
 	}
+
 	.detail {
 		height: 100%;
 		display: flex;
 		flex-direction: column;
-		
-		.imgtxt{
+
+		.imgtxt {
 			position: relative;
-			
+
 			image {
 				width: 100%;
 				height: 500rpx;
 				background-size: cover;
 			}
+
 			.m-name {
 				position: absolute;
 				width: 60rpx;
@@ -190,7 +234,7 @@
 				margin-left: -37rpx;
 				background-color: rgba($color: #fff, $alpha: 0.81);
 				border-radius: 20rpx;
-			
+
 				.name-txt {
 					padding: 13rpx 12rpx;
 					border: 1rpx solid #000;
@@ -201,13 +245,13 @@
 				}
 			}
 		}
-		
+
 
 		.contant-d {
 			margin: 0 20rpx;
 			height: 100%;
 			position: relative;
-			
+
 
 			.collect {
 				display: inline-block;
@@ -342,8 +386,9 @@
 				display: flex;
 				flex-direction: column;
 				padding: 5rpx;
+
 				uni-icons {
-					color:#bbb;
+					color: #bbb;
 					font-size: 8rpx;
 					height: 50rpx;
 				}

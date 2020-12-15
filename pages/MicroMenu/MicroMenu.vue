@@ -6,9 +6,9 @@
 			</text>
 		</view>
 		<view class="menuAll">
-			<view @click="itemClick(item)" v-for="item in menu" :key="item.id" class="item">
+			<view  v-for="item in menu" :key="item.id" class="item">
 				<view class="item-all">
-					<image :src="item.imgLarge"></image>
+					<image @click="itemClick(item)" :src="item.imgLarge"></image>
 					<view class="item-text">
 						<view>{{item.name}}</view>
 						<view class="second">
