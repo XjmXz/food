@@ -74,9 +74,9 @@
 				</view>
 			</view>
 
-			<view class="tab_item">
+			<view class="tab_item" @click="goIndex()">
 				<uni-icons type="home" size="20"></uni-icons>
-				<view class="">
+				<view>
 					首页
 				</view>
 			</view>
@@ -89,11 +89,16 @@
 			</view>
 
 		</view>
+		<qrcode-poster ref="poster" :title="goods.title" 
+		        :subTitle="goods.sub_title" 
+		        :headerImg="goods.image[0]"
+		        :price="goods.price"></qrcode-poster>
 	</view>
 </template>
 
 <script>
 	import uniIcons from "@/components/uni/uni-icons/uni-icons.vue";
+	import QrcodePoster from '@/components/zhangyu-qrcode-poster.vue';
 	import {
 		myRequestPost
 	} from "@/utils/request.js";
@@ -144,7 +149,18 @@
 					}
 				}
 				console.log(this.make);
-			}
+			},
+			goIndex(){
+			
+				uni.switchTab({
+				       url: "/pages/index/index"
+				})
+			},
+			sharePoster(){
+			        //获取带参数二维码
+			        this.is_show_model = false
+			        this.$refs.poster.showCanvas('https://oss.zhangyubk.com/cmqrcode.jpg')
+			    }
 		}
 
 	}
