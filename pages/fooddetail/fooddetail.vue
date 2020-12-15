@@ -34,7 +34,6 @@
 						{{item.standardWeight+item.standardUnit}}
 					</view>
 				</view>
-
 			</view>
 
 			<view class="materials">——备菜步骤——</view>
@@ -47,7 +46,6 @@
 					<text class="text_2">/</text>
 					<text class="text_3">{{length}}</text>
 					<text>{{item.desc}}</text>
-
 				</view>
 			</view>
 			<view class="materials">——做法步骤——</view>
@@ -69,36 +67,24 @@
 		<view class="tab">
 			<view class="tab_item">
 				<uni-icons type="heart" size="20"></uni-icons>
-				<view class="">
-					收藏
-				</view>
+				<view class="">收藏</view>
 			</view>
 
 			<view class="tab_item" @click="goIndex()">
 				<uni-icons type="home" size="20"></uni-icons>
-				<view>
-					首页
-				</view>
+				<view>首页</view>
 			</view>
 
 			<view class="tab_item">
 				<uni-icons type="redo" size="20"></uni-icons>
-				<view class="">
-					分享
-				</view>
+				<view class="">分享</view>
 			</view>
-
 		</view>
-		<qrcode-poster ref="poster" :title="goods.title" 
-		        :subTitle="goods.sub_title" 
-		        :headerImg="goods.image[0]"
-		        :price="goods.price"></qrcode-poster>
 	</view>
 </template>
 
 <script>
 	import uniIcons from "@/components/uni/uni-icons/uni-icons.vue";
-	import QrcodePoster from '@/components/zhangyu-qrcode-poster.vue';
 	import {
 		myRequestPost
 	} from "@/utils/request.js";
@@ -150,17 +136,12 @@
 				}
 				console.log(this.make);
 			},
-			goIndex(){
-			
+			goIndex() {
+
 				uni.switchTab({
-				       url: "/pages/index/index"
+					url: "/pages/index/index"
 				})
-			},
-			sharePoster(){
-			        //获取带参数二维码
-			        this.is_show_model = false
-			        this.$refs.poster.showCanvas('https://oss.zhangyubk.com/cmqrcode.jpg')
-			    }
+			}
 		}
 
 	}
@@ -171,6 +152,7 @@
 		width: 100%;
 		height: 100%;
 		font-family: "楷体";
+
 		.img {
 			width: 750rpx;
 			height: 450rpx;
@@ -296,6 +278,7 @@
 				width: 600rpx;
 				height: 80rpx;
 				margin-left: 50rpx;
+				margin-bottom: 150rpx;
 				border-radius: 16rpx;
 				text-align: center;
 				color: #FFFFFF;
@@ -312,13 +295,15 @@
 			display: flex;
 			position: fixed;
 			justify-content: space-around;
-			left:0;
-			bottom:0;
-			z-index:999;
-			.tab_item{
-				margin-top:10rpx;
+			left: 0;
+			bottom: 0;
+			z-index: 999;
+
+			.tab_item {
+				margin-top: 10rpx;
 			}
-			view{
+
+			view {
 				text-align: center;
 			}
 		}
