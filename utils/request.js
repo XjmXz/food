@@ -1,9 +1,29 @@
-const baseUrl = "https://api.myroki.com/rest/cks"
+const baseUrl = "https://api.myroki.com/rest"
 
 export function myRequestGet(url, data) {
 	return new Promise((resolve, reject) => {
 		uni.request({
 			url: baseUrl + url,
+			method: "GET",
+			data: data,
+			success: function(res) {
+				resolve(res.data)
+			},
+			fail: function(err) {
+				reject(err)
+			}
+		})
+	})
+}
+export function meiRequestGet(url, data) {
+	return new Promise((resolve, reject) => {
+		uni.request({
+			//#ifdef H5
+			url: url,
+			//#endif
+			//#ifdef MP-WEIXIN | MP-ALIPAY
+			url: url,
+			//#endif
 			method: "GET",
 			data: data,
 			success: function(res) {

@@ -1,16 +1,12 @@
 <template>
-	<view :class="[styleType === 'text'?'segmented-control--text' : 'segmented-control--button' ]" :style="{ borderColor: styleType === 'text' ? '' : activeColor }" class="segmented-control">
-		<view v-for="(item, index) in values" :class="[ styleType === 'text'?'segmented-control__item--text': 'segmented-control__item--button' , index === currentIndex&&styleType === 'button'?'segmented-control__item--button--active': '' , index === 0&&styleType === 'button'?'segmented-control__item--button--first': '',index === values.length - 1&&styleType === 'button'?'segmented-control__item--button--last': '' ]" :key="index" :style="{
+	<view :class="[styleType === 'text'?'segmented-control--text' : 'segmented-control--button' ]" :style="{ borderColor: styleType === 'text' ? '' : activeColor }"
+	 class="segmented-control">
+		<view v-for="(item, index) in values" :class="[ styleType === 'text'?'segmented-control__item--text': 'segmented-control__item--button' , index === currentIndex&&styleType === 'button'?'segmented-control__item--button--active': '' , index === 0&&styleType === 'button'?'segmented-control__item--button--first': '',index === values.length - 1&&styleType === 'button'?'segmented-control__item--button--last': '' ]"
+		 :key="index" :style="{
         backgroundColor: index === currentIndex && styleType === 'button' ? activeColor : '',borderColor: index === currentIndex&&styleType === 'text'||styleType === 'button'?activeColor:'transparent'
-      }" class="segmented-control__item" @click="_onClick(index)">
-			<text :style="{color:
-          index === currentIndex
-            ? styleType === 'text'
-              ? activeColor
-              : '#fff'
-            : styleType === 'text'
-              ? '#000'
-              : activeColor}" class="segmented-control__text">{{ item }}</text>
+      }"
+		 class="segmented-control__item" @click="_onClick(index)">
+			<text class="segmented-control__text">{{ item }}</text>
 		</view>
 	</view>
 </template>
@@ -44,11 +40,12 @@
 			},
 			activeColor: {
 				type: String,
-				default: '#007aff'
+				default: '#000'
 			},
 			styleType: {
 				type: String,
 				default: 'button'
+				// default:'#000'
 			}
 		},
 		data() {
@@ -88,6 +85,7 @@
 		flex-direction: row;
 		height: 36px;
 		overflow: hidden;
+		color: #000000;
 	}
 
 	.segmented-control__item {
@@ -107,6 +105,12 @@
 		border-bottom-width: 1px;
 		border-right-width: 1px;
 		border-left-width: 0;
+
+	}
+
+
+	.segmented-control[data-v-333d0fac] {
+		border: 1px solid #000000;
 	}
 
 	.segmented-control__item--button--first {
@@ -118,6 +122,7 @@
 	.segmented-control__item--button--last {
 		border-top-right-radius: 5px;
 		border-bottom-right-radius: 5px;
+
 	}
 
 	.segmented-control__item--text {

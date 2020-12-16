@@ -1,57 +1,72 @@
 <template>
-	<view>
-		<uni-segmented-control :current="current" :values="items" @clickItem="onClickItem" style-type="button" active-color="#4cd964"></uni-segmented-control>
-		<view v-if="current === 0">
-			<detail :square="square"></detail>
+	<view class="Box">
+		<view class="top">
+			<view class="nav">
+				<view class="nav-item ">
+					<view class="item" :class="{ active: isActive == 0 }" @click="chenked(0)">看帖</view>
+				</view>
+				<view class="nav-item ">
+					<view class="item" :class="{ active: isActive == 1 }" @click="chenked(1)">投票</view>
+				</view>
+				<view class="nav-item ">
+					<view class="item" :class="{ active: isActive == 2 }" @click="chenked(2)">精华</view>
+				</view>
+			</view>
+		</view>
+		<!-- nav-item -->
+		<view class="nav_item" v-if="isActive == 0">
+			<post-bars :square="square"></post-bars>
 			<uni-load-more v-if="!flag" :status="'loading'" class=""></uni-load-more>
 			<uni-load-more v-else :status="'noMore'"></uni-load-more>
 		</view>
-		<view v-if="current === 1">
-			选项卡2的内容
+		<view class="nav_item" v-if="isActive == 1">
+			<tab2 :tabs="tabs"></tab2>
 		</view>
-		<view v-if="current === 2">
-			<likechoice :elite="elite"></likechoice>
+		<view class="nav_item" v-if="isActive == 2">
+			<Elite :elite="elite"></Elite>
 			<uni-load-more v-if="!flag" :status="'loading'"></uni-load-more>
 			<uni-load-more v-else :status="'noMore'"></uni-load-more>
 		</view>
 	</view>
-	</view>
+
 </template>
 
 <script>
 	import uniLoadMore from "@/components/uni/uni-load-more/uni-load-more.vue"
-	import uniSegmentedControl from "@/components/uni/uni-segmented-control/uni-segmented-control.vue"
-	import detail from '@/components/foodlist/detail-xuchen.vue'
-	import likechoice  from '@/components/foodlist/likechoice.vue'
+	import postBars from '@/components/foodlist/postBars-xuchen.vue'
+	import Elite from '@/components/foodlist/elite.vue'
+	import tab2 from '@/components/foodlist/tab2.vue'
 	import {
 		myRequestGet
 	} from '@/utils/request-xuchen.js';
 	export default {
 		data() {
 			return {
+				isActive: 0,
 				id: "",
 				pageindex: 1,
 				flag: false,
 				square: [],
-				elite:[],
+				elite: [],
+				tabs: [],
+				current: 0,
 				items: ['看帖', '投票', '精华'],
-				current: 0
 			};
 		},
 		onLoad(options) {
 			this.id = options.id;
 			this.getSquareWatch();
 			this.getLikechioce();
-		},
-		components: {
-			uniSegmentedControl,
-			uniLoadMore,
-			detail,
-			likechoice
+			this.getPailList()
 		},
 		methods: {
-			//https: //api5.meishichina.com/api.php?p=%7B%22m%22%3A%7B%22pai_getPaiList%22%3A%7B%22type%22%3A%22vote%22%2C%22
-			// pageindex%22%3A1%7D%7D%2C%22openudid%22%3A%22meishichina%22%2C%22uid%22%3A12656254%2C%22appver%22%3A%223028%22%2C%22device%22%3A%22microsoftmicrosoft%22%2C%22appname%22%3A%22xcx_weixin%22%2C%22session%22%3A%22xcx_weixin%3Aweixin%3A12656254%3Ag4j5SkNMeV2KNerCulQ1YPuLTnGKQI1J%22%7D			
+			chenked(type) {
+				this.isActive = type;
+				uni.showToast({
+					title: '切换至：' + this.items[type]
+				})
+			},
+			//看帖的数据请求 		
 			async getSquareWatch() {
 				let result = await myRequestGet('/api.php', {
 					p: JSON.stringify({
@@ -73,6 +88,8 @@
 				// console.log(result,"uuuuuuuuuuuuuuuuu");
 				this.square = [...this.square, ...result.pai_getPaiList.data];
 			},
+			// **********************************************************************************************
+			//精选的数据请求 
 			async getLikechioce() {
 				let result = await myRequestGet('/api.php', {
 					p: JSON.stringify({
@@ -92,13 +109,36 @@
 				});
 				this.elite = result.pai_getPaiList.data;
 				// this.elite = [...this.elite, ...result.pai_getPaiList.data];
-				console.log(result,"222222222222222222");
+				console.log(result, "222222222222222222");
 			},
+			// **********************************************************************************************
+			//投票的数据请求 
+			async getPailList() {
+				const res = await myRequestGet('/api.php', {
+					p: JSON.stringify({
+						"m": {
+							"pai_getPaiList": {
+								"type": "vote",
+								"pageindex": 1
+							}
+						},
+						"openudid": "meishichina",
+						"uid": "",
+						"appver": "3028",
+						"device": "microsoftmicrosoft",
+						"appname": "xcx_weixin",
+						"session": "xcx_weixin:weixin:12656254:g4j5SkNMeV2KNerCulQ1YPuLTnGKQI1J"
+					})
+				});
+				this.tabs = res.pai_getPaiList.data
+				console.log(this.tabs)
+			},
+// **********************************************************************************************
 			onPullDownRefresh() {
 				this.pageindex = 1;
 				this.flag = false;
 				this.square = [];
-				this.elite=[];
+				this.elite = [];
 				//请求完成之后停止下拉刷新
 				this.getSquareWatch().then(() => {
 					uni.stopPullDownRefresh()
@@ -116,21 +156,59 @@
 					//没有更多数据了
 					this.flag = true;
 				}
-			},
-			onClickItem(e) {
-				if (this.current !== e.currentIndex) {
-					this.current = e.currentIndex;
-				};
-				uni.showToast({
-				  title: '切换至：' + this.items[e.currentIndex]
-				})
 			}
+		},
+		components: {
+			uniLoadMore,
+			postBars,
+			Elite,
+			tab2
 		}
 	}
 </script>
-<style lang="scss">
-	.segmented-control{
-		
+
+<style lang="scss" scoped>
+	.Box {
+		.top {
+			.nav {
+				background-color: #fff;
+				display: flex;
+				height: 44px;
+				color: #353b48;
+				font-size: 16px;
+				overflow: scroll;
+
+				.nav-item {
+					// width: 80px;
+					flex: 1;
+
+					.item {
+						text-align: center;
+						height: 33px;
+						line-height: 33px;
+						margin-top: 10px;
+					}
+
+					.active {
+						color: rgb(255, 116, 116);
+						font-weight: 550;
+						position: relative;
+					}
+
+					.active::after {
+						content: '';
+						position: absolute;
+						top: 25px;
+						width: 65rpx;
+						height: 8rpx;
+						background-color: rgb(255, 103, 103);
+						left: 0px;
+						right: 0px;
+						bottom: 0px;
+						margin: auto;
+					}
+				}
+			}
+		}
 	}
 </style>
-
