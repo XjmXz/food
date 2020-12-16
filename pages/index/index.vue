@@ -18,7 +18,7 @@
 			</view>
 			<!-- 菜谱列表 -->
 			<foodlist :menu="menu"></foodlist>
-		</view>
+		</view> 
 	</view>
 </template>
 

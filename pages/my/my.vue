@@ -1,13 +1,16 @@
 <template>
 	<view>
 		<view class="header" v-bind:class="{'status':isH5Plus}">
-			<view class="userinfo" >
-				<view class="face" @click="goLogin">
-					<image :src="userinfo.face" ></image>
+			<view class="userinfo">
+				<view class="face">
+					<button class="sys_btn" open-type="getUserInfo" lang="zh_CN" @getuserinfo="appLoginWx"></button>
+					<!-- <block v-else>
+						<image class="userinfo-avatar" src="{{userInfo.avatarUrl}}" mode="cover"></image>
+						<text class="userinfo-nickname">{{userInfo.nickName}}</text>
+					</block> -->
 				</view>
 				<view class="info">
-					<view class="username">{{userinfo.username}}</view>
-					<view class="integral">积分:{{userinfo.integral}}</view>
+					<view class="username">{{this.userInfo.nickName}}</view>
 				</view>
 			</view>
 			<view class="setting">
@@ -33,26 +36,22 @@
 				//#ifdef APP-PLUS
 				isH5Plus: true,
 				//#endif
-				// //#ifndef APP-PLUS
-				// isH5Plus: false,
-				// //#endif
-				userinfo: {},
+				userInfo: {},
 				severList: [
 					[{
 							name: '我的收藏',
 							icon: 'point.png'
 						},
 						{
-							name: '购物车',
+							name: '食材参考价',
 							icon: 'gouwuche.png',
-							url:'/pages/cart/cart'
+							url: '/pages/cart/cart'
 						}
 					],
-					[
-						{
-							name: '去抽奖',
+					[{
+							name: '随机选菜',
 							icon: 'choujiang.png',
-							url:'/pages/choujiang/choujiang'
+							url: '/pages/choujiang/choujiang'
 						},
 						{
 							name: '收货地址',
@@ -68,23 +67,59 @@
 		},
 		onLoad() {
 			//加载
-			this.init();
-			this.goLogin()
+			// this.init();
 		},
 		methods: {
-			init() {
-				//用户信息
-				this.userinfo = {
-					face: '../../static/my/face.jpeg',
-					username: "VIP会员10240",
-					integral: "1435",
-				}
-			},
-			goLogin(){
-				uni.navigateTo({
-					url:'pages/login/login'
-				})
-				console.log("999999999")
+			appLoginWx() {
+				// #ifdef MP-WEIXIN
+				uni.getProvider({
+					service: 'oauth',
+					success: function(res) {
+						if (~res.provider.indexOf('weixin')) {
+							uni.login({
+								provider: 'weixin',
+								success: (res2) => {
+
+									uni.getUserInfo({
+										provider: 'weixin',
+										success: (info) => { //这里请求接口
+											// console.log(res2);
+											console.log(info.userInfo.nickName);
+											console.log(info.userInfo.avatarUrl)
+											
+											console.log(this.info.userInfo.nickName)
+											
+											uni.navigateTo({
+												url: '/pages/my/my'
+											})
+										},
+										fail: () => {
+											uni.showToast({
+												title: "微信登录授权失败",
+												icon: "none"
+											});
+										}
+									})
+
+								},
+								fail: () => {
+									uni.showToast({
+										title: "微信登录授权失败",
+										icon: "none"
+									});
+								}
+							})
+
+						} else {
+							uni.showToast({
+								title: '请先安装微信或升级版本',
+								icon: "none"
+							});
+						}
+					}
+				});
+				//#endif
+				
 			},
 			//用户点击订单类型
 			toOrderType(index) {
@@ -95,11 +130,11 @@
 			//用户点击列表项
 			toPage(list_i, li_i) {
 				uni.showToast({
-					title: this.severList[list_i][li_i].name
-				}),
-				uni.navigateTo({
-					url:this.severList[list_i][li_i].url
-				})
+						title: this.severList[list_i][li_i].name
+					}),
+					uni.navigateTo({
+						url: this.severList[list_i][li_i].url
+					})
 			}
 		}
 	}
@@ -131,10 +166,22 @@
 				width: 15vw;
 				height: 15vw;
 
-				image {
-					width: 100%;
-					height: 100%;
-					border-radius: 100%
+				.sys_btn {
+					width: 100rpx;
+					height: 100rpx;
+					border-radius: 50%;
+					background: #EEEEEE;
+				}
+
+				.userinfo-avatar {
+					width: 128rpx;
+					height: 128rpx;
+					margin: 20rpx;
+					border-radius: 50%;
+				}
+
+				.userinfo-nickname {
+					color: #aaa;
 				}
 			}
 

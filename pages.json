@@ -54,7 +54,7 @@
         ,{
             "path" : "pages/cart/cart",
             "style" : {
-				"navigationBarTitleText": "我的购物车"
+				"navigationBarTitleText": "菜篮子"
 			}
         }
         ,{

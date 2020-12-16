@@ -32,13 +32,7 @@
                     规则说明
                 </view>
                 <view class="g_item">
-                    1.用户每天登录即送1次抽奖机会，分享好友则多赠1次机会
-                </view>
-                <view class="g_item">
-                    2.用户点击大转盘抽奖按钮，有积分和现金两种方式可参与抽奖，没抽一次消耗1次抽奖机会
-                </view>
-                <view class="g_item">
-                    3.用户获得的奖品，可在我的道具里查看
+                    1.看看今天想吃点啥
                 </view>
             </view>
         </view>
@@ -54,22 +48,22 @@
       return {
         list: [
           {
-            "name": "5折",
+            "name": "鱼香肉丝",
             "value": "5",
             icon: 'icondazhe text-danger',
           },
           {
-            "name": "6折",
+            "name": "水煮鱼",
             "value": "6",
             icon: 'icondazhe text-danger',
           },
           {
-            "name": "7折",
+            "name": "不知道呢",
             "value": "7",
             icon: 'icondazhe text-danger',
           },
           {
-            "name": "8折",
+            "name": "开心心",
             "value": "8",
             icon: 'icondazhe text-danger',
           },
@@ -101,6 +95,7 @@
         var list = this.list;
         // var awardIndex = 1 || Math.round(Math.random() * (awardsNum.length - 1)); //随机数
         var runNum = 4; //旋转8周
+		// console.log(awardIndex)
 
         // 旋转角度
         this.runDeg = this.runDeg || 0;
@@ -122,9 +117,8 @@
         this.animation(index, duration)
 
         setTimeout(() => {
-          uni.showModal({content: this.list[index].isNoPrize ? '抱歉，您未中奖' : '恭喜，中奖'})
+          uni.showModal({content: this.list[index].isNoPrize ? '抱歉，您未中奖' : this.list[index].name})
           this.btnDisabled = '';
-          // document.getElementById('zhuanpano').style=''
         }, duration + 1000)
 
       },

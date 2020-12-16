@@ -67,6 +67,11 @@
 
 <script>
 	import {
+		mapState,
+		mapMutations,
+		mapGetters
+	} from 'vuex'
+	import {
 		myRequestPost
 	} from '@/utils/request.js';
 	import uniGoodsNav from '@/components/uni/uni-goods-nav/uni-goods-nav.vue';
@@ -90,12 +95,12 @@
 					text: '分享',
 				}],
 				buttonGroup: [{
-						text: '加入购物车',
+						text: '加入菜单表',
 						backgroundColor: '#ff0000',
 						color: '#fff'
 					},
 					{
-						text: '立即购买',
+						text: '去看看',
 						backgroundColor: '#ffa200',
 						color: '#fff'
 					}
@@ -107,6 +112,9 @@
 			this.getSwipers()
 		},
 		methods: {
+			...mapMutations({
+				addToCarts: 'addToCarts'
+			}),
 			async getSwipers() {
 				let result = await myRequestPost("/api/cookbook/details/get-by-id", {
 					"cookbookId": this.id
@@ -129,36 +137,46 @@
 			onClick(e) {
 				uni.showToast({
 					title: `点击${e.content.text}`,
-					icon: 'none',
-
+					icon: 'none'
 				})
 				console.log(e.index)
 				if (e.index == 0) {
-					console.log(点击了收藏)
+					// console.log("点击了收藏")
 				} else if (e.index == 1) {
 					uni.switchTab({
 						url: '/pages/index/index'
 					})
 				} else {
-					uni.share({
-						provider: "weixin",
-						title: "uniapp",
-						scene: "WXSceneSession",
-						type: 1,
-						summary: "我正在使用HBuilderX开发uni-app，赶紧跟我一起来体验！",
-						success: function(res) {
-							console.log("success:" + JSON.stringify(res));
-						},
-						fail: function(err) {
-							console.log("fail:" + JSON.stringify(err));
-						}
-					})
-					console.log("点击了分享")
+					// console.log("点击了分享")
 				}
 			},
 			buttonClick(e) {
-				console.log(e)
-				this.options[2].info++
+				console.log("buttonClick", e)
+				if (e.index == 0) {
+					//加入购物车
+					if(this.detail.productsInfo){
+						var good = {
+							id:this.detail.id,
+							price: this.detail.productsInfo[this.detail.productsInfo.length-1].price,
+							imgPath: this.detail.productsInfo[this.detail.productsInfo.length-1].img,
+							name: this.detail.productsInfo[this.detail.productsInfo.length-1].materialName
+						}
+						this.addToCarts(good)
+						console.log(this.detail.productsInfo)
+					}
+					else{
+						uni.showToast({
+							title: `暂时不能提供参考价`,
+							icon: 'none'
+						})
+					}
+					
+				} else {
+					//立即购买
+					uni.navigateTo({
+						url:'/pages/cart/cart'
+					})
+				}
 			}
 		}
 	}
@@ -173,11 +191,13 @@
 
 		.food-head {
 			position: relative;
+
 			image {
 				width: 750rpx;
 				height: 550rpx;
-				
+
 			}
+
 			.food-name {
 				position: absolute;
 				bottom: -80rpx;
@@ -206,7 +226,7 @@
 					margin-left: 40rpx;
 				}
 			}
-			
+
 		}
 
 		.goods_nav {
@@ -267,7 +287,7 @@
 				height: 300px;
 				margin-left: 50rpx;
 			}
-			
+
 			.food-step-desc {
 				width: 650rpx;
 				margin-left: 60rpx;
