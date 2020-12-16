@@ -69,7 +69,6 @@
 						"session": "xcx_weixin:weixin:12656254:g4j5SkNMeV2KNerCulQ1YPuLTnGKQI1J"
 					}
 				});
-				// this.goods = [...this.goods, ...result.message];
 				// this.square = result.pai_getPaiList.data;
 				console.log(result,"uuuuuuuuuuuuuuuuu");
 				//this.square = [...this.square, ...result.pai_getPaiList.data];
