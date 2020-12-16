@@ -195,7 +195,7 @@
 				uni.getStorage({
 					key:"flag",
 					success: (datas) => {
-						console.log(datas,typeof datas,"000000000")
+						console.log(datas,typeof datas,"bbbbbbbbbbb")
 						this.id=this.menuDetail.id
 						this.obj=datas.data//{}
 						this.obj[this.id]=this.flag
@@ -206,18 +206,25 @@
 								console.log("huancun")
 							}
 						})
+						console.log(this.obj,"ddddddddd")
+						console.log(this.obj[this.id],"ccccccccc")
+						var menu={
+							id:this.menuDetail.id,
+							name:this.menuDetail.name,
+							num:this.menuDetail.collectCount,
+							img:this.menuDetail.imgLarge,
+							collected:this.obj[this.id]
+						}
+						console.log(menu,"eeeeeeee")
+						this.addToMenus(menu)
+						/* if(this.obj[this.id]){
+							this.addToMenus(menu)
+						} */
 					}
 				})	
 				console.log(this.menuDetail,"aaaaaaaa")
-				if(this.flag){
-					var menu={
-						id:this.menuDetail.id,
-						name:this.menuDetail.name,
-						num:this.menuDetail.collectCount,
-						img:this.menuDetail.imgLarge
-					}
-					this.addToMenus(menu)
-				}
+				
+				
 				
 			}
 		}

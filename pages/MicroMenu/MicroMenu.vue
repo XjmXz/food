@@ -26,7 +26,12 @@
 	import uniIcons from "@/components/uni/uni-icons/uni-icons.vue"
 	import {
 		myRequestPost
-	} from '@/utils/request.js'
+	} from '@/utils/request.js';
+	import {
+			mapState,
+			mapMutations,
+			mapGetters
+		} from 'vuex';
 	export default {
 		data() {
 			return {
@@ -43,6 +48,11 @@
 		},
 		created() {
 			this.getMenu()
+		},
+		computed:{
+			...mapState({
+				menus:"menus"
+			})
 		},
 		methods: {
 			async getMenu() {

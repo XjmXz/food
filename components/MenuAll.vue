@@ -1,5 +1,4 @@
 <template>
-
 		<view class="menuAll">
 			<view @click="itemClick(item)" v-for="item in menu" :key="item.id" class="item">
 				<view class="item-all">
@@ -27,7 +26,11 @@
 		created() {
 		},
 		methods: {
-			
+			itemClick(item){
+				uni.navigateTo({
+				        url: '/pages/MenuDetail/MenuDetail?id=' + item.id
+				    })
+			}
 		}
 	}
 </script>
