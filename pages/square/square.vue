@@ -54,7 +54,7 @@
 			// pageindex%22%3A1%7D%7D%2C%22openudid%22%3A%22meishichina%22%2C%22uid%22%3A12656254%2C%22appver%22%3A%223028%22%2C%22device%22%3A%22microsoftmicrosoft%22%2C%22appname%22%3A%22xcx_weixin%22%2C%22session%22%3A%22xcx_weixin%3Aweixin%3A12656254%3Ag4j5SkNMeV2KNerCulQ1YPuLTnGKQI1J%22%7D			
 			async getSquareWatch() {
 				let result = await myRequestGet('/api.php', {
-					p: {
+					p: JSON.stringify({
 						"m": {
 							"pai_getPaiList": {
 								"type": "all",
@@ -67,15 +67,15 @@
 						"device": "microsoftmicrosoft",
 						"appname": "xcx_weixin",
 						"session": "xcx_weixin:weixin:12656254:g4j5SkNMeV2KNerCulQ1YPuLTnGKQI1J"
-					}
+					})
 				});
 				// this.square = result.pai_getPaiList.data;
-				console.log(result,"uuuuuuuuuuuuuuuuu");
-				//this.square = [...this.square, ...result.pai_getPaiList.data];
+				// console.log(result,"uuuuuuuuuuuuuuuuu");
+				this.square = [...this.square, ...result.pai_getPaiList.data];
 			},
 			async getLikechioce() {
 				let result = await myRequestGet('/api.php', {
-					p: {
+					p: JSON.stringify({
 						"m": {
 							"pai_getPaiList": {
 								"type": "elite",
@@ -88,11 +88,11 @@
 						"device": "microsoftmicrosoft",
 						"appname": "xcx_weixin",
 						"session": "xcx_weixin:weixin:12656254:g4j5SkNMeV2KNerCulQ1YPuLTnGKQI1J"
-					}
+					})
 				});
-				// this.elite = result.pai_getPaiList.data;
+				this.elite = result.pai_getPaiList.data;
 				// this.elite = [...this.elite, ...result.pai_getPaiList.data];
-				// console.log(result,"222222222222222222");
+				console.log(result,"222222222222222222");
 			},
 			onPullDownRefresh() {
 				this.pageindex = 1;
@@ -110,7 +110,7 @@
 			//通过onReachBottom来监听触底
 			onReachBottom() {
 				this.pageindex++;
-				if (this.pageindex <= 2) {
+				if (this.pageindex <= 3) {
 					this.getSquareWatch();
 				} else {
 					//没有更多数据了
@@ -120,14 +120,17 @@
 			onClickItem(e) {
 				if (this.current !== e.currentIndex) {
 					this.current = e.currentIndex;
-				}
+				};
+				uni.showToast({
+				  title: '切换至：' + this.items[e.currentIndex]
+				})
 			}
 		}
 	}
 </script>
 <style lang="scss">
 	.segmented-control{
-		// position: fixed;
+		
 	}
 </style>
 

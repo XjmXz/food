@@ -8,7 +8,7 @@
 						<text class="texts1">{{item.username}}</text>
 						<text class="texts2">{{item.diettime}}</text>
 					</view>
-					<text class="backtexts">精</text>
+					<!-- <text class="backtexts">精</text> -->
 					<text class="texts4">{{item.title}}</text>
 					<text class="texts3">{{item.subject}}</text>
 					<view class="commentPhoto">
