@@ -1,6 +1,10 @@
 {
   "navigationBarTitleText": "来到广场",
+  "enablePullDownRefresh": true,
   "usingComponents": {
-    "zuj2": "/components/zuj2/zuj2"
+    "uni-load-more": "/components/uni/uni-load-more/uni-load-more",
+    "post-bars": "/components/foodlist/postBars-xuchen",
+    "elite": "/components/foodlist/elite",
+    "tab2": "/components/foodlist/tab2"
   }
 }

@@ -3,12 +3,12 @@
     "pages/index/index",
     "pages/theme/theme",
     "pages/video/video",
-    "pages/vediodetail/vediodetail",
     "pages/my/my",
     "pages/zaoju/zaoju",
     "pages/square/square",
     "pages/fooddetail/fooddetail",
-    "pages/votedetail/votedetail"
+    "pages/votedetail/votedetail",
+    "pages/vediodetail/vediodetail"
   ],
   "subPackages": [],
   "window": {
@@ -40,8 +40,8 @@
       {
         "text": "广场",
         "pagePath": "pages/square/square",
-        "iconPath": "static/tabs/我的.png",
-        "selectedIconPath": "static/tabs/我的_active.png"
+        "iconPath": "static/tabs/会话.png",
+        "selectedIconPath": "static/tabs/会话_active.png"
       },
       {
         "text": "我的",
@@ -51,6 +51,5 @@
       }
     ]
   },
-  "usingComponents": {},
-  "sitemapLocation": "sitemap47.json"
+  "usingComponents": {}
 }

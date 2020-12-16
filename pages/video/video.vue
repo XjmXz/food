@@ -9,7 +9,7 @@
 				</view>
 
 				<view class="fr">
-					<view class="sc" @click="addone" :data-count="item.collectCount" :data-id="item.courseId" disabled="disabled">♥</view>{{item.collectCount}}个收藏
+					<text ref=refs :style="flag?'color:red':''" class="sc iconfont icon-shoucang1" @click="addone(index,item)" :data-count="item.collectCount" :data-id="item.courseId" disabled="disabled"></text>{{item.collectCount}}个收藏
 				</view>
 			</view>
 		</view>
@@ -26,6 +26,8 @@
 		data() {
 			return {
 				newsList: [],
+				flag: false,
+				
 			}
 		},
 		onLoad() {
@@ -39,7 +41,7 @@
 					"pageSize": 50
 				})
 				this.newsList = res.datas
-				// console.log(res)
+				console.log(res)
 			},
 			// goSuperMarket(item){
 			// 	// console.log('111111')
@@ -53,13 +55,21 @@
 				// console.log(userinfo)
 				uni.setStorageSync("userinfo", userinfo);
 				uni.navigateTo({
-					url: `../vediodetail/vediodetail`
+					url: `/pages/vediodetail/vediodetail`
 				})
 			},
-			addone(e){
-				console.log(e)
-				const {id,count}=e.currentTarget.dataset;
-				console.log(id)
+			addone(i,item){
+				// console.log(e)
+				// console.log(i)
+				// console.log(item)
+				if(i+1==item.orderNo){
+				
+				}
+				// console.log(this.flag)
+				// if(this.flag){
+					
+				// }
+				// console.log(id)
 				// const index=newsList.findIndex(v=>v.courseId===id);
 				
 			}
@@ -108,9 +118,7 @@
 					float: right;
 
 					.sc {
-						display: inline-block;
-						font-size: 50rpx;
-						color: red;
+						font-size: 40rpx;
 					}
 				}
 			}

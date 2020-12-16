@@ -43,8 +43,6 @@
   float: right;
 }
 .box .title .box_bottom .fr .sc {
-  display: inline-block;
-  font-size: 50rpx;
-  color: red;
+  font-size: 40rpx;
 }
 

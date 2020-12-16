@@ -25,9 +25,11 @@
 /* 透明度 */
 /* 文章场景相关 */
 .content .swiper {
-  width: 100%;
   height: 380rpx;
-  background-color: orangered;
+}
+.content .swiper image {
+    width: 750rpx;
+    height: 380rpx;
 }
 .content .uni-grid-item {
   text-align: center;
@@ -41,5 +43,34 @@
 }
 .content .uni-grid-item text {
     font-size: 12px;
+}
+.content .recommend .title {
+  border-top: 1px solid #ccc;
+  padding: 15rpx 0;
+  margin: 10rpx 10rpx 10rpx 25rpx;
+  font-size: 50rpx;
+  font-weight: 700;
+}
+.content .recommend .item .item-main {
+  margin: 0 25rpx;
+}
+.content .recommend .item .item-main image {
+    width: 700rpx;
+    height: 450rpx;
+    border-radius: 20rpx;
+}
+.content .recommend .item .item-main .item-text {
+    display: -webkit-box;
+    display: -webkit-flex;
+    display: flex;
+    -webkit-box-pack: justify;
+    -webkit-justify-content: space-between;
+            justify-content: space-between;
+    margin: 15rpx 0 15rpx 10rpx;
+    font-size: 30rpx;
+}
+.content .recommend .item .item-main .item-text .text-right {
+      float: right;
+      margin-right: 30rpx;
 }
 

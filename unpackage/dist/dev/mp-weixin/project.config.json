@@ -23,8 +23,8 @@
     "miniprogram": {
       "list": [
         {
-          "name": "pages/square/square",
-          "pathName": "pages/square/square",
+          "name": "pages/video/video",
+          "pathName": "pages/video/video",
           "scene": null
         }
       ]

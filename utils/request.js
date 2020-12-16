@@ -15,22 +15,6 @@ export function myRequestGet(url, data) {
 		})
 	})
 }
-export function meiRequestGet(url, data) {
-	return new Promise((resolve, reject) => {
-		uni.request({
-			url: url,
-			method: "GET",
-			data: data,
-			success: function(res) {
-				resolve(res.data)
-			},
-			fail: function(err) {
-				reject(err)
-			}
-		})
-	})
-}
-
 
 export function myRequestPost(url, data) {
 	return new Promise((resolve, reject) => {
@@ -38,7 +22,7 @@ export function myRequestPost(url, data) {
 			//#ifdef H5
 			url: url,
 			//#endif
-			//#ifdef MP-WEIXIN | MP-ALIPAY
+			//#ifndef H5
 			url: baseUrl + url,
 			//#endif
 			header: {

@@ -734,7 +734,7 @@ function initData(vueOptions, context) {
     try {
       data = data.call(context); // 支持 Vue.prototype 上挂的数据
     } catch (e) {
-      if (Object({"VUE_APP_PLATFORM":"mp-weixin","NODE_ENV":"development","BASE_URL":"/"}).VUE_APP_DEBUG) {
+      if (Object({"NODE_ENV":"development","VUE_APP_PLATFORM":"mp-weixin","BASE_URL":"/"}).VUE_APP_DEBUG) {
         console.warn('根据 Vue 的 data 函数初始化小程序 data 失败，请尽量确保 data 函数中不访问 vm 对象，否则可能影响首次数据渲染速度。', data);
       }
     }
@@ -1528,10 +1528,10 @@ uni$1;exports.default = _default;
 
 /***/ }),
 
-/***/ 116:
-/*!************************************************************************************!*\
-  !*** C:/Users/Shen Zhaoli/Desktop/learngit/food/components/uni/uni-icons/icons.js ***!
-  \************************************************************************************/
+/***/ 108:
+/*!*********************************************************************************************!*\
+  !*** C:/Users/Shen Zhaoli/Desktop/learngit/Xuchen-square/components/uni/uni-icons/icons.js ***!
+  \*********************************************************************************************/
 /*! no static exports found */
 /***/ (function(module, exports, __webpack_require__) {
 
@@ -1671,9 +1671,9 @@ Object.defineProperty(exports, "__esModule", { value: true });exports.default = 
 /***/ }),
 
 /***/ 12:
-/*!*********************************************************************************!*\
-  !*** C:/Users/Shen Zhaoli/Desktop/learngit/food/static/iconfont-weapp-icon.css ***!
-  \*********************************************************************************/
+/*!******************************************************************************************!*\
+  !*** C:/Users/Shen Zhaoli/Desktop/learngit/Xuchen-square/static/iconfont-weapp-icon.css ***!
+  \******************************************************************************************/
 /*! no static exports found */
 /***/ (function(module, exports, __webpack_require__) {
 
@@ -1789,9 +1789,9 @@ function normalizeComponent (
 /***/ }),
 
 /***/ 16:
-/*!****************************************************************************!*\
-  !*** C:/Users/Shen Zhaoli/Desktop/learngit/food/static/fonts/iconfont.css ***!
-  \****************************************************************************/
+/*!*************************************************************************************!*\
+  !*** C:/Users/Shen Zhaoli/Desktop/learngit/Xuchen-square/static/fonts/iconfont.css ***!
+  \*************************************************************************************/
 /*! no static exports found */
 /***/ (function(module, exports, __webpack_require__) {
 
@@ -7281,7 +7281,7 @@ function type(obj) {
 
 function flushCallbacks$1(vm) {
     if (vm.__next_tick_callbacks && vm.__next_tick_callbacks.length) {
-        if (Object({"VUE_APP_PLATFORM":"mp-weixin","NODE_ENV":"development","BASE_URL":"/"}).VUE_APP_DEBUG) {
+        if (Object({"NODE_ENV":"development","VUE_APP_PLATFORM":"mp-weixin","BASE_URL":"/"}).VUE_APP_DEBUG) {
             var mpInstance = vm.$scope;
             console.log('[' + (+new Date) + '][' + (mpInstance.is || mpInstance.route) + '][' + vm._uid +
                 ']:flushCallbacks[' + vm.__next_tick_callbacks.length + ']');
@@ -7302,14 +7302,14 @@ function nextTick$1(vm, cb) {
     //1.nextTick 之前 已 setData 且 setData 还未回调完成
     //2.nextTick 之前存在 render watcher
     if (!vm.__next_tick_pending && !hasRenderWatcher(vm)) {
-        if(Object({"VUE_APP_PLATFORM":"mp-weixin","NODE_ENV":"development","BASE_URL":"/"}).VUE_APP_DEBUG){
+        if(Object({"NODE_ENV":"development","VUE_APP_PLATFORM":"mp-weixin","BASE_URL":"/"}).VUE_APP_DEBUG){
             var mpInstance = vm.$scope;
             console.log('[' + (+new Date) + '][' + (mpInstance.is || mpInstance.route) + '][' + vm._uid +
                 ']:nextVueTick');
         }
         return nextTick(cb, vm)
     }else{
-        if(Object({"VUE_APP_PLATFORM":"mp-weixin","NODE_ENV":"development","BASE_URL":"/"}).VUE_APP_DEBUG){
+        if(Object({"NODE_ENV":"development","VUE_APP_PLATFORM":"mp-weixin","BASE_URL":"/"}).VUE_APP_DEBUG){
             var mpInstance$1 = vm.$scope;
             console.log('[' + (+new Date) + '][' + (mpInstance$1.is || mpInstance$1.route) + '][' + vm._uid +
                 ']:nextMPTick');
@@ -7385,7 +7385,7 @@ var patch = function(oldVnode, vnode) {
     });
     var diffData = diff(data, mpData);
     if (Object.keys(diffData).length) {
-      if (Object({"VUE_APP_PLATFORM":"mp-weixin","NODE_ENV":"development","BASE_URL":"/"}).VUE_APP_DEBUG) {
+      if (Object({"NODE_ENV":"development","VUE_APP_PLATFORM":"mp-weixin","BASE_URL":"/"}).VUE_APP_DEBUG) {
         console.log('[' + (+new Date) + '][' + (mpInstance.is || mpInstance.route) + '][' + this._uid +
           ']差量更新',
           JSON.stringify(diffData));
@@ -7762,50 +7762,19 @@ internalMixin(Vue);
 
 /***/ }),
 
-/***/ 3:
-/*!***********************************!*\
-  !*** (webpack)/buildin/global.js ***!
-  \***********************************/
-/*! no static exports found */
-/***/ (function(module, exports) {
-
-var g;
-
-// This works in non-strict mode
-g = (function() {
-	return this;
-})();
-
-try {
-	// This works if eval is allowed (see CSP)
-	g = g || new Function("return this")();
-} catch (e) {
-	// This works if the window reference is available
-	if (typeof window === "object") g = window;
-}
-
-// g can still be undefined, but nothing to do about it...
-// We return undefined, instead of nothing here, so it's
-// easier to handle this case. if(!global) { ...}
-
-module.exports = g;
-
-
-/***/ }),
-
-/***/ 37:
+/***/ 23:
 /*!**********************************************************!*\
   !*** ./node_modules/@babel/runtime/regenerator/index.js ***!
   \**********************************************************/
 /*! no static exports found */
 /***/ (function(module, exports, __webpack_require__) {
 
-module.exports = __webpack_require__(/*! regenerator-runtime */ 38);
+module.exports = __webpack_require__(/*! regenerator-runtime */ 24);
 
 
 /***/ }),
 
-/***/ 38:
+/***/ 24:
 /*!************************************************************!*\
   !*** ./node_modules/regenerator-runtime/runtime-module.js ***!
   \************************************************************/
@@ -7836,7 +7805,7 @@ var oldRuntime = hadRuntime && g.regeneratorRuntime;
 // Force reevalutation of runtime.js.
 g.regeneratorRuntime = undefined;
 
-module.exports = __webpack_require__(/*! ./runtime */ 39);
+module.exports = __webpack_require__(/*! ./runtime */ 25);
 
 if (hadRuntime) {
   // Restore the original runtime.
@@ -7853,7 +7822,7 @@ if (hadRuntime) {
 
 /***/ }),
 
-/***/ 39:
+/***/ 25:
 /*!*****************************************************!*\
   !*** ./node_modules/regenerator-runtime/runtime.js ***!
   \*****************************************************/
@@ -8585,27 +8554,15 @@ if (hadRuntime) {
 
 /***/ }),
 
-/***/ 4:
-/*!*************************************************************!*\
-  !*** C:/Users/Shen Zhaoli/Desktop/learngit/food/pages.json ***!
-  \*************************************************************/
+/***/ 26:
+/*!****************************************************************************!*\
+  !*** C:/Users/Shen Zhaoli/Desktop/learngit/Xuchen-square/utils/request.js ***!
+  \****************************************************************************/
 /*! no static exports found */
 /***/ (function(module, exports, __webpack_require__) {
 
 "use strict";
-
-
-/***/ }),
-
-/***/ 40:
-/*!*******************************************************************!*\
-  !*** C:/Users/Shen Zhaoli/Desktop/learngit/food/utils/request.js ***!
-  \*******************************************************************/
-/*! no static exports found */
-/***/ (function(module, exports, __webpack_require__) {
-
-"use strict";
-/* WEBPACK VAR INJECTION */(function(uni) {Object.defineProperty(exports, "__esModule", { value: true });exports.myRequestGet = myRequestGet;exports.meiRequestGet = meiRequestGet;exports.myRequestPost = myRequestPost;var baseUrl = "https://api.myroki.com/rest";
+/* WEBPACK VAR INJECTION */(function(uni) {Object.defineProperty(exports, "__esModule", { value: true });exports.myRequestGet = myRequestGet;exports.myRequestPost = myRequestPost;var baseUrl = "https://api.myroki.com/rest";
 
 function myRequestGet(url, data) {
   return new Promise(function (resolve, reject) {
@@ -8622,22 +8579,6 @@ function myRequestGet(url, data) {
 
   });
 }
-function meiRequestGet(url, data) {
-  return new Promise(function (resolve, reject) {
-    uni.request({
-      url: url,
-      method: "GET",
-      data: data,
-      success: function success(res) {
-        resolve(res.data);
-      },
-      fail: function fail(err) {
-        reject(err);
-      } });
-
-  });
-}
-
 
 function myRequestPost(url, data) {
   return new Promise(function (resolve, reject) {
@@ -8663,6 +8604,49 @@ function myRequestPost(url, data) {
   });
 }
 /* WEBPACK VAR INJECTION */}.call(this, __webpack_require__(/*! ./node_modules/@dcloudio/uni-mp-weixin/dist/index.js */ 1)["default"]))
+
+/***/ }),
+
+/***/ 3:
+/*!***********************************!*\
+  !*** (webpack)/buildin/global.js ***!
+  \***********************************/
+/*! no static exports found */
+/***/ (function(module, exports) {
+
+var g;
+
+// This works in non-strict mode
+g = (function() {
+	return this;
+})();
+
+try {
+	// This works if eval is allowed (see CSP)
+	g = g || new Function("return this")();
+} catch (e) {
+	// This works if the window reference is available
+	if (typeof window === "object") g = window;
+}
+
+// g can still be undefined, but nothing to do about it...
+// We return undefined, instead of nothing here, so it's
+// easier to handle this case. if(!global) { ...}
+
+module.exports = g;
+
+
+/***/ }),
+
+/***/ 4:
+/*!**********************************************************************!*\
+  !*** C:/Users/Shen Zhaoli/Desktop/learngit/Xuchen-square/pages.json ***!
+  \**********************************************************************/
+/*! no static exports found */
+/***/ (function(module, exports, __webpack_require__) {
+
+"use strict";
+
 
 /***/ }),
 
@@ -9564,22 +9548,57 @@ module.exports = {"_from":"@dcloudio/uni-stat@^2.0.0-alpha-24420191128001","_id"
 
 /***/ }),
 
-/***/ 7:
-/*!******************************************************************************!*\
-  !*** C:/Users/Shen Zhaoli/Desktop/learngit/food/pages.json?{"type":"style"} ***!
-  \******************************************************************************/
+/***/ 63:
+/*!***********************************************************************************!*\
+  !*** C:/Users/Shen Zhaoli/Desktop/learngit/Xuchen-square/utils/request-xuchen.js ***!
+  \***********************************************************************************/
 /*! no static exports found */
 /***/ (function(module, exports, __webpack_require__) {
 
 "use strict";
-Object.defineProperty(exports, "__esModule", { value: true });exports.default = void 0;var _default = { "pages": { "pages/index/index": { "navigationBarTitleText": "美食" }, "pages/theme/theme": { "navigationBarTitleText": "主题" }, "pages/video/video": { "navigationBarTitleText": "视频", "enablePullDownRefresh": true }, "pages/vediodetail/vediodetail": { "navigationBarTitleText": "视频详情" }, "pages/my/my": { "navigationBarTitleText": "我的" }, "pages/zaoju/zaoju": { "navigationBarTitleText": "灶具菜谱" }, "pages/square/square": { "navigationBarTitleText": "来到广场" }, "pages/fooddetail/fooddetail": { "navigationBarTitleText": "菜谱详情" }, "pages/votedetail/votedetail": { "navigationBarTitleText": "投票详情" } }, "globalStyle": { "navigationBarTextStyle": "white", "navigationBarTitleText": "美食", "navigationBarBackgroundColor": "#E9A06F", "backgroundColor": "#F8F8F8" } };exports.default = _default;
+/* WEBPACK VAR INJECTION */(function(uni) {Object.defineProperty(exports, "__esModule", { value: true });exports.myRequestGet = myRequestGet;var baseUrl = "https://api5.meishichina.com";
+
+function myRequestGet(url, data) {
+  return new Promise(function (resolve, reject) {
+    uni.request({
+
+
+
+
+
+      url: baseUrl + url,
+
+      method: "GET",
+      data: data,
+      success: function success(res) {
+        resolve(res.data);
+      },
+      fail: function fail(err) {
+        reject(err);
+      } });
+
+  });
+}
+/* WEBPACK VAR INJECTION */}.call(this, __webpack_require__(/*! ./node_modules/@dcloudio/uni-mp-weixin/dist/index.js */ 1)["default"]))
+
+/***/ }),
+
+/***/ 7:
+/*!***************************************************************************************!*\
+  !*** C:/Users/Shen Zhaoli/Desktop/learngit/Xuchen-square/pages.json?{"type":"style"} ***!
+  \***************************************************************************************/
+/*! no static exports found */
+/***/ (function(module, exports, __webpack_require__) {
+
+"use strict";
+Object.defineProperty(exports, "__esModule", { value: true });exports.default = void 0;var _default = { "pages": { "pages/index/index": { "navigationBarTitleText": "美食", "usingComponents": { "uni-search-bar": "/components/uni/uni-search-bar/uni-search-bar", "uni-grid": "/components/uni/uni-grid/uni-grid", "uni-grid-item": "/components/uni/uni-grid-item/uni-grid-item", "uni-icons": "/components/uni/uni-icons/uni-icons" } }, "pages/theme/theme": { "navigationBarTitleText": "主题", "usingComponents": {} }, "pages/video/video": { "navigationBarTitleText": "视频", "usingComponents": {} }, "pages/my/my": { "navigationBarTitleText": "我的", "usingComponents": {} }, "pages/zaoju/zaoju": { "navigationBarTitleText": "灶具菜谱", "usingComponents": { "uni-icons": "/components/uni/uni-icons/uni-icons" } }, "pages/square/square": { "navigationBarTitleText": "来到广场", "enablePullDownRefresh": true, "usingComponents": { "uni-load-more": "/components/uni/uni-load-more/uni-load-more", "post-bars": "/components/foodlist/postBars-xuchen", "elite": "/components/foodlist/elite", "tab2": "/components/foodlist/tab2" } }, "pages/fooddetail/fooddetail": { "navigationBarTitleText": "菜谱详情", "usingComponents": {} }, "pages/votedetail/votedetail": { "navigationBarTitleText": "投票详情", "usingComponents": {} }, "pages/vediodetail/vediodetail": { "navigationBarTitleText": "视频详情", "usingComponents": {} } }, "globalStyle": { "navigationBarTextStyle": "white", "navigationBarTitleText": "美食", "navigationBarBackgroundColor": "#E9A06F", "backgroundColor": "#F8F8F8" } };exports.default = _default;
 
 /***/ }),
 
 /***/ 8:
-/*!*****************************************************************************!*\
-  !*** C:/Users/Shen Zhaoli/Desktop/learngit/food/pages.json?{"type":"stat"} ***!
-  \*****************************************************************************/
+/*!**************************************************************************************!*\
+  !*** C:/Users/Shen Zhaoli/Desktop/learngit/Xuchen-square/pages.json?{"type":"stat"} ***!
+  \**************************************************************************************/
 /*! no static exports found */
 /***/ (function(module, exports, __webpack_require__) {
 
