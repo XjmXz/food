@@ -1,6 +1,9 @@
 <template>
 	<view>
 		这是我的页面
+		<view class="collect" @click="linkto">
+			收藏的菜谱
+		</view>
 	</view>
 </template>
 
@@ -10,6 +13,13 @@
 			return {
 				
 			};
+		},
+		methods:{
+			linkto(){
+				uni.navigateTo({
+					url:"/pages/Collect/Collect"
+				})
+			}
 		}
 	}
 </script>

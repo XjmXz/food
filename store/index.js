@@ -6,8 +6,18 @@ const store = new Vuex.Store({
 		menus:[]
 	},
     mutations: {
-		addToMenus(state,menu){
-			state.menus.push(menu)
+		addToMenus(state,menus){
+			var isexist=false;
+			state.menus.forEach(item=>{
+				if(item.id==menus.id){
+					isexist=true
+				}
+			})
+			if(isexist==false){
+				state.menus.push(menus)
+				menus.num++
+			}
+			console.log("menu",state.menus)
 		}
 	},
     actions: {},

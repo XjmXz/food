@@ -51,6 +51,10 @@
             "path" : "pages/SteamMenu/SteamMenu",
             "style" : {}
         }
+        ,{
+            "path" : "pages/Collect/Collect",
+            "style" : {}
+        }
     ],
 	"globalStyle": {
 		"navigationBarTextStyle": "white",

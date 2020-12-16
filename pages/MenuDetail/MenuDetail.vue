@@ -102,10 +102,17 @@
 </template>
 
 <script>
-	import uniIcons from "@/components/uni/uni-icons/uni-icons.vue"
+	import uniIcons from "@/components/uni/uni-icons/uni-icons.vue";
 	import {
 		myRequestPost
-	} from '@/utils/request.js'
+	} from '@/utils/request.js';
+	//vuex
+	import {
+			mapState,
+			mapMutations,
+			mapGetters
+		} from 'vuex';
+	
 	export default {
 		data() {
 			return {
@@ -120,7 +127,7 @@
 				flag: false,
 				title:"",
 				obj:{},
-				detailStorge:""
+				detailStorge:"",
 			};
 		},
 		components: {
@@ -142,6 +149,9 @@
 			}
 		},
 		methods: {
+			...mapMutations({
+				addToMenus: 'addToMenus' 
+			}),
 			async getMenuDetail() {
 				let result = await myRequestPost('/api/cookbook/details/get-by-id/', {
 					"cookbookId": this.id
@@ -162,8 +172,8 @@
 				}
 
 				console.log(this.menuDetail, "00000000000"),
-					console.log(this.prepare, "111111"),
-					console.log(this.step1, "22222222")
+				console.log(this.prepare, "111111"),
+				console.log(this.step1, "22222222")
 				console.log(this.len)
 			},
 			linkto() {
@@ -171,8 +181,8 @@
 					url: "/pages/index/index"
 				})
 			},
+			//收藏保存数据
 			handleflag() {
-				
 				this.flag=!this.flag
 				this.title=this.flag?"收藏成功":"取消收藏"
 				//提示框
@@ -198,6 +208,17 @@
 						})
 					}
 				})	
+				console.log(this.menuDetail,"aaaaaaaa")
+				if(this.flag){
+					var menu={
+						id:this.menuDetail.id,
+						name:this.menuDetail.name,
+						num:this.menuDetail.collectCount,
+						img:this.menuDetail.imgLarge
+					}
+					this.addToMenus(menu)
+				}
+				
 			}
 		}
 
