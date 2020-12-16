@@ -17,7 +17,6 @@
 				<view class="text">
 					<text class="left">{{item.name}}</text>
 					<view class="right">
-						<!-- <text @click="handleCollection" v-if="isCollected"> -->
 							<uni-icons type="heart" size="20"></uni-icons>
 						<!-- </text> -->
 						<!-- <text @click="handleCollection" v-if="!isCollected">

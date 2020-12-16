@@ -1,10 +1,16 @@
 <template>
 	<view class="content">
 		<view class="box">
-			<view class="icon">
-				<uni-icons type="search" size="25"></uni-icons>
+			
+			<view class="input-box" @click="toSearch">
+				<!-- <input type="text" class="search" disabled="false"  placeholder="        今天想吃点什么"  />
+				<view class="icon">
+					<uni-icons type="search" size="25"></uni-icons>
+				</view> -->
+				<uni-search-bar placeholder="今天想吃什么？"  radius="100" disabled="true" cancelButton="none"></uni-search-bar>
 			</view>
-			<input type="text" class="search" disabled="true" @click="toSearch" placeholder="        今天想吃点什么" />
+			
+			
 		</view>
 		<swiper class="swiper" indicator-dots :autoplay="true" :interval="3000" circular>
 			<swiper-item v-for="item in swipers" :key="item.id">
@@ -103,6 +109,7 @@
 				})
 			},
 			toSearch(){
+				console.log("hhhhhhhhhhhhhhhhh");
 				uni.navigateTo({
 					url:"/pages/search/search"
 				})
@@ -118,22 +125,12 @@
 			width:750rpx;
 			height:120rpx;
 			display:flex;
-			.search{
-				border:1px solid #B8B8B8 ;
-				border-radius:16rpx ;
-				width:700rpx;
-				height:80rpx;
-				justify-content: center;
-				margin:auto;
+			.input-box{
+				width:750rpx;
 			}
 			
-			.icon{
-				position:absolute;
-				left:40rpx;
-				top:30rpx;
-				float:left;
-				color:#B8B8B8;
-			}
+			
+			
 		}
 		
 		.swiper {
