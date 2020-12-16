@@ -6,6 +6,7 @@ export function myRequestGet(url, data) {
 			//#ifdef H5
 			url: url,
 			//#endif
+			
 			//#ifdef MP-WEIXIN | MP-ALIPAY
 			url: baseUrl + url,
 			//#endif

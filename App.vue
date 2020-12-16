@@ -14,7 +14,7 @@
 </script>
 
 <style>
-	page {
+	/* page {
 		height: 100%;
-	}
+	} */
 </style>
