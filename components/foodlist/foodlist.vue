@@ -61,7 +61,7 @@
 				.item-text {
 					display: flex;
 					justify-content: space-between;
-					margin: 15rpx 0 15rpx 10rpx;
+					margin: 15rpx 0 15rpx 15rpx;
 					font-size: 30rpx;
 
 					.text-right {

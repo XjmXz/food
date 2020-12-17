@@ -95,7 +95,7 @@
 					text: '分享',
 				}],
 				buttonGroup: [{
-						text: '加入菜单表',
+						text: '加入菜篮子',
 						backgroundColor: '#ff0000',
 						color: '#fff'
 					},
@@ -154,27 +154,27 @@
 				console.log("buttonClick", e)
 				if (e.index == 0) {
 					//加入购物车
-					if(this.detail.productsInfo){
+					if (this.detail.productsInfo) {
 						var good = {
-							id:this.detail.id,
-							price: this.detail.productsInfo[this.detail.productsInfo.length-1].price,
-							imgPath: this.detail.productsInfo[this.detail.productsInfo.length-1].img,
-							name: this.detail.productsInfo[this.detail.productsInfo.length-1].materialName
+							id: this.detail.id,
+							price: this.detail.productsInfo[this.detail.productsInfo.length - 1].price,
+							imgPath: this.detail.productsInfo[this.detail.productsInfo.length - 1].img,
+							name: this.detail.productsInfo[this.detail.productsInfo.length - 1].materialName,
+							slide_x: 0
 						}
 						this.addToCarts(good)
 						console.log(this.detail.productsInfo)
-					}
-					else{
+					} else {
 						uni.showToast({
 							title: `暂时不能提供参考价`,
 							icon: 'none'
 						})
 					}
-					
+
 				} else {
 					//立即购买
 					uni.navigateTo({
-						url:'/pages/cart/cart'
+						url: '/pages/cart/cart'
 					})
 				}
 			}

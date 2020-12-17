@@ -4,10 +4,6 @@
 			<view class="userinfo">
 				<view class="face">
 					<button class="sys_btn" open-type="getUserInfo" lang="zh_CN" @getuserinfo="appLoginWx"></button>
-					<!-- <block v-else>
-						<image class="userinfo-avatar" src="{{userInfo.avatarUrl}}" mode="cover"></image>
-						<text class="userinfo-nickname">{{userInfo.nickName}}</text>
-					</block> -->
 				</view>
 				<view class="info">
 					<view class="username">{{this.userInfo.nickName}}</view>
@@ -33,9 +29,6 @@
 	export default {
 		data() {
 			return {
-				//#ifdef APP-PLUS
-				isH5Plus: true,
-				//#endif
 				userInfo: {},
 				severList: [
 					[{
@@ -43,7 +36,7 @@
 							icon: 'point.png'
 						},
 						{
-							name: '食材参考价',
+							name: '菜篮子',
 							icon: 'gouwuche.png',
 							url: '/pages/cart/cart'
 						}
@@ -86,9 +79,9 @@
 											// console.log(res2);
 											console.log(info.userInfo.nickName);
 											console.log(info.userInfo.avatarUrl)
-											
+
 											console.log(this.info.userInfo.nickName)
-											
+
 											uni.navigateTo({
 												url: '/pages/my/my'
 											})
@@ -119,7 +112,7 @@
 					}
 				});
 				//#endif
-				
+
 			},
 			//用户点击订单类型
 			toOrderType(index) {

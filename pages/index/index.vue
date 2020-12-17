@@ -18,7 +18,7 @@
 			</view>
 			<!-- 菜谱列表 -->
 			<foodlist :menu="menu"></foodlist>
-		</view> 
+		</view>
 	</view>
 </template>
 
@@ -69,7 +69,7 @@
 		onLoad() {
 			this.getSwipers(),
 				this.getMenu()
-				
+
 		},
 		methods: {
 			async getSwipers() {
@@ -87,6 +87,7 @@
 				})
 				console.log(result.cookbooks);
 				this.menu = result.cookbooks;
+				console.log(result.cookbooks.dcs,"14566");
 			},
 			goZaoju(item) {
 				uni.navigateTo({
