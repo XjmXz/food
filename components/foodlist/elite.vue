@@ -8,7 +8,8 @@
 						<text class="texts1">{{item.username}}</text>
 						<text class="texts2">{{item.diettime}}</text>
 					</view>
-					<!-- <text class="backtexts">精</text> -->
+					
+					<button class="tp">精 选</button>
 					<view class="texts4">{{item.title}}</view>
 					<view class="texts3">{{item.subject}}</view>
 					<view class="commentPhoto">
@@ -57,6 +58,18 @@
 			// padding-right: 25px;
 			// box-sizing: border-box;
 			// right: 0;
+			.tp{
+				color: rgb(255, 103, 103);
+				font-size: 24rpx;
+				border: 1px solid red;
+				margin: 0 10rpx 20rpx 0;
+				line-height: 38rpx;
+				text-align: center;
+				padding: 0;
+				// display: inline;
+				height: 40rpx;
+				width: 90rpx;
+			}
 		}
 
 		.img1 {

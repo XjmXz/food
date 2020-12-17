@@ -27,6 +27,14 @@
 			<uni-load-more v-if="!flag" :status="'loading'"></uni-load-more>
 			<uni-load-more v-else :status="'noMore'"></uni-load-more>
 		</view>
+		<view class="hover-button">
+			<view class="button-text1">
+				+
+			</view>
+			<view class="button-text2">
+				发帖子
+			</view>
+		</view>
 	</view>
 
 </template>
@@ -133,7 +141,7 @@
 				this.tabs = res.pai_getPaiList.data
 				console.log(this.tabs)
 			},
-// **********************************************************************************************
+			// **********************************************************************************************
 			onPullDownRefresh() {
 				this.pageindex = 1;
 				this.flag = false;
@@ -169,6 +177,36 @@
 
 <style lang="scss" scoped>
 	.Box {
+		.hover-button {
+			background-color: rgb(233, 160, 111);
+			position: fixed;
+			right: 100rpx;
+			bottom: 100px;
+			z-index: 999;
+			width: 60px;
+			height: 60px;
+			// line-height: 100px;
+			// text-align: center;
+			border-radius: 50%;
+			color: #FFFDEF;
+			
+			.button-text1 {
+				line-height: 40px;
+				text-align: center;
+				font-size: 30px;
+				height: 30px;
+			}
+
+			.button-text2 {
+				// line-height: 45px;
+				margin-bottom: 20px;
+				font-size: 10px;
+				height: 30px;
+				text-align: center;
+				line-height: 25px;
+			}
+		}
+
 		.top {
 			.nav {
 				background-color: #fff;
@@ -177,9 +215,17 @@
 				color: #353b48;
 				font-size: 16px;
 				overflow: scroll;
+				position: fixed;
+				// #ifdef H5
+				top: 40px;
+				// #endif
+				//#ifdef MP-WEIXIN | MP-ALIPAY
+				top: 0px;
+				//#endif
+				z-index: 999;
+				width: 100%;
 
 				.nav-item {
-					// width: 80px;
 					flex: 1;
 
 					.item {
@@ -209,6 +255,10 @@
 					}
 				}
 			}
+		}
+
+		.nav_item {
+			margin-top: 88rpx;
 		}
 	}
 </style>
