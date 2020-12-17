@@ -4,6 +4,9 @@
 		<view class="collect" @click="linkto">
 			收藏的菜谱
 		</view>
+		<view class="Lottery" @click="linkToLottery">
+			随机选菜
+		</view>
 	</view>
 </template>
 
@@ -18,6 +21,11 @@
 			linkto(){
 				uni.navigateTo({
 					url:"/pages/Collect/Collect"
+				})
+			},
+			linkToLottery(){
+				uni.navigateTo({
+					url:"/pages/Lottery/Lottery"
 				})
 			}
 		}

@@ -147,6 +147,19 @@
 			if(this.detailStorge[this.id]){
 				this.flag=true
 			}
+			console.log(this.menus,"sssssssssss")
+			for (var i=0;i<this.menus.length;i++) {
+				if(this.menus[i].id==this.id){
+					this.flag=true
+				}else{
+					this.flag=false
+				}
+			}
+		},
+		computed: {
+			...mapState({
+				menus: "menus"
+			})
 		},
 		methods: {
 			...mapMutations({
@@ -183,6 +196,13 @@
 			},
 			//收藏保存数据
 			handleflag() {
+				for (var i=0;i<this.menus.length;i++) {
+					if(this.menus[i].id==this.id){
+						this.flag=true
+					}else{
+						this.flag=false
+					}
+				}
 				this.flag=!this.flag
 				this.title=this.flag?"收藏成功":"取消收藏"
 				//提示框
@@ -223,9 +243,6 @@
 					}
 				})	
 				console.log(this.menuDetail,"aaaaaaaa")
-				
-				
-				
 			}
 		}
 

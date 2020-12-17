@@ -1,6 +1,6 @@
 <template>
 	<view class="collect">
-		<view class="item" v-for="item in menus" :key="item.id">
+		<view class="item" v-for="item in menus" :key="item.id" @click="linktomenudetail(item)">
 			<block v-if="item.collected">
 				<view class="img">
 					<image :src="item.img" mode=""></image>
@@ -29,6 +29,11 @@
 		},
 		onLoad() {},
 		methods: {
+			linktomenudetail(item){
+				uni.navigateTo({
+					url: '/pages/MenuDetail/MenuDetail?id=' + item.id
+				})
+			}
 
 		},
 		computed: {
@@ -50,6 +55,7 @@
 					width: 700rpx;
 					height: 400rpx;
 					border-radius: 16rpx;
+					background-size: cover;
 				}
 			}
 

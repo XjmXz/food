@@ -55,6 +55,14 @@
             "path" : "pages/Collect/Collect",
             "style" : {}
         }
+        ,{
+            "path" : "pages/Lottery/Lottery",
+            "style" : {}
+        }
+        ,{
+            "path" : "pages/Lotterydetail/Lotterydetail",
+            "style" : {}
+        }
     ],
 	"globalStyle": {
 		"navigationBarTextStyle": "white",

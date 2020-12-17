@@ -10,15 +10,18 @@ const store = new Vuex.Store({
 			var isexist = false;
 			state.menus.forEach(item => {
 				if (item.id == menus.id) {
+					
 					isexist = true
 					var i=state.menus.indexOf(item)
 					console.log(item.id,state.menus,i, "hhhhhhhhh");
 					state.menus.splice(i,1)
+					
 				}
 			})
 			if (isexist == false) {
 				state.menus.push(menus)
 				menus.num++
+				
 			}
 			console.log("menu", state.menus)
 			uni.setStorageSync("menus", state.menus)
