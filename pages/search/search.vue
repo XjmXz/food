@@ -82,6 +82,8 @@
 				console.log(result);
 				this.foodList1 = result.cookbook_3rds;
 				this.foodList2 = result.cookbooks;
+				console.log(foodList1,"6666666666666");
+				console.log(foodList2,"888888888888888888888");
 				if (this.foodList1.length==0 && this.foodList2.length==0) {
 					this.flag = false;
 				}

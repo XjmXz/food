@@ -126,7 +126,7 @@
 		onShareAppMessage(res){
 			return{
 				title:"美食分享",
-				path:"pages/theme/theme"
+				path:"pages/themeDetails/themeDetails"
 			}
 		},
 		methods: {
@@ -160,25 +160,7 @@
 				uni.switchTab({
 					url: "/pages/index/index"
 				})
-			},
-			// shareFriend(){
-			// 	uni.share({
-			// 	    provider: "weixin",
-			// 	    scene: "WXSceneSession",
-			// 	    type: 2,
-			// 	    imageUrl: this.foodDetail.imgLarge,
-			// 	    success: function (res) {
-			// 	        console.log("success:");
-			// 	    },
-			// 	    fail: function (err) {
-			// 	        console.log("fail:");
-			// 	    }
-			// 	});
-			// }
-			
-			
-			
-			
+			},	
 		}
 
 	}

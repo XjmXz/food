@@ -13,18 +13,35 @@
 
 		<view class="foodsPhoto" v-for="item in themeList" :key="item.id">
 			<view class="Photo_item">
-				<image :src="item.imgLarge"  @click="goFoodDetails(item)"></image>
+				<image :src="item.imgLarge" @click="goFoodDetails(item)"></image>
 				<view class="text">
 					<text class="left">{{item.name}}</text>
 					<view class="right">
-							<uni-icons type="heart" size="20"></uni-icons>
-						<!-- </text> -->
-						<!-- <text @click="handleCollection" v-if="!isCollected">
-							<uni-icons type="heart-filled" size="20" color="red"></uni-icons>
-						</text> -->
+						<uni-icons type="heart" size="20"></uni-icons>
 						<text class="collect">{{item.collectCount}}人收藏</text>
 					</view>
 				</view>
+			</view>
+		</view>
+
+		<view class="bottom">
+			<view class="tab_item" @click="toIndex">
+				<uni-icons type="home" size="20"></uni-icons>
+				<view class="text">
+					首页
+				</view>
+			</view>
+			<view class="tab_item">
+				<!-- #ifdef H5|MP-ALIPAY-->
+				<uni-icons type="redo" size="20"></uni-icons>
+				<view class="text">分享</view>
+
+				<!-- #endif -->
+
+				<!-- #ifdef MP-WEIXIN -->
+				<uni-icons type="redo" size="20"></uni-icons>
+				<view class="btn"><button class="share-btn text" open-type="share">分享</button></view>
+				<!-- #endif -->
 			</view>
 		</view>
 	</view>
@@ -34,7 +51,7 @@
 	import {
 		myRequestPost
 	} from "@/utils/request.js";
-	import uniIcons from "@/components/uni/uni-icons/uni-icons.vue"
+	import uniIcons from "@/components/uni/uni-icons/uni-icons.vue";
 
 	export default {
 		data() {
@@ -57,6 +74,12 @@
 			this.themeId = options.themeId;
 			this.getThemeDetail();
 
+		},
+		onShareAppMessage(res) {
+			return {
+				title: "美食分享",
+				path: "pages/theme/theme"
+			}
 		},
 		methods: {
 			async getThemeDetail() {
@@ -87,6 +110,13 @@
 
 			handleCollection() {
 				this.isCollected = !(this.isCollected);
+			},
+			
+			toIndex(){
+				console.log("hhhhhhhhhhhhhh");
+				uni.switchTab({
+					url:"/pages/index/index"
+				})
 			}
 
 
@@ -169,6 +199,43 @@
 								margin-top: 10rpx;
 							}
 						}
+					}
+				}
+			}
+
+			.bottom {
+				width: 100%;
+				height: 100rpx;
+				position: fixed;
+				left: 0;
+				bottom: 0;
+				background-color: #E9E9E9;
+				display: flex;
+				justify-content: space-around;
+
+				.tab_item {
+					margin-top: 10rpx;
+					
+					.text{
+						
+						text-align: center;
+						margin-left: -12rpx;
+					}
+					.btn {
+						border: 0;
+
+						.share-btn {
+							width: 80rpx;
+							height: 40rpx;
+							padding: 0;
+							background-color: #E9E9E9;
+							line-height: 40rpx;
+						}
+
+						button::after {
+							border: none;
+						}
+
 					}
 				}
 			}
