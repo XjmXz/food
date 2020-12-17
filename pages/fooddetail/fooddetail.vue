@@ -79,24 +79,32 @@
 			</view>
 
 			<view class="tab_item">
-				<!-- #ifdef H5|MP-ALIPAY-->
+				
+				<!-- #ifdef MP-ALIPAY | H5-->
 				<uni-icons type="redo" size="20"></uni-icons>
-				<view class="">分享</view>
+				<view class="" @click="shareOn">分享</view>
+				<uni-popup ref="sharepopup" type="bottom">
+					<share-btn :sharedataTemp="sharedata"></share-btn>
+				</uni-popup>
 				
 				<!-- #endif -->
 				
+				
+
 				<!-- #ifdef MP-WEIXIN -->
 				<uni-icons type="redo" size="20"></uni-icons>
 				<view class="btn"><button class="share-btn" open-type="share">分享</button></view>
 				<!-- #endif -->
-				
-				
+
+
 			</view>
 		</view>
 	</view>
 </template>
 
 <script>
+	import uniPopup from '@/components/uni-popup/uni-popup.vue';
+	import shareBtn from '@/components/share-btn/share-btn.vue';
 	import uniIcons from "@/components/uni/uni-icons/uni-icons.vue";
 	import {
 		myRequestPost
@@ -110,23 +118,32 @@
 				step_length: "",
 				make: {},
 				count: "",
-				n: 0
+				n: 0,
+				sharedata: {
+					type: 1,
+					strShareUrl: "http://www.baidu.com",
+					strShareTitle: "分享标题",
+					strShareSummary: "分享总结",
+					strShareImageUrl: "http://www.xuelejia.com/xljapp/h5/static/aboutUsLogo.png"
+				},
 
 
 			};
 		},
 
 		components: {
-			uniIcons
+			uniIcons,
+			uniPopup,
+			shareBtn
 		},
 		onLoad(options) {
 			this.id = options.id;
 			this.getFoodDetail();
 		},
-		onShareAppMessage(res){
-			return{
-				title:"美食分享",
-				path:"pages/themeDetails/themeDetails"
+		onShareAppMessage(res) {
+			return {
+				title: "美食分享",
+				path: "pages/themeDetails/themeDetails"
 			}
 		},
 		methods: {
@@ -160,7 +177,11 @@
 				uni.switchTab({
 					url: "/pages/index/index"
 				})
-			},	
+			},
+			shareOn() {
+				console.log("jjjjjjjjjj");
+				this.$refs.sharepopup.open();
+			}
 		}
 
 	}
@@ -171,18 +192,19 @@
 		width: 100%;
 		height: 100%;
 		font-family: "楷体";
+		background-color: #FFFFFF;
 
 		.img {
 			width: 750rpx;
 			height: 450rpx;
-			position:relative;
+			position: relative;
 
 			image {
 				width: 750rpx;
 				height: 450rpx;
 				background-size: cover;
 			}
-			
+
 			.box {
 				width: 100rpx;
 				height: auto;
@@ -191,43 +213,47 @@
 				position: absolute;
 				left: 50%;
 				margin-left: -50rpx;
-				bottom:-100rpx;
-				
-			
+				bottom: -100rpx;
+
+
 				.name {
 					margin: 0 auto;
 					width: 80rpx;
-					height:auto;
+					height: auto;
 					border: 1px solid;
 					border-radius: 30rpx;
 					font-size: 42rpx;
 					text-align: center;
-			
+
 				}
 			}
-			
-			.collect{
+
+			.collect {
 				position: absolute;
-				width:150rpx;
-				height:30rpx;
-				right:-20rpx;
-				text{
+				width: 150rpx;
+				height: 30rpx;
+				right: -20rpx;
+
+				text {
 					font-size: 24rpx;
 					font-weight: bold;
-					color:#999999;
+					color: #999999;
 					text-align: right;
 				}
-				
+
 			}
 
 		}
 
 		.continer {
 			width: 700rpx;
-			margin-top:150rpx;
-			margin-left: 25rpx;
+			padding-left: 25rpx;
+			padding-right: 25rpx;
+			margin-top: 150rpx;
 			display: flex;
 			flex-direction: column;
+			background-color: #FFFFFF;
+
 			.brief {
 				.text {
 					font-size: 40rpx;
@@ -245,7 +271,7 @@
 			}
 
 			.materials {
-				width:500rpx;
+				width: 500rpx;
 				font-size: 40rpx;
 				color: #e9a815;
 				font-weight: bold;
@@ -336,20 +362,22 @@
 
 			.tab_item {
 				margin-top: 10rpx;
-				.btn{
-					border:0;
-					.share-btn{
-						width:80rpx;
-						height:40rpx;
-						padding:0;
+
+				.btn {
+					border: 0;
+
+					.share-btn {
+						width: 80rpx;
+						height: 40rpx;
+						padding: 0;
 						background-color: #E9E9E9;
 						line-height: 40rpx;
 					}
-					
-					button::after{
-					  border: none;
+
+					button::after {
+						border: none;
 					}
-					
+
 				}
 			}
 

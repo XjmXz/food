@@ -1,7 +1,7 @@
 <template>
 	<view class="continer">
 		<view class="top">
-			<view class="login">
+			<view class="login" @click="tomine">
 				登录
 			</view>
 		</view>
@@ -19,6 +19,13 @@
 			return {
 				
 			};
+		},
+		methods:{
+			tomine(){
+				uni.navigateTo({
+					url:"/pages/mine/mine"
+				})
+			}
 		}
 	}
 </script>

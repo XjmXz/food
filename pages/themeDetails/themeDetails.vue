@@ -1,47 +1,52 @@
 <template>
-	<view class="continer">
-		<view class="title">
-			{{themeName}}
-		</view>
-		<view class="themeIntroduce">
-			{{themeDescription}}
-		</view>
-		<view class="title2">推荐菜</view>
-		<view v-for="item in themeList" :key="item.id" class="buttons">
-			<button type="default" class="button_item" @click="goFoodDetails(item)">{{item.name}}</button>
-		</view>
+	<view>
+		<view class="continer">
+			<view class="title">{{themeName}}</view>
+			<view class="themeIntroduce">{{themeDescription}}</view>
+			<view class="title2">推荐菜</view>
+			<view v-for="item in themeList" :key="item.id" class="buttons">
+				<button type="default" class="button_item" @click="goFoodDetails(item)">{{item.name}}</button>
+			</view>
 
-		<view class="foodsPhoto" v-for="item in themeList" :key="item.id">
-			<view class="Photo_item">
-				<image :src="item.imgLarge" @click="goFoodDetails(item)"></image>
-				<view class="text">
-					<text class="left">{{item.name}}</text>
-					<view class="right">
-						<uni-icons type="heart" size="20"></uni-icons>
-						<text class="collect">{{item.collectCount}}人收藏</text>
+			<view class="foodsPhoto" v-for="item in themeList" :key="item.id">
+				<view class="Photo_item">
+					<image :src="item.imgLarge" @click="goFoodDetails(item)"></image>
+					<view class="text">
+						<text class="left">{{item.name}}</text>
+						<view class="right">
+							<uni-icons type="heart" size="20"></uni-icons>
+							<text class="collect">{{item.collectCount}}人收藏</text>
+						</view>
 					</view>
 				</view>
 			</view>
-		</view>
-
-		<view class="bottom">
-			<view class="tab_item" @click="toIndex">
-				<uni-icons type="home" size="20"></uni-icons>
-				<view class="text">
-					首页
-				</view>
+			
+			<view class="blank">
+				
 			</view>
-			<view class="tab_item">
-				<!-- #ifdef H5|MP-ALIPAY-->
-				<uni-icons type="redo" size="20"></uni-icons>
-				<view class="text">分享</view>
 
-				<!-- #endif -->
+			<view class="bottom">
+				<view class="tab_item" @click="toIndex">
+					<uni-icons type="home" size="20"></uni-icons>
+					<view class="text">
+						首页
+					</view>
+				</view>
+				<view class="tab_item">
+					<!-- #ifdef H5|MP-ALIPAY-->
+					<uni-icons type="redo" size="20"></uni-icons>
+					<view class="" @click="shareOn">分享</view>
+					<uni-popup ref="sharepopup" type="bottom">
+						<share-btn :sharedataTemp="sharedata"></share-btn>
+					</uni-popup>
 
-				<!-- #ifdef MP-WEIXIN -->
-				<uni-icons type="redo" size="20"></uni-icons>
-				<view class="btn"><button class="share-btn text" open-type="share">分享</button></view>
-				<!-- #endif -->
+					<!-- #endif -->
+
+					<!-- #ifdef MP-WEIXIN -->
+					<uni-icons type="redo" size="20"></uni-icons>
+					<view class="btn"><button class="share-btn text" open-type="share">分享</button></view>
+					<!-- #endif -->
+				</view>
 			</view>
 		</view>
 	</view>
@@ -52,6 +57,8 @@
 		myRequestPost
 	} from "@/utils/request.js";
 	import uniIcons from "@/components/uni/uni-icons/uni-icons.vue";
+	import uniPopup from '@/components/uni-popup/uni-popup.vue';
+	import shareBtn from '@/components/share-btn/share-btn.vue';
 
 	export default {
 		data() {
@@ -61,13 +68,22 @@
 				themeName: "",
 				themesIdList: [],
 				themeList: {},
-				isCollected: true
+				isCollected: true,
+				sharedata: {
+					type: 1,
+					strShareUrl: "http://www.baidu.com",
+					strShareTitle: "分享标题",
+					strShareSummary: "分享总结",
+					strShareImageUrl: "http://www.xuelejia.com/xljapp/h5/static/aboutUsLogo.png"
+				},
 
 
 			}
 		},
 		components: {
-			uniIcons
+			uniIcons,
+			uniPopup,
+			shareBtn
 		},
 
 		onLoad(options) {
@@ -111,12 +127,15 @@
 			handleCollection() {
 				this.isCollected = !(this.isCollected);
 			},
-			
-			toIndex(){
-				console.log("hhhhhhhhhhhhhh");
+
+			toIndex() {
 				uni.switchTab({
-					url:"/pages/index/index"
+					url: "/pages/index/index"
 				})
+			},
+			shareOn() {
+				console.log("jjjjjjjjjj");
+				this.$refs.sharepopup.open();
 			}
 
 
@@ -129,18 +148,25 @@
 		width: 750rpx;
 		height: 100%;
 		font-family: "楷体";
-
+		
 		.continer {
 			width: 700rpx;
-			height: 100%;
-			margin: 20rpx auto;
-
+			padding-left: 25rpx;
+			padding-right: 25rpx;
+			background-color: #FFFFFF;
+			
+			.blank{
+				width:700rpx;
+				height:300rpx;
+			}
 			.title {
 				width: 100%;
+				height:80rpx;
 				font-size: 40rpx;
 				font-weight: bold;
 				font-family: "楷体";
 				text-align: center;
+				padding-top:20rpx;
 
 			}
 
@@ -215,12 +241,13 @@
 
 				.tab_item {
 					margin-top: 10rpx;
-					
-					.text{
-						
+
+					.text {
+
 						text-align: center;
 						margin-left: -12rpx;
 					}
+
 					.btn {
 						border: 0;
 

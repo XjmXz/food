@@ -10,7 +10,7 @@
 			<button type="default" @click="searchOne(foodsList[4])" class="btn">{{foodsList[4]}}</button>
 		</view>
 		
-		<view class="" v-for="item in foodList1" :key="item.name">
+		<view v-for="item in foodList1" :key="item.name" @click="toFoodDetail(item)">
 			<view class="img">
 				<image :src="item.imgSmall" mode=""></image>
 				<view class="text">
@@ -19,7 +19,7 @@
 				</view>
 			</view>
 		</view>
-		<view class="" v-for="item in foodList2" :key="item.name">
+		<view class="" v-for="item in foodList2" :key="item.name" @click="toFoodDetail(item)">
 			<view class="img">
 				<image :src="item.imgSmall" mode=""></image>
 				<view class="text">
@@ -28,7 +28,7 @@
 				</view>
 			</view>
 		</view>
-		<view class="" v-for="item in foodList3" :key="item.name">
+		<view class="" v-for="item in foodList3" :key="item.name" @click="toFoodDetail(item)">
 			<view class="img">
 				<image :src="item.imgSmall" mode=""></image>
 				<view class="text">
@@ -37,7 +37,7 @@
 				</view>
 			</view>
 		</view>
-		<view class="" v-for="item in foodList4" :key="item.name">
+		<view class="" v-for="item in foodList4" :key="item.name" @click="toFoodDetail(item)">
 			<view class="img">
 				<image :src="item.imgSmall" mode=""></image>
 				<view class="text">
@@ -68,7 +68,7 @@
 				foodList3:{},
 				foodList4:{},
 				flag: true,
-				foodsList:["鱼香肉丝","可乐鸡翅","排骨","沙拉","面"]
+				foodsList:["东坡肉","可乐鸡翅","排骨","沙拉","面"]
 			};
 		},
 
@@ -101,6 +101,13 @@
 				if (this.foodList3.length==0 && this.foodList4.length==0) {
 					this.flag = false;
 				}
+			},
+			
+			toFoodDetail(item){
+				console.log("mmmmmmmmmmmmmmmm");
+				uni.navigateTo({
+					url: `/pages/fooddetail/fooddetail?id=${item.id}`
+				})
 			}
 
 		},
