@@ -70,6 +70,9 @@
 				</view>
 			</view>
 		</view>
+		<view class="anniu">
+			<button type="warn" size="mini"><uni-icons type="contact" size="15"></uni-icons>下载菜谱到手机</button>
+		</view>
 	</view>
 </template>
 
@@ -78,7 +81,11 @@
 		myRequest,
 		myRequestPost
 	} from "@/utils/request.js"
+	import uniIcons from "@/components/uni/uni-icons/uni-icons.vue"
 	export default {
+		components:{
+			uniIcons
+		},
 		data() {
 			return {
 				id: "",
@@ -119,7 +126,7 @@
 
 		.caiming {
 			width: 60rpx;
-			height: 180rpx;
+			height: 214rpx;
 			color: #e9a06f;
 			text-align: center;
 			border: 1px solid #e9a06f;
@@ -217,5 +224,9 @@
 			width: 100%;
 			border-radius: 10rpx;
 		}
+	}
+	.anniu{
+		width: 300rpx;
+		margin: 30rpx auto;
 	}
 </style>

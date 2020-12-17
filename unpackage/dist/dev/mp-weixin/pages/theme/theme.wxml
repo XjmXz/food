@@ -1,1 +1,1 @@
-<view>这是主题页面</view>
+<view><block wx:for="{{theme}}" wx:for-item="item" wx:for-index="__i0__" wx:key="id"><view class="recommend"><view><view data-event-opts="{{[['tap',[['goZhuTi',['$0'],[[['theme','id',item.id]]]]]]]}}" class="recommend-img" bindtap="__e"><image src="{{item.imageUrl}}" mode></image></view><view class="recommend-foot"><text class="text-one">{{item.name}}</text><text>{{item.subName}}</text></view></view></view></block></view>

@@ -173,7 +173,7 @@ __webpack_require__.r(__webpack_exports__);
 
 
 
-var _request = __webpack_require__(/*! @/utils/request.js */ 22);function _interopRequireDefault(obj) {return obj && obj.__esModule ? obj : { default: obj };}function asyncGeneratorStep(gen, resolve, reject, _next, _throw, key, arg) {try {var info = gen[key](arg);var value = info.value;} catch (error) {reject(error);return;}if (info.done) {resolve(value);} else {Promise.resolve(value).then(_next, _throw);}}function _asyncToGenerator(fn) {return function () {var self = this,args = arguments;return new Promise(function (resolve, reject) {var gen = fn.apply(self, args);function _next(value) {asyncGeneratorStep(gen, resolve, reject, _next, _throw, "next", value);}function _throw(err) {asyncGeneratorStep(gen, resolve, reject, _next, _throw, "throw", err);}_next(undefined);});};}var uniSearchBar = function uniSearchBar() {__webpack_require__.e(/*! require.ensure | components/uni/uni-search-bar/uni-search-bar */ "components/uni/uni-search-bar/uni-search-bar").then((function () {return resolve(__webpack_require__(/*! @/components/uni/uni-search-bar/uni-search-bar.vue */ 77));}).bind(null, __webpack_require__)).catch(__webpack_require__.oe);};var uniGrid = function uniGrid() {__webpack_require__.e(/*! require.ensure | components/uni/uni-grid/uni-grid */ "components/uni/uni-grid/uni-grid").then((function () {return resolve(__webpack_require__(/*! @/components/uni/uni-grid/uni-grid.vue */ 84));}).bind(null, __webpack_require__)).catch(__webpack_require__.oe);};var uniGridItem = function uniGridItem() {__webpack_require__.e(/*! require.ensure | components/uni/uni-grid-item/uni-grid-item */ "components/uni/uni-grid-item/uni-grid-item").then((function () {return resolve(__webpack_require__(/*! @/components/uni/uni-grid-item/uni-grid-item.vue */ 91));}).bind(null, __webpack_require__)).catch(__webpack_require__.oe);};var _default =
+var _request = __webpack_require__(/*! @/utils/request.js */ 22);function _interopRequireDefault(obj) {return obj && obj.__esModule ? obj : { default: obj };}function asyncGeneratorStep(gen, resolve, reject, _next, _throw, key, arg) {try {var info = gen[key](arg);var value = info.value;} catch (error) {reject(error);return;}if (info.done) {resolve(value);} else {Promise.resolve(value).then(_next, _throw);}}function _asyncToGenerator(fn) {return function () {var self = this,args = arguments;return new Promise(function (resolve, reject) {var gen = fn.apply(self, args);function _next(value) {asyncGeneratorStep(gen, resolve, reject, _next, _throw, "next", value);}function _throw(err) {asyncGeneratorStep(gen, resolve, reject, _next, _throw, "throw", err);}_next(undefined);});};}var uniSearchBar = function uniSearchBar() {__webpack_require__.e(/*! require.ensure | components/uni/uni-search-bar/uni-search-bar */ "components/uni/uni-search-bar/uni-search-bar").then((function () {return resolve(__webpack_require__(/*! @/components/uni/uni-search-bar/uni-search-bar.vue */ 115));}).bind(null, __webpack_require__)).catch(__webpack_require__.oe);};var uniGrid = function uniGrid() {__webpack_require__.e(/*! require.ensure | components/uni/uni-grid/uni-grid */ "components/uni/uni-grid/uni-grid").then((function () {return resolve(__webpack_require__(/*! @/components/uni/uni-grid/uni-grid.vue */ 122));}).bind(null, __webpack_require__)).catch(__webpack_require__.oe);};var uniGridItem = function uniGridItem() {__webpack_require__.e(/*! require.ensure | components/uni/uni-grid-item/uni-grid-item */ "components/uni/uni-grid-item/uni-grid-item").then((function () {return resolve(__webpack_require__(/*! @/components/uni/uni-grid-item/uni-grid-item.vue */ 129));}).bind(null, __webpack_require__)).catch(__webpack_require__.oe);};var _default =
 
 
 
@@ -194,17 +194,17 @@ var _request = __webpack_require__(/*! @/utils/request.js */ 22);function _inter
       {
         icons: "t-icon t-icon-chufang",
         title: "烤箱菜谱",
-        path: "/pages/zaoju/zaoju" },
+        path: "/pages/kaoxiang/kaoxiang" },
 
       {
         icons: "t-icon t-icon-ziyuan",
         title: "蒸汽炉菜谱",
-        path: "/pages/zaoju/zaoju" },
+        path: "/pages/zhengqilu/zhengqilu" },
 
       {
         icons: "t-icon t-icon-kaoxiang",
         title: "微波炉菜谱",
-        path: "/pages/zaoju/zaoju" }],
+        path: "/pages/weibolu/weibolu" }],
 
 
       menus: [] };
@@ -235,6 +235,11 @@ var _request = __webpack_require__(/*! @/utils/request.js */ 22);function _inter
     goZhuTi: function goZhuTi() {
       uni.navigateTo({
         url: "../zhuti/zhuti" });
+
+    },
+    goPractice: function goPractice(item) {
+      uni.navigateTo({
+        url: "../practice/practice?id=" + item.id });
 
     } } };exports.default = _default;
 /* WEBPACK VAR INJECTION */}.call(this, __webpack_require__(/*! ./node_modules/@dcloudio/uni-mp-weixin/dist/index.js */ 1)["default"]))

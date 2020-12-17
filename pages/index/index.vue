@@ -19,7 +19,7 @@
 			</view>
 			<view class="" v-for="item in menus" :key="item.id">
 				<view class="recommend-img">
-					<image :src="item.imgLarge" mode=""></image>
+					<image :src="item.imgLarge" mode="" @click="goPractice(item)"></image>
 				</view>
 				<view class="recommend-foot">
 					<text>{{item.name}}</text>
@@ -55,17 +55,17 @@
 					{
 						icons: "t-icon t-icon-chufang",
 						title: "烤箱菜谱",
-						path: "/pages/zaoju/zaoju"
+						path: "/pages/kaoxiang/kaoxiang"
 					},
 					{
 						icons: "t-icon t-icon-ziyuan",
 						title: "蒸汽炉菜谱",
-						path: "/pages/zaoju/zaoju"
+						path: "/pages/zhengqilu/zhengqilu"
 					},
 					{
 						icons: "t-icon t-icon-kaoxiang",
 						title: "微波炉菜谱",
-						path: "/pages/zaoju/zaoju"
+						path: "/pages/weibolu/weibolu"
 					}
 				],
 				menus:[]
@@ -96,6 +96,11 @@
 			goZhuTi(){
 				uni.navigateTo({
 					url:"../zhuti/zhuti"
+				})
+			},
+			goPractice(item){
+				uni.navigateTo({
+					url:"../practice/practice?id="+item.id
 				})
 			}
 		}

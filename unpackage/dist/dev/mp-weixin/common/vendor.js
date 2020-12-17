@@ -1935,7 +1935,33 @@ function normalizeComponent (
 
 /***/ }),
 
-/***/ 103:
+/***/ 11:
+/*!**************************************************************!*\
+  !*** C:/Users/pangqiu/Desktop/Roki/static/font/iconfont.css ***!
+  \**************************************************************/
+/*! no static exports found */
+/***/ (function(module, exports, __webpack_require__) {
+
+// extracted by mini-css-extract-plugin
+    if(false) { var cssReload; }
+  
+
+/***/ }),
+
+/***/ 12:
+/*!****************************************************************************************!*\
+  !*** C:/Users/pangqiu/Desktop/Roki/static/font/iconfont-weapp/iconfont-weapp-icon.css ***!
+  \****************************************************************************************/
+/*! no static exports found */
+/***/ (function(module, exports, __webpack_require__) {
+
+// extracted by mini-css-extract-plugin
+    if(false) { var cssReload; }
+  
+
+/***/ }),
+
+/***/ 141:
 /*!***********************************************************************!*\
   !*** C:/Users/pangqiu/Desktop/Roki/components/uni/uni-icons/icons.js ***!
   \***********************************************************************/
@@ -2074,32 +2100,6 @@ Object.defineProperty(exports, "__esModule", { value: true });exports.default = 
   "cloud-download-filled": "\uE8E9",
   "headphones": "\uE8BF",
   "shop": "\uE609" };exports.default = _default;
-
-/***/ }),
-
-/***/ 11:
-/*!**************************************************************!*\
-  !*** C:/Users/pangqiu/Desktop/Roki/static/font/iconfont.css ***!
-  \**************************************************************/
-/*! no static exports found */
-/***/ (function(module, exports, __webpack_require__) {
-
-// extracted by mini-css-extract-plugin
-    if(false) { var cssReload; }
-  
-
-/***/ }),
-
-/***/ 12:
-/*!****************************************************************************************!*\
-  !*** C:/Users/pangqiu/Desktop/Roki/static/font/iconfont-weapp/iconfont-weapp-icon.css ***!
-  \****************************************************************************************/
-/*! no static exports found */
-/***/ (function(module, exports, __webpack_require__) {
-
-// extracted by mini-css-extract-plugin
-    if(false) { var cssReload; }
-  
 
 /***/ }),
 
@@ -8949,7 +8949,8 @@ if (hadRuntime) {
 /***/ (function(module, exports, __webpack_require__) {
 
 "use strict";
-/* WEBPACK VAR INJECTION */(function(uni) {Object.defineProperty(exports, "__esModule", { value: true });exports.myRequestGet = myRequestGet;exports.myRequestPost = myRequestPost;function _defineProperty(obj, key, value) {if (key in obj) {Object.defineProperty(obj, key, { value: value, enumerable: true, configurable: true, writable: true });} else {obj[key] = value;}return obj;}var baseUrl = "https://api.myroki.com/rest/cks";
+/* WEBPACK VAR INJECTION */(function(uni) {Object.defineProperty(exports, "__esModule", { value: true });exports.myRequestGet = myRequestGet;exports.myRequestPost = myRequestPost;exports.myRequestPostTwo = myRequestPostTwo;function _defineProperty(obj, key, value) {if (key in obj) {Object.defineProperty(obj, key, { value: value, enumerable: true, configurable: true, writable: true });} else {obj[key] = value;}return obj;}var baseUrl = "https://api.myroki.com/rest/cks";
+var baseUrlTwo = "https://api.myroki.com/rest";
 
 function myRequestGet(url, data) {
   return new Promise(function (resolve, reject) {
@@ -8988,6 +8989,29 @@ function myRequestPost(url, data) {
     function fail(err) {
       reject(err);
     }), _uni$request));
+
+  });
+}
+function myRequestPostTwo(url, data) {
+  return new Promise(function (resolve, reject) {var _uni$request2;
+    uni.request((_uni$request2 = {
+
+      url: url }, _defineProperty(_uni$request2, "url",
+
+
+    baseUrlTwo + url), _defineProperty(_uni$request2, "header",
+
+    {
+      'Content-Type': 'application/json' }), _defineProperty(_uni$request2, "method",
+
+    "POST"), _defineProperty(_uni$request2, "data",
+    data), _defineProperty(_uni$request2, "success",
+    function success(res) {
+      resolve(res.data);
+    }), _defineProperty(_uni$request2, "fail",
+    function fail(err) {
+      reject(err);
+    }), _uni$request2));
 
   });
 }

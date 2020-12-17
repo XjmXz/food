@@ -8,7 +8,11 @@
     "pages/square/square",
     "pages/fooddetail/fooddetail",
     "pages/zhuti/zhuti",
-    "pages/practice/practice"
+    "pages/practice/practice",
+    "pages/kaoxiang/kaoxiang",
+    "pages/zhengqilu/zhengqilu",
+    "pages/weibolu/weibolu",
+    "pages/playvideo/playvideo"
   ],
   "subPackages": [],
   "window": {
@@ -52,5 +56,5 @@
     ]
   },
   "usingComponents": {},
-  "sitemapLocation": "sitemap12.json"
+  "sitemapLocation": "sitemap22.json"
 }
