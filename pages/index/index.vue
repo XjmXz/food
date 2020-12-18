@@ -1,6 +1,11 @@
 <template>
 	<view class="content">
-		<uni-search-bar :radius="100" placeholder="今天想吃点啥？" @confirm="search"></uni-search-bar>
+		<!-- <uni-search-bar :radius="100" placeholder="今天想吃点啥？" @confirm="search"></uni-search-bar> -->
+		<view class="box">
+			<view class="input-box" @click="toSearch">
+				<uni-search-bar placeholder="今天想吃点啥？" radius="100" disabled="true" cancelButton="none"></uni-search-bar>
+			</view>
+		</view>
 		<swiper class="swiper" indicator-dots :autoplay="true" :interval="3000" circular>
 			<swiper-item v-for="item in swipers" :key="item.id">
 				<image :src="item.imageUrl"></image>
@@ -46,22 +51,26 @@
 				navs: [{
 						icons: "t-icon t-icon-guotiex",
 						title: "灶具菜谱",
-						path: "/pages/zaoju/zaoju"
+						path: "/pages/zaoju/zaoju",
+						dc:'RRQZ'
 					},
 					{
 						icons: "t-icon t-icon-wan",
 						title: "烤箱菜谱",
-						path: "/pages/oven/oven"
+						path: "/pages/zaoju/zaoju",
+						dc:'RDKX'
 					},
 					{
 						icons: "t-icon t-icon-xiaolongbao",
 						title: "蒸汽炉菜谱",
-						path: "/pages/zaoju/zaoju"
+						path: "/pages/zaoju/zaoju",
+						dc:'RZQL'
 					},
 					{
 						icons: "t-icon t-icon-xiaolongbao",
 						title: "微波炉菜谱",
-						path: "/pages/zaoju/zaoju"
+						path: "/pages/zaoju/zaoju",
+						dc:"RWBL"
 					}
 				]
 			}
@@ -87,16 +96,22 @@
 				})
 				console.log(result.cookbooks);
 				this.menu = result.cookbooks;
-				console.log(result.cookbooks.dcs,"14566");
 			},
 			goZaoju(item) {
 				uni.navigateTo({
-					url: item.path
+					url: "/pages/zaoju/zaoju?dc="+item.dc
 				})
+				console.log(item,"1005")
 			},
 			itemClick(item) {
 				uni.navigateTo({
 					url: '/pages/fooddetail/fooddetail?id=' + item.id
+				})
+			},
+			toSearch() {
+				console.log("hhhhhhhhhhhhhhhhh");
+				uni.navigateTo({
+					url: "/pages/search/search"
 				})
 			}
 		}
@@ -105,6 +120,16 @@
 
 <style lang="scss">
 	.content {
+		.box {
+			width: 750rpx;
+			height: 120rpx;
+			display: flex;
+
+			.input-box {
+				width: 750rpx;
+			}
+		}
+
 		.swiper {
 			height: 380rpx;
 

@@ -25,7 +25,6 @@
 				menu: [],
 				limit: 10,
 				flag: false,
-
 			};
 		},
 		onLoad(options) {
@@ -35,7 +34,7 @@
 		methods: {
 			async getSwipers() {
 				let result = await myRequestPost("/api/cookbook/grounding/get-by-dc", {
-					"dc": "RRQZ",
+					"dc": this.$mp.query.dc,
 					"cookbookType": "all",
 					"start": 0,
 					"limit": this.limit,
@@ -45,6 +44,9 @@
 					this.menu = [...result.cookbooks];
 				}
 				console.log(result)
+				console.log(this, '55555555')
+				console.log(this.$mp.query.dc)
+
 			},
 			onReachBottom() {
 				this.limit += 10;
@@ -54,13 +56,7 @@
 					//没有更多数据了
 					this.flag = true;
 				}
-			},
-			itemClick(item) {
-				uni.navigateTo({
-					url: '/pages/fooddetail/fooddetail?id=' + item.id
-				})
 			}
 		}
 	}
 </script>
-
