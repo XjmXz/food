@@ -21,10 +21,10 @@ export function myRequestGet(url, data) {
 export function myRequestPost(url, data) {
 	return new Promise((resolve, reject) => {
 		uni.request({
-			//#ifndef H5
+			//#ifdef H5
 			url: url,
 			//#endif
-			//#ifndef MP-WEIXIN | MP-MP-ALIPAY
+			//#ifdef MP-WEIXIN | MP-ALIPAY
 			url: baseUrl + url,
 			//#endif
 			header: {
@@ -44,10 +44,10 @@ export function myRequestPost(url, data) {
 export function myRequestPostTwo(url, data) {
 	return new Promise((resolve, reject) => {
 		uni.request({
-			//#ifndef H5
-			url: url,
+			//#ifdef H5
+			url: "/nocks"+url,
 			//#endif
-			//#ifndef MP-WEIXIN | MP-MP-ALIPAY
+			//#ifdef MP-WEIXIN | MP-ALIPAY
 			url: baseUrlTwo + url,
 			//#endif
 			header: {

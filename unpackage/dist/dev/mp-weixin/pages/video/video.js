@@ -130,7 +130,7 @@ __webpack_require__.r(__webpack_exports__);
 /***/ (function(module, exports, __webpack_require__) {
 
 "use strict";
-/* WEBPACK VAR INJECTION */(function(uni) {Object.defineProperty(exports, "__esModule", { value: true });exports.default = void 0;var uniIcons = function uniIcons() {Promise.all(/*! require.ensure | components/uni/uni-icons/uni-icons */[__webpack_require__.e("common/vendor"), __webpack_require__.e("components/uni/uni-icons/uni-icons")]).then((function () {return resolve(__webpack_require__(/*! @/components/uni/uni-icons/uni-icons.vue */ 136));}).bind(null, __webpack_require__)).catch(__webpack_require__.oe);};var _default =
+/* WEBPACK VAR INJECTION */(function(uni) {Object.defineProperty(exports, "__esModule", { value: true });exports.default = void 0;var _regenerator = _interopRequireDefault(__webpack_require__(/*! ./node_modules/@babel/runtime/regenerator */ 19));
 
 
 
@@ -147,6 +147,11 @@ __webpack_require__.r(__webpack_exports__);
 
 
 
+
+
+
+
+var _request = __webpack_require__(/*! @/utils/request.js */ 22);function _interopRequireDefault(obj) {return obj && obj.__esModule ? obj : { default: obj };}function asyncGeneratorStep(gen, resolve, reject, _next, _throw, key, arg) {try {var info = gen[key](arg);var value = info.value;} catch (error) {reject(error);return;}if (info.done) {resolve(value);} else {Promise.resolve(value).then(_next, _throw);}}function _asyncToGenerator(fn) {return function () {var self = this,args = arguments;return new Promise(function (resolve, reject) {var gen = fn.apply(self, args);function _next(value) {asyncGeneratorStep(gen, resolve, reject, _next, _throw, "next", value);}function _throw(err) {asyncGeneratorStep(gen, resolve, reject, _next, _throw, "throw", err);}_next(undefined);});};}var uniIcons = function uniIcons() {Promise.all(/*! require.ensure | components/uni/uni-icons/uni-icons */[__webpack_require__.e("common/vendor"), __webpack_require__.e("components/uni/uni-icons/uni-icons")]).then((function () {return resolve(__webpack_require__(/*! @/components/uni/uni-icons/uni-icons.vue */ 136));}).bind(null, __webpack_require__)).catch(__webpack_require__.oe);};var _default =
 
 
 
@@ -165,26 +170,15 @@ __webpack_require__.r(__webpack_exports__);
     this.getVideo();
   },
   methods: {
-    getVideo: function getVideo() {var _this = this;
-      uni.request({
-        url: "https://api.myroki.com/rest/ops/api/source/getLocalVideoList",
-        header: {
-          'Content-Type': 'application/json' },
-
-        data: {
-          "userId": null,
-          "pageSize": 50 },
-
-        method: "POST",
-        success: function success(res) {
-          _this.videos = res.data.datas;
-        } });
-
+    getVideo: function getVideo() {var _this = this;return _asyncToGenerator( /*#__PURE__*/_regenerator.default.mark(function _callee() {var res;return _regenerator.default.wrap(function _callee$(_context) {while (1) {switch (_context.prev = _context.next) {case 0:_context.next = 2;return (
+                  (0, _request.myRequestPostTwo)("/ops/api/source/getLocalVideoList", {
+                    "userId": null, "pageSize": 50 }));case 2:res = _context.sent;
+                console.log(res);
+                _this.videos = res.datas;case 5:case "end":return _context.stop();}}}, _callee);}))();
     },
     goVideo: function goVideo(item) {
       uni.navigateTo({
         url: "../playvideo/playvideo?id=" + item.courseId + "&playUrl=" + item.playUrl });
-
 
     } } };exports.default = _default;
 /* WEBPACK VAR INJECTION */}.call(this, __webpack_require__(/*! ./node_modules/@dcloudio/uni-mp-weixin/dist/index.js */ 1)["default"]))

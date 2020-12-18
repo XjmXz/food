@@ -3,17 +3,17 @@
 		{
 			"path": "pages/index/index",
 			"style": {
-				"navigationBarTitleText": "美食"
+				"navigationBarTitleText": "ROLI美食"
 			}
 		}, {
 			"path": "pages/theme/theme",
 			"style": {
-				"navigationBarTitleText": "主题"
+				"navigationBarTitleText": "主题列表"
 			}
 		}, {
 			"path": "pages/video/video",
 			"style": {
-				"navigationBarTitleText": "视频"
+				"navigationBarTitleText": "视频列表"
 			}
 		}, {
 			"path": "pages/my/my",
@@ -29,7 +29,7 @@
         },{
             "path" : "pages/square/square",
             "style" : {
-				"navigationBarTitleText": "来到广场"
+				"navigationBarTitleText": "食材大全"
 			}
         }
         ,{
@@ -43,7 +43,7 @@
             "path" : "pages/zhuti/zhuti",
             "style" :                                                                                    
             {
-                "navigationBarTitleText": "",
+                "navigationBarTitleText": "主题详情",
                 "enablePullDownRefresh": false
             }
             
@@ -61,7 +61,7 @@
             "path" : "pages/kaoxiang/kaoxiang",
             "style" :                                                                                    
             {
-                "navigationBarTitleText": "",
+                "navigationBarTitleText": "烤箱菜谱",
                 "enablePullDownRefresh": false
             }
             
@@ -70,7 +70,7 @@
             "path" : "pages/zhengqilu/zhengqilu",
             "style" :                                                                                    
             {
-                "navigationBarTitleText": "",
+                "navigationBarTitleText": "蒸汽炉菜谱",
                 "enablePullDownRefresh": false
             }
             
@@ -79,7 +79,7 @@
             "path" : "pages/weibolu/weibolu",
             "style" :                                                                                    
             {
-                "navigationBarTitleText": "",
+                "navigationBarTitleText": "微波炉菜谱",
                 "enablePullDownRefresh": false
             }
             
@@ -120,10 +120,10 @@
 				"selectedIconPath":"static/tabs/视频_active.png"
 			},
 			{
-				"text": "广场",
+				"text": "食材大全",
 				"pagePath": "pages/square/square",
-				"iconPath":"static/tabs/我的.png",
-				"selectedIconPath":"static/tabs/我的_active.png"
+				"iconPath":"static/tabs/书籍.png",
+				"selectedIconPath":"static/tabs/书籍_active.png"
 			},
 			{
 				"text": "我的",

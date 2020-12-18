@@ -1,5 +1,5 @@
 {
-  "navigationBarTitleText": "视频",
+  "navigationBarTitleText": "视频列表",
   "usingComponents": {
     "uni-icons": "/components/uni/uni-icons/uni-icons"
   }

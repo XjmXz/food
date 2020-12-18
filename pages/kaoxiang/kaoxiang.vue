@@ -1,6 +1,6 @@
 <template>
 	<view>
-		<image src="../../static/tabs/烤箱%20.png" mode=""></image>
+		<image src="../../static/tabs/kaoxiang.png" mode=""></image>
 		<view class="recommend" v-for=" item in cookbooks" :key="item.id" @click="goPractice(item)">
 			<view class="">
 				<view class="recommend-img">

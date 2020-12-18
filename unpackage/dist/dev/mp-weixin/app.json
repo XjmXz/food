@@ -42,10 +42,10 @@
         "selectedIconPath": "static/tabs/视频_active.png"
       },
       {
-        "text": "广场",
+        "text": "食材大全",
         "pagePath": "pages/square/square",
-        "iconPath": "static/tabs/我的.png",
-        "selectedIconPath": "static/tabs/我的_active.png"
+        "iconPath": "static/tabs/书籍.png",
+        "selectedIconPath": "static/tabs/书籍_active.png"
       },
       {
         "text": "我的",
@@ -56,5 +56,5 @@
     ]
   },
   "usingComponents": {},
-  "sitemapLocation": "sitemap22.json"
+  "sitemapLocation": "sitemap61.json"
 }

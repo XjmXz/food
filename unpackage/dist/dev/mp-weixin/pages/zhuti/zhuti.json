@@ -1,5 +1,5 @@
 {
-  "navigationBarTitleText": "",
+  "navigationBarTitleText": "主题详情",
   "enablePullDownRefresh": false,
   "usingComponents": {
     "uni-icons": "/components/uni/uni-icons/uni-icons"

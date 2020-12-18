@@ -62,16 +62,15 @@
 			"list": [
 				{
 					"id": -1,
-					"name": "pages/theme/theme",
-					"pathName": "pages/theme/theme",
+					"name": "pages/video/video",
+					"pathName": "pages/video/video",
 					"query": "",
 					"scene": null
 				},
 				{
 					"id": -1,
-					"name": "pages/zhuti/zhuti",
-					"pathName": "pages/zhuti/zhuti",
-					"query": "id=163",
+					"name": "pages/practice/practice",
+					"pathName": "pages/practice/practice",
 					"scene": null
 				}
 			]

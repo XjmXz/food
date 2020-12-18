@@ -11,7 +11,7 @@
 		<view class="introduce">
 			<view class="introduce-title">
 				<view class="introduce-left"></view>
-				<view class="introduce-center">菜谱简介<image src="../../static/tabs/倒三角形%20(1).png" mode=""></image>
+				<view class="introduce-center">菜谱简介<image src="../../static/tabs/square.png" mode=""></image>
 				</view>
 				<view class="introduce-right"></view>
 			</view>
@@ -23,7 +23,7 @@
 		<view class="introduce">
 			<view class="introduce-title">
 				<view class="introduce-left"></view>
-				<view class="introduce-center">用料<image src="../../static/tabs/倒三角形%20(1).png" mode=""></image>
+				<view class="introduce-center">用料<image src="../../static/tabs/square.png" mode=""></image>
 				</view>
 				<view class="introduce-right"></view>
 			</view>
@@ -44,7 +44,7 @@
 		<view class="introduce">
 			<view class="introduce-title">
 				<view class="introduce-left"></view>
-				<view class="introduce-center">备菜步骤<image src="../../static/tabs/倒三角形%20(1).png" mode=""></image>
+				<view class="introduce-center">备菜步骤<image src="../../static/tabs/square.png" mode=""></image>
 				</view>
 				<view class="introduce-right"></view>
 			</view>
@@ -58,7 +58,7 @@
 		<view class="introduce">
 			<view class="introduce-title">
 				<view class="introduce-left"></view>
-				<view class="introduce-center">做法步骤<image src="../../static/tabs/倒三角形%20(1).png" mode=""></image>
+				<view class="introduce-center">做法步骤<image src="../../static/tabs/square.png" mode=""></image>
 				</view>
 				<view class="introduce-right"></view>
 			</view>
@@ -71,7 +71,12 @@
 			</view>
 		</view>
 		<view class="anniu">
-			<button type="warn" size="mini"><uni-icons type="contact" size="15"></uni-icons>下载菜谱到手机</button>
+			<button type="warn" size="mini" @click="open">
+				<uni-icons type="contact" size="15"></uni-icons>下载菜谱到手机
+			</button>
+			<uni-popup ref="popup" type="message">
+				<uni-popup-message type="success" message="成功消息" :duration="0"></uni-popup-message>
+			</uni-popup>
 		</view>
 	</view>
 </template>
@@ -82,23 +87,30 @@
 		myRequestPost
 	} from "@/utils/request.js"
 	import uniIcons from "@/components/uni/uni-icons/uni-icons.vue"
+	import uniPopup from '@/components/uni/uni-popup/uni-popup.vue'
+	import uniPopupMessage from '@/components/uni/uni-popup/uni-popup-message.vue'
+	import uniPopupDialog from '@/components/uni/uni-popup/uni-popup-dialog.vue'
 	export default {
-		components:{
-			uniIcons
+		components: {
+			uniIcons,
+			uniPopup,
+			uniPopupMessage,
+			uniPopupDialog
 		},
 		data() {
 			return {
 				id: "",
-				practice:"",
-				step:[],
-				main:[],
-				accessory:[]
+				practice: "",
+				step: [],
+				main: [],
+				accessory: [],
 			}
 		},
 		onLoad(options) {
 			this.id = options.id
-			console.log(options,"aaaaaaaaa")
+			console.log(options, "aaaaaaaaa")
 			this.getPractice()
+			this.niHao()
 		},
 		methods: {
 			async getPractice() {
@@ -107,10 +119,13 @@
 					"entranceCode": "code1"
 				})
 				console.log(res)
-				this.practice=res.cookbook
-				this.step=res.cookbook.steps
-				this.main=res.cookbook.materials.main
-				this.accessory=res.cookbook.materials.accessory
+				this.practice = res.cookbook
+				this.step = res.cookbook.steps
+				this.main = res.cookbook.materials.main
+				this.accessory = res.cookbook.materials.accessory
+			},
+			open() {
+				uni.querySelector("button").open()
 			}
 		}
 	}
@@ -193,39 +208,45 @@
 			font-size: 30rpx;
 		}
 	}
-	.Materials{
+
+	.Materials {
 		width: 90%;
 		margin: 0 auto;
-		
-		.yuanliao{
+
+		.yuanliao {
 			display: flex;
 			justify-content: space-around;
 			border-bottom: 1px solid #CCCCCC;
 		}
 	}
+
 	.Prepare-dishes {
 		width: 90%;
 		margin: 0 auto;
 		font-size: 30rpx;
+
 		image {
 			width: 100%;
 			border-radius: 10rpx;
 		}
 	}
-	
+
 	.step {
 		width: 90%;
 		margin: 0rpx auto;
 		text-align: center;
-		.step-one{
+
+		.step-one {
 			margin-top: 20rpx;
 		}
+
 		image {
 			width: 100%;
 			border-radius: 10rpx;
 		}
 	}
-	.anniu{
+
+	.anniu {
 		width: 300rpx;
 		margin: 30rpx auto;
 	}

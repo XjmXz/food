@@ -19,6 +19,11 @@
 </template>
 
 <script>
+	import {
+		myRequest,
+		myRequestPost,
+		myRequestPostTwo
+	} from "@/utils/request.js"
 	import uniIcons from "@/components/uni/uni-icons/uni-icons.vue"
 	export default {
 		data() {
@@ -33,26 +38,15 @@
 			this.getVideo()
 		},
 		methods:{
-			getVideo(){
-				uni.request({
-					url:"https://api.myroki.com/rest/ops/api/source/getLocalVideoList",
-					header: {
-						'Content-Type': 'application/json'
-					},
-					data:{
-						"userId":null,
-						"pageSize":50
-					},
-					method:"POST",
-					success:(res)=>{
-						this.videos=res.data.datas
-					}
-				})
+			async getVideo(){
+				let res =await myRequestPostTwo("/ops/api/source/getLocalVideoList",{
+					"userId":null,"pageSize":50})
+				console.log(res)
+				this.videos=res.datas
 			},
 			goVideo(item){
 				uni.navigateTo({
 					url:"../playvideo/playvideo?id="+item.courseId+"&playUrl="+item.playUrl,
-
 				})
 			}
 		}
