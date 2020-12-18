@@ -13,7 +13,7 @@
 				</view>
 			</view>
 		</view>
-		<uni-load-more v-if="!flag" :status="'loading'"></uni-load-more>
+		<uni-load-more v-if="!aflag" :status="'loading'"></uni-load-more>
 		<uni-load-more v-else :status="'noMore'"></uni-load-more>
 	</view>
 </template>
@@ -27,7 +27,8 @@
 	export default {
 		data() {
 			return {
-				arr: []
+				arr: [],
+				aflag:false
 
 			}
 		},
@@ -92,24 +93,21 @@
 			},
 			onPullDownRefresh() {
 				this.pageindex = 1;
-				this.flag = false;
+				this.aflag = false;
 				this.arr = [];
 				//请求完成之后停止下拉刷新
-				this.getSquareWatch().then(() => {
-					uni.stopPullDownRefresh()
-				});
-				this.getLikechioce().then(() => {
+				this.getNewsList().then(() => {
 					uni.stopPullDownRefresh()
 				});
 			},
 			//通过onReachBottom来监听触底
 			onReachBottom() {
 				this.pageindex++;
-				if (this.pageindex <= 3) {
-					this.getSquareWatch();
+				if (this.pageindex <= 1) {
+					this.getNewsList();
 				} else {
 					//没有更多数据了
-					this.flag = true;
+					this.aflag = true;
 				}
 			}
 

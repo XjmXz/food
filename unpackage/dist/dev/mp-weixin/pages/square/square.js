@@ -184,6 +184,10 @@ var _requestXuchen = __webpack_require__(/*! @/utils/request-xuchen.js */ 63);fu
     this.getSquareWatch();
     this.getLikechioce();
     this.getPailList();
+    // console.log(options)
+  },
+  onShow: function onShow() {
+    // console.log(this)//为传过来的值
   },
   methods: {
     chenked: function chenked(type) {
@@ -245,7 +249,7 @@ var _requestXuchen = __webpack_require__(/*! @/utils/request-xuchen.js */ 63);fu
                       "m": {
                         "pai_getPaiList": {
                           "type": "vote",
-                          "pageindex": 1 } },
+                          "pageindex": this.pageindex } },
 
 
                       "openudid": "meishichina",
@@ -257,8 +261,8 @@ var _requestXuchen = __webpack_require__(/*! @/utils/request-xuchen.js */ 63);fu
 
 
                 this.tabs = res.pai_getPaiList.data;
-                console.log(res);case 5:case "end":return _context3.stop();}}}, _callee3, this);}));function getPailList() {return _getPailList.apply(this, arguments);}return getPailList;}(),
-
+                // console.log(this.tabs)
+              case 4:case "end":return _context3.stop();}}}, _callee3, this);}));function getPailList() {return _getPailList.apply(this, arguments);}return getPailList;}(),
     // **********************************************************************************************
     onPullDownRefresh: function onPullDownRefresh() {
       this.pageindex = 1;
@@ -271,6 +275,9 @@ var _requestXuchen = __webpack_require__(/*! @/utils/request-xuchen.js */ 63);fu
         uni.stopPullDownRefresh();
       });
       this.getLikechioce().then(function () {
+        uni.stopPullDownRefresh();
+      });
+      this.getPailList().then(function () {
         uni.stopPullDownRefresh();
       });
     },

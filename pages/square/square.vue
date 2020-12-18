@@ -59,8 +59,12 @@
 			this.id = options.id;
 			this.getSquareWatch();
 			this.getLikechioce();
-			this.getPailList()
+			this.getPailList();
+			// console.log(options)
 		},
+		onShow: function () {
+		// console.log(this)//为传过来的值
+		 },
 		methods: {
 			chenked(type) {
 				this.isActive = type;
@@ -121,7 +125,7 @@
 						"m": {
 							"pai_getPaiList": {
 								"type": "vote",
-								"pageindex": 1
+								"pageindex": this.pageindex
 							}
 						},
 						"openudid": "meishichina",
@@ -133,7 +137,7 @@
 					})
 				});
 				this.tabs = res.pai_getPaiList.data
-				console.log(res)
+				// console.log(this.tabs)
 			},
 // **********************************************************************************************
 			onPullDownRefresh() {
@@ -147,6 +151,9 @@
 					uni.stopPullDownRefresh()
 				});
 				this.getLikechioce().then(() => {
+					uni.stopPullDownRefresh()
+				});
+				this.getPailList().then(() => {
 					uni.stopPullDownRefresh()
 				});
 			},

@@ -16,23 +16,24 @@
 				<view class="uni-title uni-common-mt uni-common-pl">{{voteInfo.title}} (单选)</view>
 				<view class="uni-list">
 					<radio-group>
-						<label v-for="item in voteInfo.optionlist" :key="item.id" class="list">
+						<label v-for="(item) in voteInfo.optionlist" :key="item.id" class="list">
 							<view class="radioValue">
-								<radio :value="item.id" @click="change(item)"/>
+								<radio class="radioo" :value="item.id" @click="change()" ref='radio_ref' />
 							</view>
 							<view class="radioTitle">{{item.title}}</view>
 						</label>
 					</radio-group>
-					<button @click="chenked">投 票</button>
+					<button @click="chenked()">投 票</button>
 				</view>
 			</view>
 			<view class="comment">
-				<view class="discuss">
+				<view class="discuss" v-if="commentList!=null">
 					评论
 				</view>
-				<view class="commentMain" v-for="item in commentList" :key="item.cid">
+				<view class="discuss" v-else></view>
+				<view class="commentMain" v-for="(item,index) in commentList" :key="item.cid">
 					<view class="commentTitle">
-						<image :src="item.avatar" mode="" class="commentLogo"></image>
+						<image :src="item.avatar" @error="onImgError('commentList',index)" mode="" class="commentLogo"></image>
 						<view class="commentTitleName">
 							<view class="ctnt">{{item.author}}</view>
 							<view class="commentTime">
@@ -44,6 +45,8 @@
 					<view class="commentContent">{{item.message}}</view>
 				</view>
 			</view>
+			<uni-load-more v-if="!flag" :status="'loading'"></uni-load-more>
+			<uni-load-more v-else :status="'noMore'"></uni-load-more>
 		</view>
 		<view class="tabb">
 			<view class="one" @click="goComment">
@@ -79,21 +82,26 @@
 </template>
 
 <script>
+	import uniLoadMore from "@/components/uni/uni-load-more/uni-load-more.vue"
 	import {
 		myRequestGet
 	} from '@/utils/request-xuchen.js'
 	export default {
 		data() {
 			return {
-				flag:false,
+				placeholderImage: '../../static/tabs/默认头像.jpg', //占位图
+				flag: false,
+				aflag: false,
 				paiInfo: {},
 				voteInfo: {},
-				commentList: []
+				commentList: [],
+				flag1: true,
+				id: ''
 			};
 		},
 		onLoad(options) {
 			this.id = options.id,
-				// console.log(options.id)
+			// console.log(options.id)
 			this.pai_getVoteInfo()
 			this.comment_getCommentList()
 			this.pai_getPaiInfo()
@@ -147,7 +155,7 @@
 								"type": "pai",
 								"show": "asc",
 								"pageindex": 1,
-								"pagesize": 10
+								"pagesize": 20
 							}
 						},
 						"openudid": "meishichina",
@@ -159,31 +167,49 @@
 					}
 				})
 				this.commentList = res.comment_getCommentList.data
-
-				for (var i = 0; i < this.commentList.length; i++) {
-
-					if (this.commentList[i].avatar ==
-						'https://i5.meishichina.com/data/avatar/012/65/61/42_avatar_big.jpg?x-oss-process=style/c180&v=20201217') {
-						// console.log(this.commentList[i].avatar)
-						this.commentList[i].avatar = '/static/tabs/默认头像.jpg'
+				// console.log(this.commentList)
+				// for (var i = 0; i < this.commentList.length; i++) {
+				// 	if (this.commentList[i].avatar ==
+				// 		'https://i5.meishichina.com/data/avatar/012/65/61/42_avatar_big.jpg?x-oss-process=style/c180&v=20201217') {
+				// 		// console.log(this.commentList[i].avatar)
+				// 		this.commentList[i].avatar = '/static/tabs/默认头像.jpg'
+				// 	}
+				// }
+			},
+			onImgError(dataArray, index) {
+				console.log("图片加载失败,载入占位符");
+				this.commentList[index].avatar = this.placeholderImage;
+				// this.[dataArray][index].avatar=this.placeholderImage;
+			},
+			change() {
+				this.aflag = true
+			},
+			chenked() {
+				// console.log(this.$refs.radio_ref.num)
+				if (this.flag1) {
+					this.voteInfo.partnum = parseInt(this.voteInfo.partnum) + 1
+				}
+				this.flag1 = false
+				let pages = getCurrentPages();
+				let prevPage = pages[pages.length - 2];
+				console.log(getCurrentPages())
+				for (var i = 0; i < prevPage.$vm._data.tabs.length; i++) {
+					if (prevPage.$vm._data.tabs[i].id == this.id) {
+						prevPage.$vm._data.tabs[i].partnum = this.voteInfo.partnum
 					}
 				}
-			},
-			change(){
-				this.flag = !this.flag
-			},
-			chenked(item) {
-				if(this.flag){
+				// uni.navigateBack({ //返回
+				// 	delta: 0
+				// })
+				// console.log(this.voteInfo.partnum)
+				if (this.aflag) {
 					uni.showToast({
 						title: '投票完成',
-						duration:1000
+						duration: 1000
 					})
-					// this.flag = flase
+					this.aflag = false
 				}
-				for(var i=0;i<item.length;i++){
-					
-				}
-
+				// console.log(uni.createSelectorQuery().selectAll('.radioo'))
 			},
 			goComment() {
 
@@ -200,7 +226,30 @@
 				uni.switchTab({
 					url: `../my/my`
 				})
+			},
+			onPullDownRefresh() {
+				this.pageindex = 1;
+				this.flag = false;
+				this.commentList = [];
+				//请求完成之后停止下拉刷新
+				this.comment_getCommentList().then(() => {
+					uni.stopPullDownRefresh()
+				});
+			},
+			//通过onReachBottom来监听触底
+			onReachBottom() {
+				this.pageindex++;
+				if (this.pageindex <= 1) {
+					this.comment_getCommentList();
+				} else {
+					//没有更多数据了
+					this.flag = true;
+				}
 			}
+		},
+
+		components: {
+			uniLoadMore
 		}
 	}
 </script>
@@ -211,8 +260,8 @@
 
 		.main {
 			padding-left: 30rpx;
-			padding-top: 16rpx;
-			margin-bottom: 70rpx;
+			padding-top: 12rpx;
+			margin-bottom: 90rpx;
 
 			.title {
 				display: flex;
@@ -292,6 +341,7 @@
 				.commentMain {
 					.commentTitle {
 						display: flex;
+						margin-top: 30rpx;
 
 						image {
 							width: 100rpx;
@@ -324,11 +374,15 @@
 					}
 
 					.commentContent {
-						margin: 16rpx 0 30rpx;
+						margin: 16rpx 0 0;
 						padding-bottom: 26rpx;
 						border-bottom: 2rpx solid rgb(221, 221, 221);
 					}
 				}
+			}
+
+			uni-load-more {
+				margin-top: -30rpx;
 			}
 
 		}

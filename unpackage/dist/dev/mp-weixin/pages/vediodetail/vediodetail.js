@@ -159,15 +159,11 @@ var _request = __webpack_require__(/*! @/utils/request.js */ 26);function _inter
       newsList: {} };
 
   },
-  // Params:{
-  // 	playUrl:"",
-  // 	seriesId:"",
-  // },
   onLoad: function onLoad(options) {
     this.order = options.order;
     // const userinfo = uni.getStorageSync("userinfo");
     // this.userinfo = userinfo
-    // console.log(this.order)
+    // console.log(options)
     // console.log(userinfo.playUrl)
     this.getNewsList();
   },
@@ -181,6 +177,9 @@ var _request = __webpack_require__(/*! @/utils/request.js */ 26);function _inter
                 this.newsList = res.payload;
                 // console.log(this.newsList)
               case 4:case "end":return _context.stop();}}}, _callee, this);}));function getNewsList() {return _getNewsList.apply(this, arguments);}return getNewsList;}(),
+    addcount: function addcount() {
+      this.newsList.videoWatchcount = this.newsList.videoWatchcount + 1;
+    },
     goWode: function goWode() {
       // console.log("wwwwww")
       uni.switchTab({

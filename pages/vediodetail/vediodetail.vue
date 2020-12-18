@@ -1,7 +1,7 @@
 <template>
 	<view class="box">
 		<view class="lp">
-			<video :src="newsList.playUrl" object-fit='cover'></video>
+			<video :src="newsList.playUrl" object-fit='cover' @click="addcount"></video>
 		</view>
 		<view class="bottom">
 			<view class="bl">{{newsList.desc}}</view>
@@ -35,15 +35,11 @@
 				newsList: {}
 			}
 		},
-		// Params:{
-		// 	playUrl:"",
-		// 	seriesId:"",
-		// },
 		onLoad(options) {
 			this.order = options.order
 			// const userinfo = uni.getStorageSync("userinfo");
 			// this.userinfo = userinfo
-			// console.log(this.order)
+			// console.log(options)
 			// console.log(userinfo.playUrl)
 			this.getNewsList()
 		},
@@ -56,6 +52,9 @@
 				})
 				this.newsList = res.payload
 				// console.log(this.newsList)
+			},
+			addcount() {
+				this.newsList.videoWatchcount = this.newsList.videoWatchcount + 1
 			},
 			goWode() {
 				// console.log("wwwwww")
@@ -73,7 +72,22 @@
 </script>
 
 <style lang="less">
-	/* #ifndef H5*/
+	/* #ifdef MP-ALIPAY*/
+	.lp {
+		width: 100vh;
+		// height: 20vh;
+
+		video {
+			width: 100vh;
+			// height: 100vh;
+		}
+}
+		/* #endif*/
+	
+
+	/* #ifndef MP-ALIPAY*/
+
+
 	.lp {
 		width: 100%;
 		height: 480rpx;
@@ -82,20 +96,10 @@
 			width: 100%;
 			height: 100%;
 		}
-	/* #endif*/	
+
 	}
-	/* #ifdef H5*/
-	.lp {
-		width: 100%;
-		height: 60vh;
-	
-		video {
-			width: 100%;
-			height: 20vh;
-		}
-		
-	}
-   /* #endif*/
+
+	/* #endif*/
 	.bl {
 		float: left;
 		padding: 40rpx;

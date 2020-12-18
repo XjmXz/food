@@ -13,7 +13,8 @@
 		}, {
 			"path": "pages/video/video",
 			"style": {
-				"navigationBarTitleText": "视频"
+				"navigationBarTitleText": "视频",
+				"enablePullDownRefresh": true
 			}
 		}, {
 			"path": "pages/my/my",
@@ -39,7 +40,8 @@
 		}, {
 			"path": "pages/votedetail/votedetail",
 			"style": {
-				"navigationBarTitleText": "投票详情"
+				"navigationBarTitleText": "投票详情",
+				"enablePullDownRefresh": true
 			}
 		},
 		{

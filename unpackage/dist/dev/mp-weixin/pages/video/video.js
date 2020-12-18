@@ -151,7 +151,8 @@ var _request = __webpack_require__(/*! @/utils/request.js */ 26);function _inter
 {
   data: function data() {
     return {
-      arr: [] };
+      arr: [],
+      aflag: false };
 
 
   },
@@ -216,24 +217,21 @@ var _request = __webpack_require__(/*! @/utils/request.js */ 26);function _inter
     },
     onPullDownRefresh: function onPullDownRefresh() {
       this.pageindex = 1;
-      this.flag = false;
+      this.aflag = false;
       this.arr = [];
       //请求完成之后停止下拉刷新
-      this.getSquareWatch().then(function () {
-        uni.stopPullDownRefresh();
-      });
-      this.getLikechioce().then(function () {
+      this.getNewsList().then(function () {
         uni.stopPullDownRefresh();
       });
     },
     //通过onReachBottom来监听触底
     onReachBottom: function onReachBottom() {
       this.pageindex++;
-      if (this.pageindex <= 3) {
-        this.getSquareWatch();
+      if (this.pageindex <= 1) {
+        this.getNewsList();
       } else {
         //没有更多数据了
-        this.flag = true;
+        this.aflag = true;
       }
     } },
 
