@@ -2,6 +2,9 @@
 	<view class="">
 		<block v-for="(item,index) in elite" :key="item.id">
 			<view class="content">
+				<view style="display: none;">
+					{{JSON.stringify(item.avatar)}}
+				</view>
 				<view class="content2">
 					<image :src="item.avatar" class="img1" @error="onImgError(elite,index)"></image>
 					<view class="rt">
@@ -155,7 +158,7 @@
 			flex-wrap: nowrap;
 
 			.texts5 {
-				width: 100rpx;
+				width: 51px;
 				color: #696969;
 				font-size: 10px;
 				margin-right: 10rpx;

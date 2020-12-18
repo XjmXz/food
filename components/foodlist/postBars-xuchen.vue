@@ -3,6 +3,10 @@
 		<block v-for="(item,index) in square" :key="item.id">
 			<view class="content">
 				<view class="content2">
+					<!-- {{JSON.stringify(item.avatar)}} -->
+					<view style="display: none;">
+						{{JSON.stringify(item.avatar)}}
+					</view>
 					<image :src="item.avatar" class="img1" @error="onImgError(square,index)"></image>
 					<view class="rt">
 						<text class="texts1">{{item.username}}</text>
@@ -44,8 +48,8 @@
 					url: '/pages/postBarsDetail/postBarsDetail?id=' + item.id
 				})
 			},
-			onImgError(dataArray,index) {
-				imgErr(dataArray,index)
+			onImgError(dataArray, index) {
+				imgErr(dataArray, index)
 			},
 		}
 
@@ -131,7 +135,7 @@
 			flex-wrap: nowrap;
 
 			.texts5 {
-				width: 100rpx;
+				width: 51px;
 				color: #696969;
 				font-size: 10px;
 				margin-right: 10rpx;

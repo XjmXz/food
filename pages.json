@@ -1,6 +1,5 @@
 {
-	"pages": [ 
-		{
+	"pages": [{
 			"path": "pages/index/index",
 			"style": {
 				"navigationBarTitleText": "美食"
@@ -41,12 +40,15 @@
 			"style": {
 				"navigationBarTitleText": "投票详情"
 			}
+		}, {
+			"path": "pages/postBarsDetail/postBarsDetail",
+			"style": {}
+		},
+		{
+			"path": "pages/zhiwen-share/zhiwen-share",
+			"style": {}
 		}
-	    ,{
-            "path" : "pages/postBarsDetail/postBarsDetail",
-            "style" : {}
-        }
-    ],
+	],
 	"globalStyle": {
 		"navigationBarTextStyle": "white",
 		"navigationBarTitleText": "美食",

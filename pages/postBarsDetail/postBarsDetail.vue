@@ -11,13 +11,16 @@
 			<view class="texts4">{{paiInfo.title}}</view>
 			<view class="texts3">{{paiInfo.subject}}</view>
 			<view v-for="picitem in paiInfo.p800" :key="picitem.pic" class="imgview">
-				<image :src="picitem.pic" class="imglist" mode="widthFix"></image>
+				<image :src="picitem.pic" class="imglist" mode="widthFix" @click="previewImg(picitem.pic)"></image>
 			</view>
 			<view v-if="commentList" class="comment">
 				<view class="discuss">
 					评论
 				</view>
 				<view class="commentMain" v-for="(item,index) in commentList" :key="item.cid">
+					<view style="display: none;">
+						{{JSON.stringify(item.avatar)}}
+					</view>
 					<view class="commentTitle">
 						<image :src="item.avatar" class="commentLogo" @error="onImgError(commentList,index)"></image>
 						<view class="commentTitleName">
@@ -28,33 +31,36 @@
 							</view>
 						</view>
 					</view>
+					<view class="commentreply" v-if="item.cmessage">|| {{item.cmessage}}</view>
 					<view class="commentContent">{{item.message}}</view>
 				</view>
+				<!-- <view class="contentBottom">・ End ・</view> -->
 			</view>
+			<view class="contentBottom">・ End ・</view>
 		</view>
 		<view class="tabb">
-			<view class="one" @click="goComment">
+			<view class="one" :class="{ active: isActive == 0 }" @click="chenked(0)">
 				<!-- <image class="pic"></image> -->
 				<text class="iconfont icon-pinlun"></text>
 				<view class="fsize">
 					评论
 				</view>
 			</view>
-			<view class="one" @click="goCollect">
+			<view class="one" :class="{ active: isActive == 1 }" @click="chenked(1)">
 				<!-- <image class="pic icon-shoucang iconfont"></image> -->
 				<text class="iconfont icon-shoucang"></text>
 				<view class="fsize">
 					收藏
 				</view>
 			</view>
-			<view class="one" @click="goShare">
+			<view class="one"  @click="goShare">
 				<!-- <image class="pic"></image> -->
 				<text class="iconfont icon-fenxiang-"></text>
 				<view class="fsize">
 					分享
 				</view>
 			</view>
-			<view class="one" @click="goGift" style="color: red">
+			<view class="one" :class="{ active: isActive == 3 }" @click="chenked(3)">
 				<!-- <image class="pic"></image> -->
 				<text class="iconfont icon-gift-box"></text>
 				<view class="fsize">
@@ -75,11 +81,11 @@
 	export default {
 		data() {
 			return {
-				placeholderImage: '../../static/tabs/默认头像.jpg', //占位图
 				paiInfo: {},
 				id: "",
 				commentList: [],
 				pageindex: 1,
+				isActive: 5,
 			};
 		},
 		onLoad(options) {
@@ -129,13 +135,29 @@
 						"session": "xcx_weixin:weixin:12656254:g4j5SkNMeV2KNerCulQ1YPuLTnGKQI1J"
 					})
 				});
-				// console.log(res)
 				this.commentList = res.comment_getCommentList.data
-				// console.log(this.commentList);
 				console.log(this.commentList);
 			},
-			onImgError(dataArray,index) {
-				imgErr(dataArray,index)
+			onImgError(dataArray, index) {
+				imgErr(dataArray, index)
+			},
+			chenked(type) {
+				this.isActive = type;
+			},
+			previewImg (imgurl){
+				 var imgurls=[];
+				 imgurls.push(imgurl);
+			  uni.previewImage({
+			     urls:imgurls,
+			     current:0
+			  })
+			},
+			goShare() {
+				console.log("跳转成功！")
+				uni.navigateTo({
+					// url: '/pages/zhiwen-share/zhiwen-share'
+					url:"/pages/zhiwen-share/zhiwen-share"
+				})
 			},
 		}
 	}
@@ -143,9 +165,23 @@
 
 <style lang="less">
 	.box {
+		.active {
+			color: red;
+		}
+
 		.main {
 			padding-left: 30rpx;
 			padding-top: 16rpx;
+
+			.contentBottom {
+				letter-spacing: 2rpx;
+				font-size: 30rpx;
+				color: rgb(156, 156, 156);
+				// margin-top: 10rpx;
+				height: 100px;
+				text-align: center;
+				margin-top: 10px;
+			}
 
 			.title {
 				display: flex;
@@ -159,10 +195,16 @@
 				.titleName {
 					margin-left: 20rpx;
 
+					.tnt {
+						letter-spacing: 2rpx;
+						margin-top: 10rpx;
+					}
+
 					.tnb {
 						margin-top: 10rpx;
 						font-size: 24rpx;
 						color: rgb(156, 156, 156);
+						letter-spacing: 2rpx;
 					}
 				}
 			}
@@ -278,9 +320,18 @@
 					}
 
 					.commentContent {
-						margin: 16rpx 0 30rpx;
+						margin: 16rpx 0 15px;
 						padding-bottom: 26rpx;
 						border-bottom: 2rpx solid rgb(221, 221, 221);
+						letter-spacing: 2rpx;
+						font-size: 32rpx;
+					}
+
+					.commentreply {
+						letter-spacing: 2rpx;
+						font-size: 30rpx;
+						color: rgb(156, 156, 156);
+						margin-top: 10rpx;
 					}
 				}
 			}
@@ -289,6 +340,7 @@
 
 		.tabb {
 			width: 100%;
+			height: 50px;
 			border-top: 2rpx solid grey;
 			position: fixed;
 			bottom: 0;
@@ -298,13 +350,14 @@
 			.one {
 				text-align: center;
 				flex: 1;
+				padding-top: 6rpx;
 
 				text {
-					font-size: 50rpx;
+					font-size: 25px;
 				}
 
 				.fsize {
-					font-size: 30rpx;
+					font-size: 10px;
 					margin-bottom: 6rpx;
 				}
 			}
