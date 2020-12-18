@@ -108,11 +108,11 @@
 	} from '@/utils/request.js';
 	//vuex
 	import {
-			mapState,
-			mapMutations,
-			mapGetters
-		} from 'vuex';
-	
+		mapState,
+		mapMutations,
+		mapGetters
+	} from 'vuex';
+
 	export default {
 		data() {
 			return {
@@ -125,9 +125,9 @@
 				len: 0,
 				n: 0,
 				flag: false,
-				title:"",
-				obj:{},
-				detailStorge:"",
+				title: "",
+				obj: {},
+				detailStorge: "",
 			};
 		},
 		components: {
@@ -137,22 +137,22 @@
 			this.id = option.id
 			console.log("pppppppp")
 			this.getMenuDetail()
-			this.detailStorge=uni.getStorageSync("flag")
-			console.log(this.detailStorge,"222222222222")
-			this.id=this.id
-			console.log(this.detailStorge[this.id],"ffffffffffffffffff")
-			if(!this.detailStorge){
-				uni.setStorageSync("flag",{})
+			this.detailStorge = uni.getStorageSync("flag")
+			console.log(this.detailStorge, "222222222222")
+			this.id = this.id
+			console.log(this.detailStorge[this.id], "ffffffffffffffffff")
+			if (!this.detailStorge) {
+				uni.setStorageSync("flag", {})
 			}
-			if(this.detailStorge[this.id]){
-				this.flag=true
+			if (this.detailStorge[this.id]) {
+				this.flag = true
 			}
-			console.log(this.menus,"sssssssssss")
-			for (var i=0;i<this.menus.length;i++) {
-				if(this.menus[i].id==this.id){
-					this.flag=true
-				}else{
-					this.flag=false
+			console.log(this.menus, "sssssssssss")
+			for (var i = 0; i < this.menus.length; i++) {
+				if (this.menus[i].id == this.id) {
+					this.flag = true
+				} else {
+					this.flag = false
 				}
 			}
 		},
@@ -163,7 +163,7 @@
 		},
 		methods: {
 			...mapMutations({
-				addToMenus: 'addToMenus' 
+				addToMenus: 'addToMenus'
 			}),
 			async getMenuDetail() {
 				let result = await myRequestPost('/api/cookbook/details/get-by-id/', {
@@ -185,8 +185,8 @@
 				}
 
 				console.log(this.menuDetail, "00000000000"),
-				console.log(this.prepare, "111111"),
-				console.log(this.step1, "22222222")
+					console.log(this.prepare, "111111"),
+					console.log(this.step1, "22222222")
 				console.log(this.len)
 			},
 			linkto() {
@@ -196,53 +196,53 @@
 			},
 			//收藏保存数据
 			handleflag() {
-				for (var i=0;i<this.menus.length;i++) {
-					if(this.menus[i].id==this.id){
-						this.flag=true
-					}else{
-						this.flag=false
+				for (var i = 0; i < this.menus.length; i++) {
+					if (this.menus[i].id == this.id) {
+						this.flag = true
+					} else {
+						this.flag = false
 					}
 				}
-				this.flag=!this.flag
-				this.title=this.flag?"收藏成功":"取消收藏"
+				this.flag = !this.flag
+				this.title = this.flag ? "收藏成功" : "取消收藏"
 				//提示框
 				uni.showToast({
 					title: this.title,
-					icon:'success',
-					duration: 1000//1后消失
+					icon: 'success',
+					duration: 1000 //1后消失
 				});
 				//缓存到本地
 				uni.getStorage({
-					key:"flag",
+					key: "flag",
 					success: (datas) => {
-						console.log(datas,typeof datas,"bbbbbbbbbbb")
-						this.id=this.menuDetail.id
-						this.obj=datas.data//{}
-						this.obj[this.id]=this.flag
+						console.log(datas, typeof datas, "bbbbbbbbbbb")
+						this.id = this.menuDetail.id
+						this.obj = datas.data //{}
+						this.obj[this.id] = this.flag
 						uni.setStorage({
-							key:"flag",
-							data:this.obj,
+							key: "flag",
+							data: this.obj,
 							success: () => {
 								console.log("huancun")
 							}
 						})
-						console.log(this.obj,"ddddddddd")
-						console.log(this.obj[this.id],"ccccccccc")
-						var menu={
-							id:this.menuDetail.id,
-							name:this.menuDetail.name,
-							num:this.menuDetail.collectCount,
-							img:this.menuDetail.imgLarge,
-							collected:this.obj[this.id]
+						console.log(this.obj, "ddddddddd")
+						console.log(this.obj[this.id], "ccccccccc")
+						var menu = {
+							id: this.menuDetail.id,
+							name: this.menuDetail.name,
+							num: this.menuDetail.collectCount,
+							img: this.menuDetail.imgLarge,
+							collected: this.obj[this.id]
 						}
-						console.log(menu,"eeeeeeee")
+						console.log(menu, "eeeeeeee")
 						this.addToMenus(menu)
 						/* if(this.obj[this.id]){
 							this.addToMenus(menu)
 						} */
 					}
-				})	
-				console.log(this.menuDetail,"aaaaaaaa")
+				})
+				console.log(this.menuDetail, "aaaaaaaa")
 			}
 		}
 
