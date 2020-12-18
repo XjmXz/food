@@ -1,16 +1,17 @@
 <template>
 	<view class="">
-		<block v-for="item in elite" :key="item.id">
+		<block v-for="(item,index) in elite" :key="item.id">
 			<view class="content">
 				<view class="content2">
-					<image :src="item.avatar" class="img1"></image>
+					<image :src="item.avatar" class="img1" @error="onImgError(elite,index)"></image>
 					<view class="rt">
 						<text class="texts1">{{item.username}}</text>
 						<text class="texts2">{{item.diettime}}</text>
 					</view>
-					
-					<button class="tp">精 选</button>
-					<view class="texts4">{{item.title}}</view>
+					<view class="type-subject">
+						<button class="tp">精 选</button>
+						<view class="texts4">{{item.title}}</view>
+					</view>
 					<view class="texts3">{{item.subject}}</view>
 					<view class="commentPhoto">
 						<block v-for="picitem in item.photo" :key="picitem.pic">
@@ -30,12 +31,20 @@
 </template>
 
 <script>
+	import {
+		imgErr
+	} from '@/utils/defaultimg.js';
 	export default {
 		props: ['elite'],
 		data() {
 			return {
 
 			};
+		},
+		methods: {
+			onImgError(dataArray, index) {
+				imgErr(dataArray, index)
+			},
 		}
 	}
 </script>
@@ -55,10 +64,11 @@
 			width: 325px;
 			margin: 0;
 			margin-right: 25px;
+
 			// padding-right: 25px;
 			// box-sizing: border-box;
 			// right: 0;
-			.tp{
+			.tp {
 				color: rgb(255, 103, 103);
 				font-size: 24rpx;
 				border: 1px solid red;
@@ -69,6 +79,13 @@
 				// display: inline;
 				height: 40rpx;
 				width: 90rpx;
+				margin-right: 5px;
+			}
+
+			.type-subject {
+				display: flex;
+				flex-wrap: nowrap;
+				width: 324px;
 			}
 		}
 
@@ -83,36 +100,41 @@
 		.texts1 {
 			color: #000000;
 			font-size: 20px;
+			letter-spacing: 2rpx;
 		}
 
 		.texts2 {
 			color: #888;
 			font-size: 14px;
+			letter-spacing: 2rpx;
 			// margin-bottom: 5px;
 		}
 
 		.texts3 {
 			font-size: 16px;
 			margin-bottom: 18rpx;
+			letter-spacing: 2rpx;
 		}
 
 		.texts4 {
 			font-size: 18px;
 			font-weight: bold;
 			margin-bottom: 18rpx;
+			letter-spacing: 2rpx;
 		}
 
-		
+
 		.rt {
 			position: absolute;
 			left: 55px;
 			top: 15px;
 		}
-		.backtexts{
-			width: 6px;
-			height: 5px;
-			background-color:#FA8072 ;
-		}
+
+		// .backtexts{
+		// 	width: 6px;
+		// 	height: 5px;
+		// 	background-color:#FA8072 ;
+		// }
 
 		.commentPhoto {
 			width: 650rpx;
@@ -127,18 +149,19 @@
 		}
 
 		.contentbottom {
-			margin-top:18rpx;
+			margin-top: 18rpx;
 			height: 20px;
-			display:flex;
+			display: flex;
 			flex-wrap: nowrap;
+
 			.texts5 {
-				width:100rpx;
+				width: 100rpx;
 				color: #696969;
 				font-size: 10px;
 				margin-right: 10rpx;
 				// line-height:40rpx ;
 			}
-			
+
 		}
 
 		text {

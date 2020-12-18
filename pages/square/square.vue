@@ -65,7 +65,8 @@
 			this.id = options.id;
 			this.getSquareWatch();
 			this.getLikechioce();
-			this.getPailList()
+			this.getPailList();
+			// this.findHeadPic()
 		},
 		methods: {
 			chenked(type) {
@@ -115,9 +116,9 @@
 						"session": "xcx_weixin:weixin:12656254:g4j5SkNMeV2KNerCulQ1YPuLTnGKQI1J"
 					})
 				});
-				this.elite = result.pai_getPaiList.data;
-				// this.elite = [...this.elite, ...result.pai_getPaiList.data];
-				console.log(result, "222222222222222222");
+				// this.elite = result.pai_getPaiList.data;
+				this.elite = [...this.elite, ...result.pai_getPaiList.data];
+				// console.log("22222222222222222")
 			},
 			// **********************************************************************************************
 			//投票的数据请求 
@@ -148,23 +149,25 @@
 				this.square = [];
 				this.elite = [];
 				//请求完成之后停止下拉刷新
-				this.getSquareWatch().then(() => {
+				this.getLikechioce().then(() => {
 					uni.stopPullDownRefresh()
 				});
-				this.getLikechioce().then(() => {
+				this.getSquareWatch().then(() => {
 					uni.stopPullDownRefresh()
 				});
 			},
 			//通过onReachBottom来监听触底
 			onReachBottom() {
 				this.pageindex++;
-				if (this.pageindex <= 3) {
+				if (this.pageindex <= 5) {
 					this.getSquareWatch();
+					this.getLikechioce();
 				} else {
 					//没有更多数据了
 					this.flag = true;
 				}
-			}
+			},
+
 		},
 		components: {
 			uniLoadMore,
@@ -189,7 +192,7 @@
 			// text-align: center;
 			border-radius: 50%;
 			color: #FFFDEF;
-			
+
 			.button-text1 {
 				line-height: 40px;
 				text-align: center;

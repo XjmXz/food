@@ -2,37 +2,24 @@
 	<view class="box">
 		<view class="main">
 			<view class="title">
-				<image :src="paiInfo.avatar" mode="" class="logo"></image>
+				<image :src="paiInfo.avatar" class="logo"></image>
 				<view class="titleName">
 					<view class="tnt">{{paiInfo.username}}</view>
 					<view class="tnb">{{paiInfo.dateline}}</view>
 				</view>
 			</view>
-			<view class="content">
-				<view class="titletop">{{voteInfo.title}}</view>
-				<image :src="paiInfo.p800[0].pic" mode=""></image>
+			<view class="texts4">{{paiInfo.title}}</view>
+			<view class="texts3">{{paiInfo.subject}}</view>
+			<view v-for="picitem in paiInfo.p800" :key="picitem.pic" class="imgview">
+				<image :src="picitem.pic" class="imglist" mode="widthFix"></image>
 			</view>
-			<view class="radio">
-				<view class="uni-title uni-common-mt uni-common-pl">{{voteInfo.title}} (单选)</view>
-				<view class="uni-list">
-					<radio-group>
-						<label v-for="item in voteInfo.optionlist" :key="item.id" class="list">
-							<view class="radioValue">
-								<radio :value="item.id" />
-							</view>
-							<view class="radioTitle">{{item.title}}</view>
-						</label>
-					</radio-group>
-					<button>投 票</button>
-				</view>
-			</view>
-			<view class="comment">
+			<view v-if="commentList" class="comment">
 				<view class="discuss">
 					评论
 				</view>
-				<view class="commentMain" v-for="item in commentList" :key="item.cid">
+				<view class="commentMain" v-for="(item,index) in commentList" :key="item.cid">
 					<view class="commentTitle">
-						<image :src="item.avatar" mode="" class="commentLogo"></image>
+						<image :src="item.avatar" class="commentLogo" @error="onImgError(commentList,index)"></image>
 						<view class="commentTitleName">
 							<view class="ctnt">{{item.author}}</view>
 							<view class="commentTime">
@@ -80,99 +67,76 @@
 
 <script>
 	import {
-		meiRequestGet
-	} from '@/utils/request.js'
+		myRequestGet
+	} from '@/utils/request-xuchen.js';
+	import {
+		imgErr
+	} from '@/utils/defaultimg.js';
 	export default {
 		data() {
 			return {
+				placeholderImage: '../../static/tabs/默认头像.jpg', //占位图
 				paiInfo: {},
-				voteInfo: {},
-				commentList: []
+				id: "",
+				commentList: [],
+				pageindex: 1,
 			};
 		},
 		onLoad(options) {
-			this.id = options.id,
-				console.log(options.id)
-			this.pai_getVoteInfo()
-			this.comment_getCommentList()
-			this.pai_getPaiInfo()
+			console.log(options.id);
+			this.id = options.id;
+			this.pai_getPaiInfo();
+			this.comment_getCommentList();
+
 		},
 		methods: {
 			async pai_getPaiInfo() {
-				const res = await meiRequestGet("https://api5.meishichina.com/api.php", {
-					p: {
+				const res = await myRequestGet("/api.php", {
+					p: JSON.stringify({
 						"m": {
 							"pai_getPaiInfo": {
-								"id": this.id
+								"id": this.id,
 							}
 						},
 						"openudid": "meishichina",
-						"uid": "",
+						"uid": 12656254,
 						"appver": "3028",
 						"device": "microsoftmicrosoft",
 						"appname": "xcx_weixin",
-						"session": ""
-					}
-				})
+						"session": "xcx_weixin:weixin:12656254:g4j5SkNMeV2KNerCulQ1YPuLTnGKQI1J"
+					})
+				});
 				this.paiInfo = res.pai_getPaiInfo.data
-			},
-			async pai_getVoteInfo() {
-				const res = await meiRequestGet("https://api5.meishichina.com/api.php", {
-					p: {
-						"m": {
-							"pai_getVoteInfo": {
-								"id": this.id
-							}
-						},
-						"openudid": "meishichina",
-						"uid": "",
-						"appver": "3028",
-						"device": "microsoftmicrosoft",
-						"appname": "xcx_weixin",
-						"session": ""
-					}
-				})
-				this.voteInfo = res.pai_getVoteInfo.data
+				console.log(this.paiInfo);
 			},
 			async comment_getCommentList() {
-				const res = await meiRequestGet("https://api5.meishichina.com/api.php", {
-					p: {
+				const res = await myRequestGet("/api.php", {
+					p: JSON.stringify({
 						"m": {
 							"comment_getCommentList": {
 								"id": this.id,
 								"type": "pai",
 								"show": "asc",
-								"pageindex": 1,
+								"pageindex": this.pageindex,
 								"pagesize": 10
 							}
 						},
 						"openudid": "meishichina",
-						"uid": "",
+						"uid": 12656254,
 						"appver": "3028",
 						"device": "microsoftmicrosoft",
 						"appname": "xcx_weixin",
-						"session": ""
-					}
-				})
+						"session": "xcx_weixin:weixin:12656254:g4j5SkNMeV2KNerCulQ1YPuLTnGKQI1J"
+					})
+				});
+				// console.log(res)
 				this.commentList = res.comment_getCommentList.data
-				console.log(this.commentList)
+				// console.log(this.commentList);
+				console.log(this.commentList);
 			},
-			goComment(){
-				
+			onImgError(dataArray,index) {
+				imgErr(dataArray,index)
 			},
-			goCollect(){
-				uni.switchTab({
-					url:`../my/my`
-				})
-			},
-			goShare(){
-				
-			},
-			goGift(){
-				uni.switchTab({
-					url:`../my/my`
-				})
-			}
 		}
 	}
 </script>
@@ -187,8 +151,8 @@
 				display: flex;
 
 				.logo {
-					width: 100rpx;
-					height: 100rpx;
+					width: 80rpx;
+					height: 80rpx;
 					border-radius: 50%;
 				}
 
@@ -201,6 +165,27 @@
 						color: rgb(156, 156, 156);
 					}
 				}
+			}
+
+			.imgview {
+				width: 680rpx;
+
+				.imglist {
+					width: 680rpx;
+				}
+			}
+
+			.texts3 {
+				font-size: 16px;
+				margin-bottom: 9px;
+				letter-spacing: 2rpx;
+			}
+
+			.texts4 {
+				font-size: 18px;
+				font-weight: bold;
+				margin-bottom: 9px;
+				letter-spacing: 2rpx;
 			}
 
 			.content {
@@ -263,8 +248,8 @@
 						display: flex;
 
 						image {
-							width: 100rpx;
-							height: 100rpx;
+							width: 80rpx;
+							height: 80rpx;
 							border-radius: 50%;
 						}
 
@@ -313,10 +298,12 @@
 			.one {
 				text-align: center;
 				flex: 1;
-				text{
+
+				text {
 					font-size: 50rpx;
 				}
-				.fsize{
+
+				.fsize {
 					font-size: 30rpx;
 					margin-bottom: 6rpx;
 				}

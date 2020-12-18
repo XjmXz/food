@@ -42,7 +42,11 @@
 				"navigationBarTitleText": "投票详情"
 			}
 		}
-	],
+	    ,{
+            "path" : "pages/postBarsDetail/postBarsDetail",
+            "style" : {}
+        }
+    ],
 	"globalStyle": {
 		"navigationBarTextStyle": "white",
 		"navigationBarTitleText": "美食",
