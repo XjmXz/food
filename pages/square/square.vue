@@ -21,6 +21,8 @@
 		</view>
 		<view class="nav_item" v-if="isActive == 1">
 			<tab2 :tabs="tabs"></tab2>
+			<uni-load-more v-if="!flag" :status="'loading'"></uni-load-more>
+			<uni-load-more v-else :status="'noMore'"></uni-load-more>
 		</view>
 		<view class="nav_item" v-if="isActive == 2">
 			<Elite :elite="elite"></Elite>
@@ -109,7 +111,7 @@
 				});
 				this.elite = result.pai_getPaiList.data;
 				// this.elite = [...this.elite, ...result.pai_getPaiList.data];
-				console.log(result, "222222222222222222");
+				// console.log(result, "222222222222222222");
 			},
 			// **********************************************************************************************
 			//投票的数据请求 
@@ -131,7 +133,7 @@
 					})
 				});
 				this.tabs = res.pai_getPaiList.data
-				console.log(this.tabs)
+				console.log(res)
 			},
 // **********************************************************************************************
 			onPullDownRefresh() {
@@ -139,6 +141,7 @@
 				this.flag = false;
 				this.square = [];
 				this.elite = [];
+				this.tabs = [];
 				//请求完成之后停止下拉刷新
 				this.getSquareWatch().then(() => {
 					uni.stopPullDownRefresh()

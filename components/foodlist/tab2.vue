@@ -36,7 +36,7 @@
 
 		methods: {
 			goVoteDetail(item) {
-				console.log("qqqqqqqq")
+				// console.log("qqqqqqqq")
 				uni.navigateTo({
 					url: '/pages/votedetail/votedetail?id=' + item.id
 				})
@@ -53,7 +53,7 @@
 		.main {
 			border-bottom: 2rpx solid rgb(156, 156, 156);
 			padding-bottom: 20rpx;
-			margin-bottom: 20rpx;
+			margin-top: 26rpx;
 
 			.title {
 				display: flex;

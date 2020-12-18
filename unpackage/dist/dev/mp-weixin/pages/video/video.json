@@ -1,4 +1,6 @@
 {
   "navigationBarTitleText": "视频",
-  "usingComponents": {}
+  "usingComponents": {
+    "uni-load-more": "/components/uni/uni-load-more/uni-load-more"
+  }
 }

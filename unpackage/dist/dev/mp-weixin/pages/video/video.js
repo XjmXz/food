@@ -142,20 +142,22 @@ __webpack_require__.r(__webpack_exports__);
 
 
 
-var _request = __webpack_require__(/*! @/utils/request.js */ 26);function _interopRequireDefault(obj) {return obj && obj.__esModule ? obj : { default: obj };}function asyncGeneratorStep(gen, resolve, reject, _next, _throw, key, arg) {try {var info = gen[key](arg);var value = info.value;} catch (error) {reject(error);return;}if (info.done) {resolve(value);} else {Promise.resolve(value).then(_next, _throw);}}function _asyncToGenerator(fn) {return function () {var self = this,args = arguments;return new Promise(function (resolve, reject) {var gen = fn.apply(self, args);function _next(value) {asyncGeneratorStep(gen, resolve, reject, _next, _throw, "next", value);}function _throw(err) {asyncGeneratorStep(gen, resolve, reject, _next, _throw, "throw", err);}_next(undefined);});};}var _default =
+
+
+var _request = __webpack_require__(/*! @/utils/request.js */ 26);function _interopRequireDefault(obj) {return obj && obj.__esModule ? obj : { default: obj };}function asyncGeneratorStep(gen, resolve, reject, _next, _throw, key, arg) {try {var info = gen[key](arg);var value = info.value;} catch (error) {reject(error);return;}if (info.done) {resolve(value);} else {Promise.resolve(value).then(_next, _throw);}}function _asyncToGenerator(fn) {return function () {var self = this,args = arguments;return new Promise(function (resolve, reject) {var gen = fn.apply(self, args);function _next(value) {asyncGeneratorStep(gen, resolve, reject, _next, _throw, "next", value);}function _throw(err) {asyncGeneratorStep(gen, resolve, reject, _next, _throw, "throw", err);}_next(undefined);});};}var uniLoadMore = function uniLoadMore() {return __webpack_require__.e(/*! import() | components/uni/uni-load-more/uni-load-more */ "components/uni/uni-load-more/uni-load-more").then(__webpack_require__.bind(null, /*! @/components/uni/uni-load-more/uni-load-more.vue */ 119));};var _default =
 
 
 
 {
   data: function data() {
     return {
-      newsList: [],
-      flag: false };
+      arr: [] };
 
 
   },
   onLoad: function onLoad() {
     this.getNewsList();
+
   },
   methods: {
     getNewsList: function () {var _getNewsList = _asyncToGenerator( /*#__PURE__*/_regenerator.default.mark(function _callee() {var res;return _regenerator.default.wrap(function _callee$(_context) {while (1) {switch (_context.prev = _context.next) {case 0:_context.next = 2;return (
@@ -165,40 +167,79 @@ var _request = __webpack_require__(/*! @/utils/request.js */ 26);function _inter
                     "pageSize": 50 }));case 2:res = _context.sent;
 
                 this.newsList = res.datas;
-                console.log(res);case 5:case "end":return _context.stop();}}}, _callee, this);}));function getNewsList() {return _getNewsList.apply(this, arguments);}return getNewsList;}(),
+                // console.log(res.datas)
+                this.getlist();case 5:case "end":return _context.stop();}}}, _callee, this);}));function getNewsList() {return _getNewsList.apply(this, arguments);}return getNewsList;}(),
 
+    getlist: function getlist() {
+      for (var i = 0; i < this.newsList.length; i++) {
+        var obj1 = {
+          arr1: [],
+          flag: false
+
+          // console.log(this.newsList)
+        };obj1.arr1 = this.newsList[i];
+        this.arr.push(obj1);
+
+      }
+      console.log(this.arr);
+    },
     // goSuperMarket(item){
     // 	// console.log('111111')
     // 	uni.navigateTo({
     // 		url:`../vediodetail/vediodetail`
     // 	})
     // }
-    goSuperMarket: function goSuperMarket(e) {
+    goSuperMarket: function goSuperMarket(i) {
       // console.log(e.currentTarget.dataset.item)
-      var userinfo = e.currentTarget.dataset.item;
+      // const userinfo = e.currentTarget.dataset.item;
       // console.log(userinfo)
-      uni.setStorageSync("userinfo", userinfo);
+      // uni.setStorageSync("userinfo", userinfo);
       uni.navigateTo({
-        url: "/pages/vediodetail/vediodetail" });
+        url: "/pages/vediodetail/vediodetail?order=" + this.arr[i].arr1.orderNo });
 
     },
-    addone: function addone(i, item) {
-      // console.log(e)
+    addone: function addone(i) {
       // console.log(i)
       // console.log(item)
-      if (i + 1 == item.orderNo) {
+      // console.log(this.arr[i].arr1)
+      // console.log(this.newsList)
+      if (i + 1 == this.arr[i].arr1.orderNo) {
+        if (this.arr[i].flag == false) {
+          this.arr[i].arr1.collectCount = this.arr[i].arr1.collectCount + 1;
+          this.arr[i].flag = true;
+        } else {
+          this.arr[i].arr1.collectCount = this.arr[i].arr1.collectCount - 1;
+          this.arr[i].flag = false;
+        }
 
       }
-      // console.log(this.flag)
-      // if(this.flag){
-
-      // }
-      // console.log(id)
-      // const index=newsList.findIndex(v=>v.courseId===id);
-
+    },
+    onPullDownRefresh: function onPullDownRefresh() {
+      this.pageindex = 1;
+      this.flag = false;
+      this.arr = [];
+      //请求完成之后停止下拉刷新
+      this.getSquareWatch().then(function () {
+        uni.stopPullDownRefresh();
+      });
+      this.getLikechioce().then(function () {
+        uni.stopPullDownRefresh();
+      });
+    },
+    //通过onReachBottom来监听触底
+    onReachBottom: function onReachBottom() {
+      this.pageindex++;
+      if (this.pageindex <= 3) {
+        this.getSquareWatch();
+      } else {
+        //没有更多数据了
+        this.flag = true;
+      }
     } },
 
-  components: {} };exports.default = _default;
+
+  components: {
+    uniLoadMore: uniLoadMore } };exports.default = _default;
 /* WEBPACK VAR INJECTION */}.call(this, __webpack_require__(/*! ./node_modules/@dcloudio/uni-mp-weixin/dist/index.js */ 1)["default"]))
 
 /***/ }),

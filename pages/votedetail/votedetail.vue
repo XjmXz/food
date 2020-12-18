@@ -18,12 +18,12 @@
 					<radio-group>
 						<label v-for="item in voteInfo.optionlist" :key="item.id" class="list">
 							<view class="radioValue">
-								<radio :value="item.id" />
+								<radio :value="item.id" @click="change(item)"/>
 							</view>
 							<view class="radioTitle">{{item.title}}</view>
 						</label>
 					</radio-group>
-					<button>投 票</button>
+					<button @click="chenked">投 票</button>
 				</view>
 			</view>
 			<view class="comment">
@@ -85,6 +85,7 @@
 	export default {
 		data() {
 			return {
+				flag:false,
 				paiInfo: {},
 				voteInfo: {},
 				commentList: []
@@ -92,10 +93,11 @@
 		},
 		onLoad(options) {
 			this.id = options.id,
-				console.log(options.id)
+				// console.log(options.id)
 			this.pai_getVoteInfo()
 			this.comment_getCommentList()
 			this.pai_getPaiInfo()
+
 		},
 		methods: {
 			async pai_getPaiInfo() {
@@ -157,22 +159,46 @@
 					}
 				})
 				this.commentList = res.comment_getCommentList.data
-				console.log(this.commentList)
+
+				for (var i = 0; i < this.commentList.length; i++) {
+
+					if (this.commentList[i].avatar ==
+						'https://i5.meishichina.com/data/avatar/012/65/61/42_avatar_big.jpg?x-oss-process=style/c180&v=20201217') {
+						// console.log(this.commentList[i].avatar)
+						this.commentList[i].avatar = '/static/tabs/默认头像.jpg'
+					}
+				}
 			},
-			goComment(){
-				
+			change(){
+				this.flag = !this.flag
 			},
-			goCollect(){
+			chenked(item) {
+				if(this.flag){
+					uni.showToast({
+						title: '投票完成',
+						duration:1000
+					})
+					// this.flag = flase
+				}
+				for(var i=0;i<item.length;i++){
+					
+				}
+
+			},
+			goComment() {
+
+			},
+			goCollect() {
 				uni.switchTab({
-					url:`../my/my`
+					url: `../my/my`
 				})
 			},
-			goShare(){
-				
+			goShare() {
+
 			},
-			goGift(){
+			goGift() {
 				uni.switchTab({
-					url:`../my/my`
+					url: `../my/my`
 				})
 			}
 		}
@@ -181,9 +207,12 @@
 
 <style lang="less">
 	.box {
+		display: flex;
+
 		.main {
 			padding-left: 30rpx;
 			padding-top: 16rpx;
+			margin-bottom: 70rpx;
 
 			.title {
 				display: flex;
@@ -315,10 +344,12 @@
 			.one {
 				text-align: center;
 				flex: 1;
-				text{
+
+				text {
 					font-size: 50rpx;
 				}
-				.fsize{
+
+				.fsize {
 					font-size: 30rpx;
 					margin-bottom: 6rpx;
 				}

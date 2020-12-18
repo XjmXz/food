@@ -1,11 +1,11 @@
 <template>
 	<view class="box">
 		<view class="lp">
-			<video :src="userinfo.playUrl" object-fit='cover'></video>
+			<video :src="newsList.playUrl" object-fit='cover'></video>
 		</view>
 		<view class="bottom">
-			<view class="bl">{{userinfo.desc}}</view>
-			<view class="br">观看次数：{{userinfo.videoWatchcount}}次</view>
+			<view class="bl">{{newsList.desc}}</view>
+			<view class="br">观看次数：{{newsList.videoWatchcount}}次</view>
 		</view>
 		<view class="tabb">
 			<view class="tl" @click="goWode">
@@ -32,30 +32,40 @@
 		data() {
 			return {
 				id: "",
-				userinfo: ""
+				newsList: {}
 			}
 		},
 		// Params:{
 		// 	playUrl:"",
 		// 	seriesId:"",
 		// },
-		onLoad() {
-			const userinfo = uni.getStorageSync("userinfo");
-			this.userinfo = userinfo
-			// console.log(userinfo)
+		onLoad(options) {
+			this.order = options.order
+			// const userinfo = uni.getStorageSync("userinfo");
+			// this.userinfo = userinfo
+			// console.log(this.order)
 			// console.log(userinfo.playUrl)
-			// console.log(userinfo.videoWatchcount)
+			this.getNewsList()
 		},
-		methods:{
-			goWode(){
-				console.log("wwwwww")
+		methods: {
+			async getNewsList() {
+				const res = await myRequestPost("/ops/api/source/getCourseDetail", {
+					"seriesId": "1540452695",
+					"orderNo": this.order,
+					"userId": null
+				})
+				this.newsList = res.payload
+				// console.log(this.newsList)
+			},
+			goWode() {
+				// console.log("wwwwww")
 				uni.switchTab({
-					url:`../my/my`
+					url: `../my/my`
 				})
 			},
-			goShouye(){
+			goShouye() {
 				uni.switchTab({
-					url:`../index/index`
+					url: `../index/index`
 				})
 			}
 		}
@@ -63,6 +73,7 @@
 </script>
 
 <style lang="less">
+	/* #ifndef H5*/
 	.lp {
 		width: 100%;
 		height: 480rpx;
@@ -71,38 +82,56 @@
 			width: 100%;
 			height: 100%;
 		}
+	/* #endif*/	
 	}
-
+	/* #ifdef H5*/
+	.lp {
+		width: 100%;
+		height: 60vh;
+	
+		video {
+			width: 100%;
+			height: 20vh;
+		}
+		
+	}
+   /* #endif*/
 	.bl {
 		float: left;
 		padding: 40rpx;
 		font-size: 40rpx;
 		font-weight: 700;
 	}
+
 	.br {
 		float: right;
 		padding: 30rpx;
 		color: rgb(204, 204, 204);
 		font-size: 40rpx;
 	}
-	.tabb{
+
+	.tabb {
 		width: 100%;
-		border-top:2rpx solid grey;
-		position:fixed;
+		border-top: 2rpx solid grey;
+		position: fixed;
 		bottom: 0;
 		display: flex;
-		.tl{
+
+		.tl {
 			text-align: center;
 			flex: 1;
-			.ltop{
+
+			.ltop {
 				width: 60rpx;
 				height: 60rpx;
 			}
 		}
-		.tr{
+
+		.tr {
 			text-align: center;
 			flex: 1;
-			.rtop{
+
+			.rtop {
 				width: 60rpx;
 				height: 60rpx;
 			}
