@@ -21,6 +21,8 @@
 		</view>
 		<view class="nav_item" v-if="isActive == 1">
 			<tab2 :tabs="tabs"></tab2>
+			<uni-load-more v-if="!flag" :status="'loading'"></uni-load-more>
+			<uni-load-more v-else :status="'noMore'"></uni-load-more>
 		</view>
 		<view class="nav_item" v-if="isActive == 2">
 			<Elite :elite="elite"></Elite>
@@ -128,7 +130,7 @@
 						"m": {
 							"pai_getPaiList": {
 								"type": "vote",
-								"pageindex": 1
+								"pageindex": this.pageindex
 							}
 						},
 						"openudid": "meishichina",
@@ -155,13 +157,17 @@
 				this.getSquareWatch().then(() => {
 					uni.stopPullDownRefresh()
 				});
+				this.getPailList().then(() => {
+					uni.stopPullDownRefresh()
+				});
 			},
 			//通过onReachBottom来监听触底
 			onReachBottom() {
 				this.pageindex++;
-				if (this.pageindex <= 5) {
+				if (this.pageindex <= 3) {
 					this.getSquareWatch();
 					this.getLikechioce();
+					this.getPailList();
 				} else {
 					//没有更多数据了
 					this.flag = true;

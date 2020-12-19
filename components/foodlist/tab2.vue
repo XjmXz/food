@@ -13,7 +13,7 @@
 				<view class="ts">{{item.subject}}</view>
 			</view>
 			<view class="content">
-				<image :src="item.photo[0].pic"></image>
+				<image :src="item.photo[0].pic" mode=""></image>
 			</view>
 			<view class="bottom">
 				{{item.likenum}}个喜欢, {{item.replynum}}条评论, {{item.partnum}}人投票
@@ -36,7 +36,7 @@
 
 		methods: {
 			goVoteDetail(item){
-				console.log("qqqqqqqq")
+				// console.log("qqqqqqqq")
 				uni.navigateTo({
 					url:'/pages/votedetail/votedetail?id='+item.id
 				})
@@ -59,6 +59,7 @@
 					width: 100rpx;
 					height: 100rpx;
 					border-radius: 50%;
+					background-size: cover;
 				}
 				.titleName {
 					margin-left: 20rpx;
@@ -90,7 +91,10 @@
 				}
 			}
 			.content {
-				margin: 0 10rpx 40rpx;
+				margin: 0 10rpx 10px;
+				// #ifdef MP-ALIPAY
+				border: 0;
+				// #endif
 				image {
 					width: 300rpx;
 					height: 300rpx;

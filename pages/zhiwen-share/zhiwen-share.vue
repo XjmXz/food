@@ -2,6 +2,7 @@
 	<view class="content">
 		<view class="top"></view>
 		<view class="banner">
+			<!-- <image src="../../static/img/banner.png" class="imgbei"></image> -->
 			<dl>
 				<dt>
 					<image src="../../static/img/logo.png" mode=""></image>
@@ -254,9 +255,10 @@
 
 	.top {
 		width: 100%;
-		height: 400upx;
+		height: 100px;
 		/* background: url(http://pds.jyt123.com/wxtest/banner.png) no-repeat ; */
-		background: url(http://127.0.0.1:55658/static/img/banner.fa7ff1e3.png) no-repeat;
+		/* background: url(http://127.0.0.1:55658/static/img/banner.fa7ff1e3.png) no-repeat; */
+		/* background: url(http://127.0.0.1:55658/static/img/banner.fa7ff1e3.png) no-repeat; */
 		background-size: 100%;
 		background-position: center center;
 	}
