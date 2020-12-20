@@ -3,25 +3,28 @@
 		<view class="food-head">
 			<image :src="details.imgSmall" @click="previewImg(details.imgSmall)"></image>
 			<view class="food-name">
-				<text>{{details.name}}</text>
+				<view class="name-txt">
+					{{details.name}}
+				</view>
 			</view>
 		</view>
 		<!-- 菜谱简介 -->
 		<view class="food-inrduc">
 			<view class="inrduc-center">
-				<view class="indruc-l"></view>
-				<text>菜谱简介</text>
-				<view class="indruc-r"></view>
+				<text class="online">——</text>
+				<text class="txt" style="color: #000000;">菜谱简介</text>
+				<text class="online">——</text>
+				<text class="fuhao">▼</text>
 			</view>
-			<text>🔻</text>
-			<text>{{details.introduction}}</text>
+			<view class="content">{{details.introduction}}</view>
 		</view>
 		<!-- 菜谱用料 -->
 		<view class="meterials">
 			<view class="inrduc-center">
-				<view class="indruc-l"></view>
-				<text>用料</text>
-				<view class="indruc-r"></view>
+				<text class="online">——</text>
+				<text class="txt">用料</text>
+				<text class="online">——</text>
+				<text class="fuhao">▼</text>
 			</view>
 			<view v-for="item in details.materials.accessory" :key="item.id" class="food-ingred" mode="widthFix">
 				<text>{{item.name}}</text>
@@ -34,28 +37,42 @@
 		</view>
 		<!-- 做法步骤 -->
 		<view class="food-step">
-			<image :src="details.prepareSteps.img" mode="widthFix"></image>
+			<!-- <image :src="details.prepareSteps.img" mode="widthFix"></image> -->
 			<!-- 备菜步骤 -->
 			<view class="inrduc-center">
-				<view class="indruc-l"></view>
-				<text>备菜步骤</text>
-				<view class="indruc-r"></view>
+				<text class="online">——</text>
+				<text class="txt">备菜步骤</text>
+				<text class="online">——</text>
+				<text class="fuhao">▼</text>
 			</view>
-			<text class="food-step-desc">{{details.prepareSteps.desc}}</text>
-			<!-- 做法步骤 -->
-			<view class="inrduc-center">
-				<view class="indruc-l"></view>
-				<text>做法步骤</text>
-				<view class="indruc-r"></view>
-			</view>
-			<view v-for="item in details.steps" :key="item.id" mode="widthFix" class="food-step-main">
-				<image :src="item.image"></image>
+			<view class="prepare" v-for="item in prepare" :key="item.id">
+				<image :src="item.imgUrl" mode=""></image>
 				<view class="steps">
 					<text style="color: orange;font-size: 30px;">{{item.no}}</text>
 					<text>/</text>
-					<text style="color: orange;">{{details.steps.length}}</text>
-					<text>{{item.desc}}</text>
+					<text style="color: orange;">{{prepare.length}}</text>
+					<view class="desc">{{item.desc}}</view>
 				</view>
+			</view>
+			<!-- <view class="food-step-desc">{{details.prepareSteps.desc}}</view> -->
+			<!-- 做法步骤 -->
+			<view class="inrduc-center">
+				<text class="online">——</text>
+				<text class="txt">做法步骤</text>
+				<text class="online">——</text>
+				<text class="fuhao">▼</text>
+			</view>
+			<view class="prepare" v-for="item in step1" :key="item.id">
+				<image :src="item.image" mode=""></image>
+				<view class="steps">
+					<text style="color: orange;font-size: 30px;">{{item.no-n}}</text>
+					<text>/</text>
+					<text style="color: orange;">{{len-n}}</text>
+					<view>{{item.desc}}</view>
+				</view>
+			</view>
+			<view class="btn">
+				<button type="primary">222</button>
 			</view>
 			<!-- 底部导航 -->
 			<view class="goods_nav">
@@ -120,10 +137,11 @@
 		data() {
 			return {
 				id: "",
-				details: {},
-				length: "",
+				details: [],
+				prepare: [],
+				step1: [],
+				len: "",
 				step_length: "",
-				make: {},
 				count: "",
 				flag: false,
 				title: "",
@@ -172,29 +190,27 @@
 				addToMenus: 'addToMenus'
 			}),
 			async getdetails() {
-				const res = await myRequestPost("/rest/cks/api/cookbook/details/get-by-id", {
-					"cookbookId": this.id,
-				});
-				console.log(typeof(res));
-				this.details = res.cookbook;
-				console.log(this.details, "bbbbbbbbbbbbbbbbbbbbbbbbbbb");
-				//step_length------备菜的步骤数组长度
-				this.length = this.details.prepareSteps.steps.length;
-				//step_length------做菜的步骤数组长度
-				this.step_length = this.details.steps.length;
-				this.make = this.details.steps;
-				this.count = this.step_length;
-
-				for (var i = 0; i < this.step_length; i++) {
-					for (var j = 0; j < this.length; j++) {
-						if (this.make[i].desc == this.details.prepareSteps.steps[j].desc) {
-							this.make.splice(i, 1);
-							this.count--;
+				let result = await myRequestPost('/rest/cks/api/cookbook/details/get-by-id/', {
+					"cookbookId": this.id
+				})
+				console.log(result.cookbook, "kkkkkkkkkk")
+				this.details = result.cookbook;
+				this.prepare = this.details.prepareSteps.steps;
+				this.step1 = this.details.steps;
+				this.len = this.step1.length;
+				for (var i = 0; i < this.details.steps.length; i++) {
+					for (var j = 0; j < this.details.prepareSteps.steps.length; j++) {
+						if (this.step1[i].desc == this.prepare[j].desc) {
+							this.step1.splice(i, 1);
 							this.n++;
 						}
 					}
 				}
-				console.log(this.make);
+
+				console.log(this.details, "00000000000"),
+					console.log(this.prepare, "111111"),
+					console.log(this.step1, "22222222")
+				console.log(this.len)
 			},
 			//收藏保存数据
 			handleflag() {
@@ -314,32 +330,42 @@
 			.food-name {
 				position: absolute;
 				bottom: -80rpx;
-				margin-left: 365rpx;
+				left: 50%;
+				margin-left: -37rpx;
+				padding: 10rpx;
 				width: 60rpx;
-				background-color: #fff;
+				background-color: rgba($color: #fff, $alpha: 0.81);
 				opacity: 0.7;
-				border: 1px solid;
 				border-radius: 30rpx;
 				text-align: center;
+
+				.name-txt {
+					padding: 13rpx 12rpx;
+					border: 1rpx solid #000;
+					font-size: 33rpx;
+					border-radius: 20rpx;
+					color: #000;
+					line-height: 43rpx;
+				}
 			}
 		}
 
 		.food-inrduc {
 			width: 710rpx;
 			margin-top: 100rpx;
+			margin-bottom: 40rpx;
 			margin-left: 20rpx;
 			color: #979797;
+
+			.content {
+				margin-left: 38rpx;
+				text-indent: 2em;
+			}
 		}
 
 		.meterials {
-			margin-left: 20rpx;
-
-			.inrduc-center {
-				text {
-					margin-left: 40rpx;
-				}
-			}
-
+			margin-left: 50rpx;
+			margin-bottom: 20rpx;
 		}
 
 		.goods_nav {
@@ -428,26 +454,17 @@
 		}
 
 		.inrduc-center {
-			position: relative;
-			width: 680rpx;
-			left: 200rpx;
-			top: 20rpx;
-			text-indent: 2em;
-			font-size: 20px;
-			color: #222222;
-			margin-bottom: 40rpx;
+			text-align: center;
+			color: orange;
 
-			view {
-				position: absolute;
-				top: 8px;
-				left: -45rpx;
-				background-color: orange;
-				width: 45px;
-				height: 2px;
+			.txt {
+				font-size: 35rpx;
+				font-weight: 520;
+				padding: 0 20rpx;
 			}
 
-			.indruc-r {
-				left: 270rpx;
+			.fuhao {
+				display: block;
 			}
 
 		}
@@ -475,14 +492,18 @@
 			box-sizing: border-box;
 			flex-wrap: wrap;
 
+			.inrduc-center {
+				margin-left: 212rpx;
+			}
+
 			image {
 				height: 300px;
-				margin-left: 50rpx;
+				margin-left: 55rpx;
 			}
 
 			.food-step-desc {
-				width: 650rpx;
-				margin-left: 60rpx;
+				width: 670rpx;
+				margin-left: 40rpx;
 				line-height: 18px;
 				margin-bottom: 20rpx;
 			}
@@ -491,6 +512,15 @@
 				display: flex;
 				box-sizing: border-box;
 				margin: 5px 0 5px 25px;
+
+				.desc {
+					width: 580rpx;
+					padding-left: 5rpx;
+					letter-spacing: 2rpx;
+					line-height: 40rpx;
+					color: #666;
+					text-indent: 1em;
+				}
 			}
 
 			.food-step-main {

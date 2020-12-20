@@ -25,7 +25,7 @@
         ,{
             "path" : "pages/zaoju/zaoju",
             "style" : {
-				"navigationBarTitleText": "灶具菜谱"
+				"navigationBarTitleText": "菜谱"
 			}
         },
 		{

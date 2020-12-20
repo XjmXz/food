@@ -2,7 +2,7 @@
 	<view class="collect">
 		<view class="tis" v-if="menus.length==0">
 			<image src="../../static/img/菜篮子.jpg" mode="widthFix"></image>
-			<view>还没有添加菜品~</view>
+			<!-- <view>还没有添加菜品~</view> -->
 		</view>
 		<view class="item" v-for="item in menus" :key="item.id" @click="linktomenudetail(item)">
 			<block v-if="item.collected">
@@ -47,6 +47,13 @@
 
 <style lang="scss">
 	.collect {
+		.tis {
+			image {
+				margin-left: 100rpx;
+				margin-top: -200rpx;
+				width: 600rpx;
+			}
+		}
 		.item {
 			margin: 0 25rpx;
 
