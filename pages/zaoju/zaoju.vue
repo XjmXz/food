@@ -1,20 +1,9 @@
 <template>
-	<view class="recommend">
+	<view>
 		这是菜谱列表页面
-		<view v-for="item in zaojulist" :key="item.id" class="items" mode="widthFix" @click="itemClick(item)">
-			<view class="item-main">
-				<image :src="item.imgLarge"></image>
-				<view class="item-text">
-					<view>
-						<text>{{item.name}}</text>
-					</view>
-					<view>
-						<uni-icons type="heart" size="20"></uni-icons>
-						<text class="text-right">{{item.collectCount}}人收藏</text>
-					</view>
-				</view>
-			</view>
-		</view>
+		<foodlist :menu="menu"></foodlist>
+		<uni-load-more v-if="!flag" :status="'loading'"></uni-load-more>
+		<uni-load-more v-else :status="'noMore'"></uni-load-more>
 	</view>
 </template>
 
@@ -22,67 +11,54 @@
 	import {
 		myRequestPost
 	} from '@/utils/request.js';
-	import uniIcons from "@/components/uni/uni-icons/uni-icons.vue"
-	// import foodlist from '@/components/foodlist/foodlist.vue'
+	import uniIcons from "@/components/uni/uni-icons/uni-icons.vue";
+	import uniLoadMore from "@/components/uni/uni-load-more/uni-load-more.vue";
+	import foodlist from '@/components/foodlist/foodlist.vue'
 	export default {
 		components: {
-			uniIcons
+			uniIcons,
+			uniLoadMore,
+			foodlist
 		},
 		data() {
 			return {
-				zaojulist: [],
+				menu: [],
+				limit: 10,
+				flag: false,
+
 			};
 		},
-		onLoad() {
+		onLoad(options) {
+			this.id = options.id;
 			this.getSwipers()
 		},
 		methods: {
 			async getSwipers() {
-				let result = await myRequestPost("/api/cookbook/grounding/get-by-dc", {
-					"dc": "RRQZ",
+				let result = await myRequestPost("/rest/cks/api/cookbook/grounding/get-by-dc", {
+					"dc": this.$mp.query.dc,
 					"cookbookType": "all",
 					"start": 0,
-					"limit": 300,
+					"limit": this.limit,
 					"userId": null
 				});
 				if (result.rc === 0) {
-					this.zaojulist = result.cookbooks;
+					this.menu = [...result.cookbooks];
 				}
 				console.log(result)
+				console.log(this,'55555555')
+				console.log(this.$mp.query.dc)
+				
 			},
-			itemClick(item) {
-				uni.navigateTo({
-					url: '/pages/fooddetail/fooddetail?id=' + item.id
-				})
+			onReachBottom() {
+				this.limit += 10;
+				if (this.limit <= 300) {
+					this.getSwipers();
+				} else {
+					//没有更多数据了
+					this.flag = true;
+				}
 			}
 		}
 	}
 </script>
 
-<style lang="less">
-	.recommend {
-		.items {
-			.item-main {
-				margin: 0 25rpx;
-
-				image {
-					width: 700rpx;
-					height: 450rpx;
-					border-radius: 20rpx;
-				}
-
-				.item-text {
-					display: flex;
-					justify-content: space-between;
-					margin: 15rpx 0 15rpx 10rpx;
-					font-size: 30rpx;
-
-					.text-right {
-						float: right;
-						margin-right: 30rpx;
-					}
-				}
-			}
-		}
-	}
-</style>

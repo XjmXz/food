@@ -1,4 +1,4 @@
-const baseUrl = "https://api.myroki.com/rest/cks"
+const baseUrl = "https://api.myroki.com"
 
 export function myRequestGet(url, data) {
 	return new Promise((resolve, reject) => {

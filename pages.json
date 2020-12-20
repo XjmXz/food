@@ -1,5 +1,5 @@
 {
-	"pages": [ //pages数组中第一项表示应用启动页，参考：https://uniapp.dcloud.io/collocation/pages
+	"pages": [ 
 		{
 			"path": "pages/index/index",
 			"style": {
@@ -13,7 +13,8 @@
 		}, {
 			"path": "pages/video/video",
 			"style": {
-				"navigationBarTitleText": "视频"
+				"navigationBarTitleText": "视频",
+				"enablePullDownRefresh": true
 			}
 		}, {
 			"path": "pages/my/my",
@@ -26,25 +27,90 @@
             "style" : {
 				"navigationBarTitleText": "灶具菜谱"
 			}
-        },{
+        },
+		{
             "path" : "pages/square/square",
             "style" : {
-				"navigationBarTitleText": "来到广场"
+				"navigationBarTitleText": "来到广场",
+				"enablePullDownRefresh": true
 			}
         }
         ,{
             "path" : "pages/fooddetail/fooddetail",
             "style" : {
-				"navigationBarTitleText": "菜谱详情"
+				"navigationBarTitleText": "菜谱详情",
+				"enablePullDownRefresh": true
 			}
         }
-        
+        ,{
+            "path" : "pages/cart/cart",
+            "style" : {
+				"navigationBarTitleText": "菜篮子"
+			}
+        }
+        ,{
+            "path" : "pages/login/login",
+            "style" : {
+				"navigationBarTitleText": "登录中心"
+			}
+        }
+        ,{
+            "path" : "pages/themeDetails/themeDetails",
+            "style" : {}
+        }
+        ,{
+            "path" : "pages/search/search",
+            "style" : {}
+        }
+        ,{
+            "path" : "pages/collect/collect",
+            "style" : {
+				"navigationBarTitleText": "我的收藏"
+			}
+        }
+        ,{
+            "path" : "pages/lottery/lottery",
+            "style" : {
+				"navigationBarTitleText": "随机选菜"
+			}
+        }
+        ,{
+            "path" : "pages/lotteryDetail/lotteryDetail",
+            "style" : {
+				"navigationBarTitleText": "随机选菜"
+			}
+        }
+        ,{
+            "path" : "pages/videoDetail/videoDetail",
+            "style" : {}
+        }
+        ,{
+            "path" : "pages/postBarsDetail/postBarsDetail",
+            "style" : {}
+        }
+        ,{
+            "path" : "pages/votedetail/votedetail",
+            "style" : {}
+        }
+        ,{
+            "path" : "pages/share/share",
+            "style" : {}
+        }
+        ,{
+            "path" : "pages/register/register",
+            "style" : {}
+        }
+        ,{
+            "path" : "pages/user/user",
+            "style" : {}
+        }
     ],
 	"globalStyle": {
 		"navigationBarTextStyle": "white",
 		"navigationBarTitleText": "美食",
 		"navigationBarBackgroundColor": "#E9A06F",
-		"backgroundColor": "#F8F8F8"
+		"backgroundColor": "#F8F8F8",
+		"onReachBottomDistance":20
 	},
 	"tabBar": {
 		"list": [{

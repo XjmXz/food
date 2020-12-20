@@ -1,10 +1,15 @@
 <template>
 	<view class="recommend">
-		<view v-for="item in zaojulist" :key="item.id" class="items" mode="widthFix" @click="itemClick(item)">
+		<view v-for="item in menu" :key="item.id" class="item">
 			<view class="item-main">
-				<image :src="item.imgLarge"></image>
-				<view class="item-text"> <text>{{item.name}}</text>
-					<text class="text-right">{{item.collectCount}}人收藏</text>
+				<image :src="item.imgLarge" @click="itemClick(item)"></image>
+				<view class="item-text">
+					<view>
+						<text>{{item.name}}</text>
+					</view>
+					<view>
+						<text class="text-right">{{item.collectCount}}人收藏</text>
+					</view>
 				</view>
 			</view>
 		</view>
@@ -12,20 +17,22 @@
 </template>
 
 <script>
+	import uniIcons from "@/components/uni/uni-icons/uni-icons.vue";
 	import {
 		myRequestPost
 	} from '@/utils/request.js'
 	export default {
-		props: ['zaojulist'],
+		props: ['menu'],
+		components: {
+			uniIcons
+		},
 		data() {
-			return {
-
-			};
+			return {};
 		},
 		methods: {
 			itemClick(item) {
 				uni.navigateTo({
-					url: '/pages/goodsdetail/goodsdetail'
+					url: '/pages/fooddetail/fooddetail?id=' + item.id
 				})
 			}
 		}
@@ -34,21 +41,25 @@
 
 <style lang="scss">
 	.recommend {
-		.items {
+		.item {
 			.item-main {
 				margin: 0 25rpx;
-	
+
 				image {
 					width: 700rpx;
-					height: 400rpx;
-					border-radius: 16rpx;
+					height: 450rpx;
+					border-radius: 20rpx;
 				}
-	
+
 				.item-text {
-					margin: 10rpx 0 30rpx;
-	
+					display: flex;
+					justify-content: space-between;
+					margin: 15rpx 0 15rpx 15rpx;
+					font-size: 30rpx;
+
 					.text-right {
 						float: right;
+						margin-right: 30rpx;
 					}
 				}
 			}
