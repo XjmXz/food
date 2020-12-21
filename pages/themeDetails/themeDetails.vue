@@ -7,20 +7,24 @@
 			<view v-for="item in themeList" :key="item.id" class="buttons">
 				<button type="default" class="button_item" @click="goFoodDetails(item)">{{item.name}}</button>
 			</view>
+
 			<view class="foodsPhoto" v-for="item in themeList" :key="item.id">
 				<view class="Photo_item">
 					<image :src="item.imgLarge" @click="goFoodDetails(item)"></image>
 					<view class="text">
 						<text class="left">{{item.name}}</text>
 						<view class="right">
+							<uni-icons type="heart" size="20"></uni-icons>
 							<text class="collect">{{item.collectCount}}人收藏</text>
 						</view>
 					</view>
 				</view>
 			</view>
+
 			<view class="blank">
-				
+
 			</view>
+
 			<view class="bottom">
 				<view class="tab_item" @click="toIndex">
 					<uni-icons type="home" size="20"></uni-icons>
@@ -29,17 +33,23 @@
 					</view>
 				</view>
 				<view class="tab_item">
-					<!-- #ifdef H5|MP-ALIPAY-->
+					<!-- #ifdef H5-->
 					<uni-icons type="redo" size="20"></uni-icons>
 					<view class="" @click="shareOn">分享</view>
 					<uni-popup ref="sharepopup" type="bottom">
 						<share-btn :sharedataTemp="sharedata"></share-btn>
 					</uni-popup>
+
 					<!-- #endif -->
 
 					<!-- #ifdef MP-WEIXIN -->
 					<uni-icons type="redo" size="20"></uni-icons>
 					<view class="btn"><button class="share-btn text" open-type="share">分享</button></view>
+					<!-- #endif -->
+
+					<!-- #ifdef MP-ALIPAY -->
+					<uni-icons type="redo" size="20"></uni-icons>
+					<view class="btn"><button class="share-btn text" open-type="share" v-if="canIUseShareButton">分享</button></view>
 					<!-- #endif -->
 				</view>
 			</view>
@@ -64,6 +74,7 @@
 				themesIdList: [],
 				themeList: {},
 				isCollected: true,
+				canIUseShareButton: true,
 				sharedata: {
 					type: 1,
 					strShareUrl: "http://www.baidu.com",
@@ -71,6 +82,8 @@
 					strShareSummary: "分享总结",
 					strShareImageUrl: "http://www.xuelejia.com/xljapp/h5/static/aboutUsLogo.png"
 				},
+
+
 			}
 		},
 		components: {
@@ -78,10 +91,15 @@
 			uniPopup,
 			shareBtn
 		},
-
+		setShareButtonSwitch() {
+			this.setData({
+				canIUseShareButton: my.canIUse('button.open-type.share')
+			})
+		},
 		onLoad(options) {
 			this.themeId = options.themeId;
 			this.getThemeDetail();
+			this.setShareButtonSwitch();
 
 		},
 		onShareAppMessage(res) {
@@ -110,14 +128,17 @@
 				});
 				this.themeList = res1.cookbooks;
 			},
+
 			goFoodDetails(item) {
 				uni.navigateTo({
 					url: `/pages/fooddetail/fooddetail?id=${item.id}`
 				})
 			},
+
 			handleCollection() {
 				this.isCollected = !(this.isCollected);
 			},
+
 			toIndex() {
 				uni.switchTab({
 					url: "/pages/index/index"
@@ -127,6 +148,8 @@
 				console.log("jjjjjjjjjj");
 				this.$refs.sharepopup.open();
 			}
+
+
 		}
 	}
 </script>
@@ -136,25 +159,26 @@
 		width: 750rpx;
 		height: 100%;
 		font-family: "楷体";
-		
+
 		.continer {
 			width: 700rpx;
 			padding-left: 25rpx;
 			padding-right: 25rpx;
 			background-color: #FFFFFF;
-			
-			.blank{
-				width:700rpx;
-				height:300rpx;
+
+			.blank {
+				width: 700rpx;
+				height: 300rpx;
 			}
+
 			.title {
 				width: 100%;
-				height:80rpx;
+				height: 80rpx;
 				font-size: 40rpx;
 				font-weight: bold;
 				font-family: "楷体";
 				text-align: center;
-				padding-top:20rpx;
+				padding-top: 20rpx;
 
 			}
 
@@ -250,6 +274,7 @@
 						button::after {
 							border: none;
 						}
+
 					}
 				}
 			}

@@ -94,6 +94,7 @@
 					"secure": false // 设置支持https协议的代理
 				}
 			}
-		}
+		},
+		"template" : "index.html"
 	}
 }

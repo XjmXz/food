@@ -15,4 +15,9 @@
 
 <style>
 	/*每个页面公共css */
+	/* #ifdef MP-ALIPAY */
+	page{
+		background: #fff;
+	}
+	/* #endif */
 </style>

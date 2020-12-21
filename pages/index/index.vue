@@ -1,6 +1,5 @@
 <template>
 	<view class="content">
-		<!-- <uni-search-bar :radius="100" placeholder="今天想吃点啥？" @confirm="search"></uni-search-bar> -->
 		<view class="box">
 			<view class="input-box" @click="toSearch">
 				<uni-search-bar placeholder="今天想吃点啥？" radius="100" disabled="true" cancelButton="none"></uni-search-bar>
@@ -13,7 +12,7 @@
 		</swiper>
 		<uni-grid :column="4" :showBorder="false">
 			<uni-grid-item v-for="item in navs" :key="item.title">
-				<view :class="item.icons" @click="goZaoju(item)"></view>
+				<image :src="item.img" @click="goZaoju(item)"></image>
 				<text>{{item.title}}</text>
 			</uni-grid-item>
 		</uni-grid>
@@ -49,28 +48,28 @@
 				swipers: [],
 				menu: [],
 				navs: [{
-						icons: "t-icon t-icon-guotiex",
+						img: "../../static/tabs/番茄锅.png",
 						title: "灶具菜谱",
 						path: "/pages/zaoju/zaoju",
-						dc:'RRQZ'
+						dc: 'RRQZ'
 					},
 					{
-						icons: "t-icon t-icon-wan",
+						img: "../../static/tabs/蔬菜沙拉.png",
 						title: "烤箱菜谱",
 						path: "/pages/zaoju/zaoju",
-						dc:'RDKX'
+						dc: 'RDKX'
 					},
 					{
-						icons: "t-icon t-icon-xiaolongbao",
+						img: "../../static/tabs/蛋糕.png",
 						title: "蒸汽炉菜谱",
 						path: "/pages/zaoju/zaoju",
-						dc:'RZQL'
+						dc: 'RZQL'
 					},
 					{
-						icons: "t-icon t-icon-xiaolongbao",
+						img: "../../static/tabs/小笼包.png",
 						title: "微波炉菜谱",
 						path: "/pages/zaoju/zaoju",
-						dc:"RWBL"
+						dc: "RWBL"
 					}
 				]
 			}
@@ -99,9 +98,9 @@
 			},
 			goZaoju(item) {
 				uni.navigateTo({
-					url: "/pages/zaoju/zaoju?dc="+item.dc
+					url: "/pages/zaoju/zaoju?dc=" + item.dc
 				})
-				console.log(item,"1005")
+				console.log(item, "1005")
 			},
 			itemClick(item) {
 				uni.navigateTo({
@@ -142,7 +141,7 @@
 		.uni-grid-item {
 			text-align: center;
 
-			.t-icon {
+			image {
 				line-height: 90rpx;
 				width: 110rpx;
 				height: 110rpx;

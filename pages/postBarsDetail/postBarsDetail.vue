@@ -156,7 +156,7 @@
 				console.log("跳转成功！")
 				uni.navigateTo({
 					// url: '/pages/zhiwen-share/zhiwen-share'
-					url:"/pages/zhiwen-share/zhiwen-share"
+					url:"/pages/share/share"
 				})
 			},
 		}

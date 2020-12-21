@@ -1,7 +1,7 @@
 <template>
 	<view>
 		<view class="tis" v-if="carts.length==0">
-			<image src="../../static/img/菜篮子.jpg" mode="widthFix"></image>
+			<image src="../../static/img/菜篮子.png" mode="widthFix"></image>
 			<!-- <view>还没有添加菜品~</view> -->
 		</view>
 		<cartlist :carts="carts" :button="buttonList" :border="true" @click="clickMethod" @change="changeMethod"></cartlist>

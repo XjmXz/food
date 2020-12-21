@@ -9,26 +9,7 @@
 			<button type="default" @click="searchOne(foodsList[3])" class="btn">{{foodsList[3]}}</button>
 			<button type="default" @click="searchOne(foodsList[4])" class="btn">{{foodsList[4]}}</button>
 		</view>
-
-		<view v-for="item in foodList1" :key="item.name" @click="toFoodDetail(item)">
-			<view class="img">
-				<image :src="item.imgSmall" mode=""></image>
-				<view class="text">
-					<view class="">{{item.name}}</view>
-					<view class="">{{item.collectCount}}人收藏</view>
-				</view>
-			</view>
-		</view>
 		<view class="" v-for="item in foodList2" :key="item.name" @click="toFoodDetail(item)">
-			<view class="img">
-				<image :src="item.imgSmall" mode=""></image>
-				<view class="text">
-					<view class="">{{item.name}}</view>
-					<view class="">{{item.collectCount}}人收藏</view>
-				</view>
-			</view>
-		</view>
-		<view class="" v-for="item in foodList3" :key="item.name" @click="toFoodDetail(item)">
 			<view class="img">
 				<image :src="item.imgSmall" mode=""></image>
 				<view class="text">
@@ -61,9 +42,7 @@
 		data() {
 			return {
 				name: "",
-				foodList1: {},
 				foodList2: {},
-				foodList3: {},
 				foodList4: {},
 				flag: true,
 				foodsList: ["东坡肉", "可乐鸡翅", "排骨", "沙拉", "面"]
@@ -77,9 +56,8 @@
 					"x_current_user_id": null
 				});
 				console.log(result);
-				this.foodList1 = result.cookbook_3rds;
 				this.foodList2 = result.cookbooks;
-				if (this.foodList1.length == 0 && this.foodList2.length == 0) {
+				if (this.foodList2.length == 0) {
 					this.flag = false;
 				}
 				console.log(this.flag);
@@ -90,9 +68,8 @@
 					"x_current_user_id": null
 				});
 				console.log(result);
-				this.foodList3 = result.cookbook_3rds;
 				this.foodList4 = result.cookbooks;
-				if (this.foodList3.length == 0 && this.foodList4.length == 0) {
+				if (this.foodList4.length == 0) {
 					this.flag = false;
 				}
 			},

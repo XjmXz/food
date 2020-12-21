@@ -71,9 +71,12 @@
 					<view>{{item.desc}}</view>
 				</view>
 			</view>
-			<view class="btn">
-				<button type="primary">222</button>
+			<view class="footer">
+				
 			</view>
+			<!-- <view class="btn">
+				<button type="primary">222</button>
+			</view> -->
 			<!-- 底部导航 -->
 			<view class="goods_nav">
 				<view class="tab">
@@ -324,7 +327,7 @@
 			image {
 				width: 750rpx;
 				height: 550rpx;
-
+				background-size: cover;
 			}
 
 			.food-name {
@@ -438,15 +441,15 @@
 				}
 
 				.btn-left {
-					border-top-left-radius: 100px;
-					border-bottom-left-radius: 100px;
+					border-top-left-radius: 200rpx;
+					border-bottom-left-radius: 200rpx;
 					background-color: #ff0000;
 					color: #fff;
 				}
 
 				.btn-right {
-					border-top-right-radius: 100px;
-					border-bottom-right-radius: 100px;
+					border-top-right-radius: 200rpx;
+					border-bottom-right-radius: 200rpx;
 					background-color: #ffa200;
 					color: #fff;
 				}
@@ -497,21 +500,23 @@
 			}
 
 			image {
-				height: 300px;
+				width: 640rpx;
+				height: 600rpx;
 				margin-left: 55rpx;
+				background-size: cover;
 			}
 
 			.food-step-desc {
 				width: 670rpx;
 				margin-left: 40rpx;
-				line-height: 18px;
+				line-height: 36rpx;
 				margin-bottom: 20rpx;
 			}
 
 			.steps {
 				display: flex;
 				box-sizing: border-box;
-				margin: 5px 0 5px 25px;
+				margin: 10rpx 0 10rpx 50rpx;
 
 				.desc {
 					width: 580rpx;
@@ -526,6 +531,12 @@
 			.food-step-main {
 				width: 680rpx;
 			}
+		}
+		.footer{
+			width: 750rpx;
+			height: 100rpx;
+			background-color: #FFFFFF;
+			margin: 40rpx auto;
 		}
 	}
 </style>

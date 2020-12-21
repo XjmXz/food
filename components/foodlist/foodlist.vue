@@ -41,6 +41,7 @@
 
 <style lang="scss">
 	.recommend {
+		margin-top: 40rpx;
 		.item {
 			.item-main {
 				margin: 0 25rpx;

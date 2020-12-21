@@ -1,6 +1,6 @@
 <template>
 	<view>
-		这是菜谱列表页面
+		<text></text>
 		<foodlist :menu="menu"></foodlist>
 		<uni-load-more v-if="!flag" :status="'loading'"></uni-load-more>
 		<uni-load-more v-else :status="'noMore'"></uni-load-more>

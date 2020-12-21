@@ -4,7 +4,9 @@
 			<view class="userinfo">
 				<view class="face">
 					<button class="sys_btn" v-if="!hasLogin" @tap="bindLogin"></button>
-					<button class="sys_btn" v-if="hasLogin" @tap="bindLogout"><image src="../static/my/face.jpeg"></image></button>
+					<button class="sys_btn" v-if="hasLogin" @tap="bindLogout">
+						<image src="../../static/images/xz.jpg"></image>
+					</button>
 				</view>
 			</view>
 			<view class="setting">
@@ -25,12 +27,12 @@
 </template>
 <script>
 	import {
-	    mapState,
-	    mapMutations
+		mapState,
+		mapMutations
 	} from 'vuex'
 	export default {
 		computed: {
-		    ...mapState(['hasLogin', 'forcedLogin'])
+			...mapState(['hasLogin', 'forcedLogin'])
 		},
 		data() {
 			return {
@@ -70,17 +72,17 @@
 		methods: {
 			...mapMutations(['logout']),
 			bindLogin() {
-			    uni.navigateTo({
-			        url: '../login/login',
-			    });
+				uni.navigateTo({
+					url: '../login/login',
+				});
 			},
 			bindLogout() {
-			    this.logout();
-			    if (this.forcedLogin) {
-			        uni.reLaunch({
-			            url: '../login/login',
-			        });
-			    }
+				this.logout();
+				if (this.forcedLogin) {
+					uni.reLaunch({
+						url: '../login/login',
+					});
+				}
 			},
 			//用户点击订单类型
 			toOrderType(index) {
@@ -132,18 +134,17 @@
 					height: 100rpx;
 					border-radius: 50%;
 					background: #EEEEEE;
+
+					image {
+						width: 50px;
+						height: 50px;
+						margin-left: -27rpx;
+						margin-top: 2px;
+						background-size: cover;
+					}
 				}
 
-				.userinfo-avatar {
-					width: 128rpx;
-					height: 128rpx;
-					margin: 20rpx;
-					border-radius: 50%;
-				}
 
-				.userinfo-nickname {
-					color: #aaa;
-				}
 			}
 
 			.info {

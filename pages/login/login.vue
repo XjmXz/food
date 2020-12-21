@@ -4,10 +4,20 @@
 		<view class="logodiv"></view>
 		<view class="form">
 			<view class="username">
+				<!-- #ifdef H5 -->
 				<m-input class="nameform" type="text" clearable focus v-model="account" placeholder="请输入账号" />
+				<!-- #endif -->
+				<!-- #ifdef MP-ALIPAY | MP-WEIXIN -->
+				<input class="nameform" type="text" clearable focus v-model="account" placeholder="请输入账号" />
+				<!-- #endif -->
 			</view>
 			<view class="password">
+				<!-- #ifdef H5 -->
 				<m-input class="pawform" type="password" displayable v-model="password" placeholder="请输入密码" />
+				<!-- #endif -->
+				<!-- #ifdef MP-ALIPAY | MP-WEIXIN -->
+				<input class="pawform" type="password" v-model="password" placeholder="请输入密码" />
+				<!-- #endif -->
 			</view>
 			<view class="loginBtn">
 				<text class="btnvalue" @tap="bindLogin">登录</text>
@@ -71,31 +81,31 @@
 				});
 			},
 			initPosition() {
-			    /**
-			     * 使用 absolute 定位，并且设置 bottom 值进行定位。软键盘弹出时，底部会因为窗口变化而被顶上来。
-			     * 反向使用 top 进行定位，可以避免此问题。
-			     */
-			    this.positionTop = uni.getSystemInfoSync().windowHeight - 100;
+				/**
+				 * 使用 absolute 定位，并且设置 bottom 值进行定位。软键盘弹出时，底部会因为窗口变化而被顶上来。
+				 * 反向使用 top 进行定位，可以避免此问题。
+				 */
+				this.positionTop = uni.getSystemInfoSync().windowHeight - 100;
 			},
 			oauth(value) {
-			    uni.login({
-			        provider: value,
-			        success: (res) => {
-			            uni.getUserInfo({
-			                provider: value,
-			                success: (infoRes) => {
-			                    /**
-			                     * 实际开发中，获取用户信息后，需要将信息上报至服务端。
-			                     * 服务端可以用 userInfo.openId 作为用户的唯一标识新增或绑定用户信息。
-			                     */
-			                    this.toMain(infoRes.userInfo.nickName);
-			                }
-			            });
-			        },
-			        fail: (err) => {
-			            console.error('授权登录失败：' + JSON.stringify(err));
-			        }
-			    });
+				uni.login({
+					provider: value,
+					success: (res) => {
+						uni.getUserInfo({
+							provider: value,
+							success: (infoRes) => {
+								/**
+								 * 实际开发中，获取用户信息后，需要将信息上报至服务端。
+								 * 服务端可以用 userInfo.openId 作为用户的唯一标识新增或绑定用户信息。
+								 */
+								this.toMain(infoRes.userInfo.nickName);
+							}
+						});
+					},
+					fail: (err) => {
+						console.error('授权登录失败：' + JSON.stringify(err));
+					}
+				});
 			},
 			gotouser() {
 				uni.switchTab({
@@ -159,8 +169,16 @@
 <style>
 	page {
 		height: 100%;
+
 	}
 
+	/* #ifdef MP-ALIPAY */
+	page {
+		height: 100%;
+		background: url(../../static/tabs/背景.png);
+		background-size: cover;
+	}
+	/* #endif */
 	.background {
 		width: 100%;
 		height: 100%;

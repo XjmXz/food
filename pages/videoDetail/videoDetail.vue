@@ -1,7 +1,7 @@
 <template>
 	<view class="box">
 		<view class="lp">
-			<video :src="newsList.playUrl" object-fit='cover' @click="addcount"></video>
+			<video :src="newsList.playUrl" object-fit='fill' @click="addcount"></video>
 		</view>
 		<view class="bottom">
 			<view class="bl">{{newsList.desc}}</view>
@@ -68,12 +68,12 @@
 <style lang="less">
 	/* #ifdef MP-ALIPAY*/
 	.lp {
-		width: 100vh;
-		// height: 20vh;
+		width: 750rpx;
+		height: 650rpx;
 
 		video {
-			width: 100vh;
-			// height: 100vh;
+			width: 750rpx;
+			height: 650rpx;
 		}
 }
 		/* #endif*/

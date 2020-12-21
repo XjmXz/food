@@ -1,20 +1,35 @@
 <template>
 	<view class="content">
-		<image class='background' src="../../static/tabs/背景1.png" mode="aspectFill"></image>
+		<image class='background' src="../../static/tabs/背景.png" mode="aspectFill"></image>
 		<view class="form">
 			<view class="username">
+				<!-- #ifdef H5 -->
 				<m-input class="nameform" focus clearable type="text" v-model="account" placeholder="请输入账号" />
+				<!-- #endif -->
+				<!-- #ifdef MP-ALIPAY | MP-WEIXIN -->
+				<input class="nameform" focus clearable type="text" v-model="account" placeholder="请输入账号" />
+				<!-- #endif -->
 			</view>
 			<view class="password">
+				<!-- #ifdef H5 -->
 				<m-input class="pawform" displayable type="password" v-model="password" placeholder="请输入密码" />
+				<!-- #endif -->
+				<!-- #ifdef MP-ALIPAY | MP-WEIXIN -->
+				<input class="pawform" displayable type="password" v-model="password" placeholder="请输入密码" />
+				<!-- #endif -->
 			</view>
 			<view class="passwordup">
-			    <m-input class="pawformup" type="text" clearable v-model="email" placeholder="请输入邮箱"></m-input>
+				<!-- #ifdef H5 -->
+				<m-input class="pawformup" type="text" clearable v-model="email" placeholder="请输入邮箱"></m-input>
+				<!-- #endif -->
+				<!-- #ifdef MP-ALIPAY | MP-WEIXIN -->
+				<input class="pawformup" type="text" clearable v-model="email" placeholder="请输入邮箱"></m-input>
+				<!-- #endif -->
 			</view>
 			<!-- <view class="passwordup">
 				<input class="pawformup" type="password" v-model="confirmPassword" placeholder="请再次输入密码" />
 			</view> -->
-			<view  hover-class="registBtnhover">
+			<view hover-class="registBtnhover">
 				<button type="primary" class="primary" @tap="register">注册</button>
 			</view>
 			<view class="registBtn" hover-class="registBtnhover">
@@ -47,40 +62,40 @@
 				})
 			},
 			register() {
-			    if (this.account.length < 5) {
-			        uni.showToast({
-			            icon: 'none',
-			            title: '账号最短为 5 个字符'
-			        });
-			        return;
-			    }
-			    if (this.password.length < 6) {
-			        uni.showToast({
-			            icon: 'none',
-			            title: '密码最短为 6 个字符'
-			        });
-			        return;
-			    }
-			    if (this.email.length < 3 || !~this.email.indexOf('@')) {
-			        uni.showToast({
-			            icon: 'none',
-			            title: '邮箱地址不合法'
-			        });
-			        return;
-			    }
-			
-			    const data = {
-			        account: this.account,
-			        password: this.password,
-			        email: this.email
-			    }
-			    service.addUser(data);
-			    uni.showToast({
-			        title: '注册成功'
-			    });
-			    uni.navigateBack({
-			        delta: 1
-			    });
+				if (this.account.length < 5) {
+					uni.showToast({
+						icon: 'none',
+						title: '账号最短为 5 个字符'
+					});
+					return;
+				}
+				if (this.password.length < 6) {
+					uni.showToast({
+						icon: 'none',
+						title: '密码最短为 6 个字符'
+					});
+					return;
+				}
+				if (this.email.length < 3 || !~this.email.indexOf('@')) {
+					uni.showToast({
+						icon: 'none',
+						title: '邮箱地址不合法'
+					});
+					return;
+				}
+
+				const data = {
+					account: this.account,
+					password: this.password,
+					email: this.email
+				}
+				service.addUser(data);
+				uni.showToast({
+					title: '注册成功'
+				});
+				uni.navigateBack({
+					delta: 1
+				});
 			}
 		},
 		components: {
@@ -97,6 +112,16 @@
 	page {
 		height: 100%;
 	}
+
+	/* #ifdef MP-ALIPAY */
+	page {
+		height: 100%;
+		background: url(../../static/tabs/背景.png);
+		background-size: cover;
+	}
+
+	/* #endif */
+
 
 	.background {
 		width: 100%;
