@@ -1,0 +1,41 @@
+.am-navbar {
+    background: #ffb;
+    position: fixed;
+    top: 0px;
+    height: 45px;
+    z-index: 100;
+    width: 100%;
+    .am-navbar-left {
+        div {
+            font-size: 14px;
+            a {
+                color: white;
+                svg {
+                    vertical-align: middle;
+                    margin-top: -5px;
+                    margin-left: 8px;
+                }
+            }
+        }
+    }
+    .am-navbar-title {
+        .am-search {
+            width: 260px;
+            margin-left: 10px;
+            background-color: transparent !important;
+            .am-search-input {
+                flex: 1 1;
+                position: relative;
+                width: 100%;
+                height: 30px;
+                overflow: hidden;
+                background-color: #fff;
+                border-radius: 15px;
+                border: 2px solid orangered;
+            }
+        }
+        .am-search-cancel {
+            margin-right: -40px !important;
+        }
+    }
+}

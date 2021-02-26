@@ -1,0 +1,35 @@
+.address-none {
+    margin-top: 180px;
+    margin-left: 80px;
+    img {
+        width: 215px;
+        height: 100%;
+    }
+    .p1 {
+        margin-top: 20px;
+        margin-bottom: 5px;
+        margin-left: 40px;
+        font-size: 18px;
+    }
+    .p2 {
+        margin-left: 10px;
+        color: #aaa;
+    }
+}
+
+.address-btn {
+    border: none;
+    width: 265px;
+    height: 40px;
+    line-height: 40px;
+    text-align: center;
+    margin-top: 15px;
+    margin-left: 55px;
+    color: white;
+    background-color: orangered;
+    border-radius: 20px;
+    -webkit-border-radius: 20px;
+    -moz-border-radius: 20px;
+    -ms-border-radius: 20px;
+    -o-border-radius: 20px;
+}
