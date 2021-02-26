@@ -1,0 +1,32 @@
+import React from 'react'
+import { Link } from 'react-router-dom'
+import './ad.scss'
+
+type IProps = Readonly<{
+    list: any[]
+}>
+
+const Ad: React.FC<IProps> = (props) => {
+    console.log(props.list,"222222222222222222222222");
+    
+    return <div id="home-ad">
+        <h2>牛气冲天 福利多多</h2>
+        <div className="ad-container clear-fix">
+            <div className="ad-main">
+                {props.list?.map((item, index) => {
+                    return (
+                        <div key={index} className="ad-item float-left">
+                            <Link to={`/${item.url}/?title=${item.title}/1`}>
+                                <img src={require(item.img + "").default} alt={item.title} />
+                                <span>{item.title}</span>
+                            </Link>
+                        </div>
+                    );
+                })}
+            </div>
+
+        </div>
+    </div>
+}
+
+export default Ad

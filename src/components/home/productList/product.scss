@@ -1,0 +1,56 @@
+h2 {
+    margin-top: 15px;
+    margin-left: 15px;
+}
+
+.grid-item {
+    margin-top: 15px;
+    margin-left: 15px;
+    //margin: 17px;
+    height: 260px;
+    float: left;
+    background-color: #fff;
+    width: 165px;
+    border-radius: 12px;
+    -webkit-border-radius: 12px;
+    -moz-border-radius: 12px;
+    -ms-border-radius: 12px;
+    -o-border-radius: 12px;
+    img {
+        width: 165px;
+        border-top-left-radius: 12px;
+        border-top-right-radius: 12px;
+    }
+    .grid-item-main {
+        padding: 0 7px;
+        .grid-item-title {
+            margin: 5px 0;
+            color: black;
+            font-size: 14px;
+            white-space: nowrap;
+            overflow: hidden;
+            text-overflow: ellipsis;
+        }
+        .gird-item-p {
+            color: #bbb;
+            font-size: 12px;
+            margin-top: 10px;
+            margin-bottom: 20px;
+        }
+        span {
+            color: orangered;
+            font-size: 16px;
+            font-weight: bold;
+        }
+    }
+    .shopping {
+        padding: 3px 8px;
+        margin-top: -22px;
+        float: right;
+        margin-right: 10px;
+        font-size: 12px;
+        color: orangered;
+        font-weight: normal;
+        border: 1px solid orangered;
+    }
+}
