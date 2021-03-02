@@ -138,7 +138,7 @@ const Tab = (props) => {
           selected={selectedTab === "user"}
           onPress={() => {
             setSelectedTab("user");
-            props.history.push("/user/?title=登录/1");
+            props.history.push("/login/?title=登录/1");
           }}
         ></TabBar.Item>
       </TabBar>

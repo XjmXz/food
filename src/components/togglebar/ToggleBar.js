@@ -9,23 +9,14 @@ const ToggleBar = (props) => {
   //每当路由地址发生变化就会执行effect
   useEffect(() => {
     const path = props.history.location.pathname;
-    let id = path.slice(-4);
     console.log(path, "ppppppppppppppaaaaaaaaaaaahhhhhhhhh");
-    let rootArr = ["/", "/cart/", "/user", "/huasuan/", "/collect"];
-    let rootRouteArr = [`/detail/${id}`, `/comments/${id}`];
-    if (rootRouteArr.includes(path)) {
-      setBarType("tab2");
-    }
+    let rootArr = ["/", "/cart/", "/user/", "/huasuan/", "/collect"];
     if (rootArr.includes(path)) {
       setBarType("tab");
     }
   }, [props.history.location.pathname]);
 
-  return (
-    <React.Fragment>
-      {barType === "tab2" ? <Tab2></Tab2> : <Tab></Tab>}
-    </React.Fragment>
-  );
+  return <React.Fragment>{barType === "tab" && <Tab></Tab>}</React.Fragment>;
 };
 
 export default withRouter(ToggleBar);

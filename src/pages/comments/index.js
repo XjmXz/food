@@ -2,6 +2,7 @@ import React, { useState, useEffect } from "react";
 import { fetchget } from "../../utils/fetch";
 import { RouteComponentProps } from "react-router-dom";
 import "./comments.scss";
+import Tab2 from "../../components/tab2/Tab2";
 
 const Comments = ({ match }) => {
   const [comments, setComments] = useState([]);
@@ -48,6 +49,7 @@ const Comments = ({ match }) => {
           })}
       </div>
       <div>已经到底了 </div>
+      <Tab2></Tab2>
     </div>
   );
 };

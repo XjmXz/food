@@ -6,6 +6,7 @@ import ProductList from "../../components/home/productList";
 
 import { useDispatch, useSelector } from "react-redux";
 import { listProducts } from "../../actions/productAction";
+import Tab from "../../components/tab/Tab";
 const Home = () => {
   let [lunboList, setLunboList] = useState([]);
   let [adList, setAdList] = useState([]);

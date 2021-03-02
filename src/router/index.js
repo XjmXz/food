@@ -14,11 +14,13 @@ import addAddress from "../pages/addAddress";
 import Category from "../pages/category";
 import Search from "../pages/search";
 import Collect from "../pages/collect";
+import Login from "../pages/login";
 
 const RouterMap = () => {
   return (
     <Switch>
       <Route path="/" exact component={Home}></Route>
+      <Route path="/login/:title?" component={Login}></Route>
       <Route path="/user" component={User}></Route>
       <Route path="/cart" component={Cart}></Route>
       <Route path="/huasuan" component={Huasuan}></Route>

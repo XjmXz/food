@@ -3,6 +3,8 @@ import { SearchBar, NavBar } from "antd-mobile";
 import { Link } from "react-router-dom";
 import { fetchget } from "../../utils/fetch";
 import Nav from "../../components/nav/Nav";
+import Tab2 from "../../components/tab2/Tab2";
+import Tab from "../../components/tab/Tab";
 
 const Huasuan = (props) => {
   let [title, setTitle] = useState();
