@@ -1,0 +1,42 @@
+.comments-user {
+    margin: 20px 15px 0;
+    padding-top: 10px;
+    img {
+        width: 30px;
+        height: 30px;
+        border-radius: 50%;
+        -webkit-border-radius: 50%;
+        -moz-border-radius: 50%;
+        -ms-border-radius: 50%;
+        -o-border-radius: 50%;
+    }
+    .comments-user-name {
+        display: block;
+        margin-top: -34px;
+        margin-left: 40px;
+    }
+    .comments-user-content {
+        margin-top: 10px;
+        // margin-left: 40px;
+    }
+    .comments-user-time {
+        display: block;
+        margin-top: 5px;
+        margin-left: 40px;
+        color: #aaa;
+    }
+    .comments-img {
+        width: 100px;
+        height: 100%;
+        margin: 8px 0;
+        border-radius: 0%;
+        -webkit-border-radius: 0%;
+        -moz-border-radius: 0%;
+        -ms-border-radius: 0%;
+        -o-border-radius: 0%;
+    }
+    .append-comment {
+        color: orangered;
+        margin-top: 10px;
+    }
+}

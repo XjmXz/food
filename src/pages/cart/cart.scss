@@ -1,0 +1,40 @@
+.am-checkbox-inner {
+    position: absolute;
+    left: 0;
+    margin: 0 10px;
+    margin-top: 75px;
+    width: 21px;
+    height: 21px;
+    border: 1px solid #ccc;
+    border-radius: 50%;
+    transform: rotate(0deg);
+    box-sizing: border-box;
+}
+
+.am-card {
+    min-height: 96px;
+    margin-left: 25px;
+    padding-bottom: 6px;
+    display: flex;
+    flex-direction: column;
+    background-color: #fff;
+    .cart-img {
+        width: 70px;
+        height: 100%;
+    }
+    .cart-right {
+        margin-top: -75px;
+        margin-left: 85px;
+        .cart-title {
+            white-space: nowrap;
+            overflow: hidden;
+            font-size: 14px;
+            // text-overflow: ellipsis;
+        }
+        .cart-price {
+            margin-top: 36px;
+            font-size: 16px;
+            color: orangered;
+        }
+    }
+}
