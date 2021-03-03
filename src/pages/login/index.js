@@ -47,7 +47,7 @@ const Login = (props) => {
     dispatch(login(username, pwd));
   };
   return (
-    <div>
+    <div className="login">
       <h1> 亲， 欢迎登录 </h1>
       <div>
         <input

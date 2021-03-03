@@ -51,39 +51,19 @@ const Cart = (props) => {
               <Link to={`/detail/${item.id}`}>
                 <WingBlank size="lg">
                   <WhiteSpace size="lg" />
-                  <SwipeAction
-                    // style={{ backgroundColor: "gray" }}
-                    autoClose
-                    right={[
-                      {
-                        text: "取消删除",
-                        onPress: () => console.log("取消删除"),
-                        style: { backgroundColor: "#ddd", color: "white" },
-                      },
-                      {
-                        text: "删除",
-                        onPress: () => console.log("删除成功"),
-                        style: { backgroundColor: "orangered", color: "white" },
-                      },
-                    ]}
-                    onOpen={() => console.log("global open")}
-                    onClose={() => console.log("global close")}
-                  >
-                    <Card>
-                      <Card.Body>
-                        <img
-                          src={item.thumbs.split(",")[0]}
-                          alt=""
-                          className="cart-img"
-                        />
-                        <div className="cart-right">
-                          <p className="cart-title">{item.title}</p>
-                          <p className="cart-price">￥{item.price}</p>
-                        </div>
-                      </Card.Body>
-                    </Card>
-                  </SwipeAction>
-
+                  <Card>
+                    <Card.Body>
+                      <img
+                        src={item.thumbs.split(",")[0]}
+                        alt=""
+                        className="cart-img"
+                      />
+                      <div className="cart-right">
+                        <p className="cart-title">{item.title}</p>
+                        <p className="cart-price">￥{item.price}</p>
+                      </div>
+                    </Card.Body>
+                  </Card>
                   <WhiteSpace size="lg" />
                 </WingBlank>
               </Link>

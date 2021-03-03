@@ -1,12 +1,16 @@
-import React, { useState } from "react";
+import React, { useEffect, useState } from "react";
 import { List, TextareaItem } from "antd-mobile";
 import "./addAddress.scss";
+import { fetchpost } from "../../utils/fetch";
 
 const AddAddress = (props) => {
   const [name, setName] = useState("");
   const [address, setAddress] = useState("");
+  const [city, setCity] = useState("");
   const [phone, setPhone] = useState("");
+  // const [addressList, setAddressList] = useState();
 
+  useEffect(() => {}, []);
   const handleChange = (e) => {
     if (e.target.id == "name") {
       setName(e.target.value);
@@ -16,54 +20,81 @@ const AddAddress = (props) => {
       setPhone(e.target.value);
       return;
     }
+    if (e.target.id == "city") {
+      setCity(e.target.value);
+      return;
+    }
     setAddress(e.target.value);
   };
 
-  const handleSubmit = () => {
+  const handleSubmit = async () => {
     if (name && phone && address) {
       const addressList = {
         name: name,
         phone: phone,
+        city: city,
         address: address,
       };
-      // 把数据从CmtBox传递给CmtList(子传父)
-      // console.log("发表评论", comment)
-      // 子传父第三步：在子组件的点击事件中触发父组件传递过来的方法
       console.log(addressList, "llllllllllllk");
-      setName("");
-      setAddress("");
-      setPhone("");
+      var { message } = await fetchpost("/api/addaddress", addressList);
+      props.history.push("/address/?title=收货地址/1");
+      // setName("");
+      // setAddress("");
+      // setPhone("");
     }
   };
+
   return (
     <div>
-      <div>
-        <input
-          type="text"
-          placeholder="收货人"
-          value={name}
-          id="name"
-          onChange={handleChange}
-        />
+      <div className="addaddress">
+        <label htmlFor="name">
+          收货人
+          <input
+            type="text"
+            placeholder="名字"
+            value={name}
+            className="name"
+            id="name"
+            onChange={handleChange}
+          />
+        </label>
       </div>
 
-      <div>
-        <input
-          type="text"
-          placeholder="手机号码"
-          value={phone}
-          id="phone"
-          onChange={handleChange}
-        />
+      <div className="addaddress">
+        <label htmlFor="phone">
+          手机号码
+          <input
+            type="text"
+            placeholder="手机号"
+            value={phone}
+            id="phone"
+            onChange={handleChange}
+          />
+        </label>
       </div>
-      <div>
-        <input
-          type="text"
-          placeholder="详细地址"
-          value={address}
-          id="address"
-          onChange={handleChange}
-        />
+      <div className="addaddress">
+        <label htmlFor="address">
+          选择地区
+          <input
+            type="text"
+            placeholder="省、市、区、街道"
+            value={city}
+            id="city"
+            onChange={handleChange}
+          />
+        </label>
+      </div>
+      <div className="addaddress">
+        <label htmlFor="address">
+          详细地址
+          <input
+            type="text"
+            placeholder="小区楼栋/乡村名称"
+            value={address}
+            id="address"
+            onChange={handleChange}
+          />
+        </label>
       </div>
       <button className="address-btn" onClick={handleSubmit}>
         提交

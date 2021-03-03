@@ -1,6 +1,6 @@
 import React, { useEffect, useState } from "react";
 import { fetchget } from "../../utils/fetch";
-import { WingBlank, WhiteSpace } from "antd-mobile";
+import { WingBlank, WhiteSpace, SwipeAction } from "antd-mobile";
 import { Link } from "react-router-dom";
 import "./collect.scss";
 
@@ -21,23 +21,47 @@ const Collect = () => {
       {collectList &&
         collectList.map((item) => {
           return (
-            <Link to={`/detail/${item.id}`}>
-              <WingBlank size="lg">
-                <WhiteSpace size="lg" />
-                <div className="collect">
-                  <img
-                    src={item.thumbs.split(",")[0]}
-                    alt=""
-                    className="collect-img"
-                  />
-                  <div className="collect-right">
-                    <p className="collect-title">{item.title}</p>
-                    <p className="collect-price">￥{item.price}</p>
-                  </div>
+            <WingBlank size="lg">
+              <WhiteSpace size="lg" />
+              <SwipeAction
+                style={{ backgroundColor: "transparent" }}
+                autoClose
+                right={[
+                  {
+                    text: "取消",
+                    onPress: () => console.log("取消"),
+                    style: {
+                      backgroundColor: "#ddd",
+                      color: "white",
+                    },
+                  },
+                  {
+                    text: "删除",
+                    onPress: () => console.log("删除"),
+                    style: { backgroundColor: "#F4333C", color: "white" },
+                  },
+                ]}
+                onOpen={(e) => console.log("global open")}
+                onClose={() => console.log("global close")}
+              >
+                <div>
+                  <Link to={`/detail/${item.id}`}>
+                    <div className="collect">
+                      <img
+                        src={item.thumbs.split(",")[0]}
+                        alt=""
+                        className="collect-img"
+                      />
+                      <div className="collect-right">
+                        <p className="collect-title">{item.title}</p>
+                        <p className="collect-price">￥{item.price}</p>
+                      </div>
+                    </div>
+                  </Link>
                 </div>
-                <WhiteSpace size="lg" />
-              </WingBlank>
-            </Link>
+              </SwipeAction>
+              <WhiteSpace size="lg" />
+            </WingBlank>
           );
         })}
     </div>

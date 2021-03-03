@@ -2,6 +2,13 @@ import React, { useState, useEffect } from "react";
 import { useDispatch, useSelector } from "react-redux";
 import { Link } from "react-router-dom";
 import { loginOut } from "../../actions/userAction";
+import comment from "../../static/images/待评价.png";
+import shouhuo from "../../static/images/待收货.png";
+import fukuan from "../../static/images/待付款.png";
+import fahuo from "../../static/images/待发货.png";
+import shoucang from "../../static/images/收藏.png";
+import shouhuoadd from "../../static/images/收货地址.png";
+
 import Tab from "../../components/tab/Tab";
 import { fetchpost } from "../../utils/fetch";
 import "./user.scss";
@@ -38,7 +45,7 @@ const User = (props) => {
   };
 
   return (
-    <div>
+    <div className="user">
       <div>
         <div className="my-header">
           <img src="../m-images/my-header-bg.jpg" alt="" />
@@ -58,7 +65,7 @@ const User = (props) => {
           <div className="my-header-con">
             <Link to="order?type=1">
               <div className="img-box">
-                <img src="../m-images/order-1.png" alt="" />
+                <img src={fukuan} alt="" />
                 <span className="num">
                   {notPayCount === 0 ? "" : notPayCount}
                 </span>
@@ -67,7 +74,7 @@ const User = (props) => {
             </Link>
             <Link to="order?type=2">
               <div className="img-box">
-                <img src="../m-images/order-2.png" alt="" />
+                <img src={fahuo} alt="" />
                 <span className="num">
                   {notSendCount === 0 ? "" : notSendCount}
                 </span>
@@ -76,34 +83,36 @@ const User = (props) => {
             </Link>
             <Link to="order?type=3">
               <div className="img-box">
-                <img src="../m-images/order-3.png" alt="" />
+                <img src={shouhuo} alt="" />
                 <span className="num">{takeCount === 0 ? "" : takeCount}</span>
               </div>
               <p> 待收货 </p>
             </Link>
             <Link to="order?type=4">
               <div className="img-box">
-                <img src="../m-images/order-4.png" alt="" />
+                <img src={comment} alt="" />
                 <span className="num">
                   {finishCount === 0 ? "" : finishCount}
                 </span>
               </div>
-              <p> 已完成 </p>
+              <p> 待评价 </p>
             </Link>
           </div>
         </div>
         <div className="my-items">
           <Link to="/collect" className="items">
             <div className="item-bg-2">
+              <img src={shoucang} alt="" className="shoucang" />
               <span> 我的收藏 </span>
             </div>
             <div className="item-tips">
               <i className="com-right-tip"> </i>
             </div>
           </Link>
-          <Link className="items" to="/address/?title=我的收获地址/1">
+          <Link className="items" to="/address/?title=我的收获地址/0">
             <div className="item-bg-3">
-              <span> 地址管理 </span>
+              <img src={shouhuoadd} alt="" className="shoucang" />
+              <span> 我的收货地址 </span>
             </div>
             <div className="item-tips">
               <i className="com-right-tip"> </i>
