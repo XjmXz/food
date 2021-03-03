@@ -1,0 +1,32 @@
+.addaddress {
+    width: 350px;
+    height: 40px;
+    line-height: 40px;
+    margin-left: 15px;
+    border-bottom: 1px solid #ddd;
+    input {
+        margin-left: 20px;
+        border: none;
+        background-color: transparent;
+    }
+    .name {
+        margin-left: 34px;
+    }
+}
+
+.address-btn {
+    border: none;
+    width: 265px;
+    height: 40px;
+    line-height: 40px;
+    text-align: center;
+    margin-top: 5px;
+    margin-left: 55px;
+    color: white;
+    background-color: orangered;
+    border-radius: 20px;
+    -webkit-border-radius: 20px;
+    -moz-border-radius: 20px;
+    -ms-border-radius: 20px;
+    -o-border-radius: 20px;
+}
