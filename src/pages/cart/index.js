@@ -1,5 +1,8 @@
 import React, { useState, useEffect } from "react";
+import { useDispatch, useSelector } from "react-redux";
 import { fetchget } from "../../utils/fetch";
+import { login } from "../../actions/userAction";
+
 import "./cart.scss";
 import {
   Card,
@@ -10,8 +13,23 @@ import {
 } from "antd-mobile";
 import { Link } from "react-router-dom";
 
-const Cart = () => {
+const Cart = (props) => {
   const [cartList, setCartList] = useState();
+
+  const dispatch = useDispatch();
+
+  const userLogin = useSelector((state) => state.userLogin);
+  const { loading, error, userInfo } = userLogin;
+
+  const redirect = props.location.search
+    ? props.location.search.split("/")[1]
+    : "/login/?title=登录/1";
+
+  useEffect(() => {
+    if (userInfo == null) {
+      props.history.push(redirect);
+    }
+  }, [props.history, userInfo, redirect]);
 
   useEffect(() => {
     getList();

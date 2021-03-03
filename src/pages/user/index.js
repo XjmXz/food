@@ -1,6 +1,6 @@
 import React, { useState, useEffect } from "react";
 import { useDispatch, useSelector } from "react-redux";
-import { Link, RouteComponentProps } from "react-router-dom";
+import { Link } from "react-router-dom";
 import { loginOut } from "../../actions/userAction";
 import Tab from "../../components/tab/Tab";
 import { fetchpost } from "../../utils/fetch";

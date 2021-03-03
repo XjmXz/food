@@ -3,6 +3,7 @@ import { useDispatch, useSelector } from "react-redux";
 import "./login.scss";
 import { fetchpost } from "../../utils/fetch";
 import { login } from "../../actions/userAction";
+import { Link } from "react-router-dom";
 
 const Login = (props) => {
   let [username, setName] = useState("");
@@ -44,34 +45,6 @@ const Login = (props) => {
 
   const handleSubmit = () => {
     dispatch(login(username, pwd));
-    // if (username && pwd) {
-    //   let obj = {
-    //     username,
-    //     pwd,
-    //   };
-    //   console.log(obj, "uuuuuu");
-    // }
-    // if (users) {
-    //   let fg = users.map((item) => {
-    //     if (item.username === username) return true; //用户名已存在
-    //   });
-    //   if (fg) {
-    //     let f = false;
-    //     users.map((item) => {
-    //       if (item.username === username && item.pwd === pwd) {
-    //         f = true;
-    //         return f;
-    //       }
-    //     });
-    //     if (f) {
-    //       //查询正确可以正常登录
-    //       console.log("登录成功");
-    //       props.history.push("/user/?title=我的/1");
-    //     } else {
-    //       console.log("密码错误");
-    //     }
-    //   }
-    // }
   };
   return (
     <div>
@@ -97,6 +70,7 @@ const Login = (props) => {
       <button className="address-btn" onClick={handleSubmit}>
         登录
       </button>
+      <Link to="/register/?title=注册/1">还没有账号？去注册</Link>
     </div>
   );
 };

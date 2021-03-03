@@ -10,11 +10,12 @@ import Youpin from "../pages/youpin";
 import All from "../pages/all";
 import Comments from "../pages/comments";
 import Address from "../pages/address";
-import addAddress from "../pages/addAddress";
+import AddAddress from "../pages/addAddress";
 import Category from "../pages/category";
 import Search from "../pages/search";
 import Collect from "../pages/collect";
 import Login from "../pages/login";
+import Register from "../pages/register";
 
 const RouterMap = () => {
   return (
@@ -28,9 +29,10 @@ const RouterMap = () => {
       <Route path="/all" component={All}></Route>
       <Route path="/comments/:id" component={Comments}></Route>
       <Route path="/address" component={Address}></Route>
-      <Route path="/addAddress" component={addAddress}></Route>
+      <Route path="/addAddress" component={AddAddress}></Route>
       <Route path="/category" component={Category}></Route>
       <Route path="/collect" component={Collect}></Route>
+      <Route path="/register/:title?" component={Register}></Route>
       <Route path="/search/:keywords?" component={Search}></Route>
       <Route path="/:youpin/:title?" component={Youpin}></Route>
 

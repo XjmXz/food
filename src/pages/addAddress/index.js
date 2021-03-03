@@ -2,62 +2,74 @@ import React, { useState } from "react";
 import { List, TextareaItem } from "antd-mobile";
 import "./addAddress.scss";
 
-const addAddress = () => {
+const AddAddress = (props) => {
+  const [name, setName] = useState("");
+  const [address, setAddress] = useState("");
+  const [phone, setPhone] = useState("");
+
+  const handleChange = (e) => {
+    if (e.target.id == "name") {
+      setName(e.target.value);
+      return;
+    }
+    if (e.target.id == "phone") {
+      setPhone(e.target.value);
+      return;
+    }
+    setAddress(e.target.value);
+  };
+
+  const handleSubmit = () => {
+    if (name && phone && address) {
+      const addressList = {
+        name: name,
+        phone: phone,
+        address: address,
+      };
+      // 把数据从CmtBox传递给CmtList(子传父)
+      // console.log("发表评论", comment)
+      // 子传父第三步：在子组件的点击事件中触发父组件传递过来的方法
+      console.log(addressList, "llllllllllllk");
+      setName("");
+      setAddress("");
+      setPhone("");
+    }
+  };
   return (
     <div>
-      <List>
-        <TextareaItem
-          title="收货人"
-          placeholder="名字"
-          data-seed="logId"
-          autoHeight
+      <div>
+        <input
+          type="text"
+          placeholder="收货人"
+          value={name}
+          id="name"
+          onChange={handleChange}
         />
-        <TextareaItem
-          title="手机号码"
-          placeholder="手机号"
-          data-seed="logId"
-          autoHeight
+      </div>
+
+      <div>
+        <input
+          type="text"
+          placeholder="手机号码"
+          value={phone}
+          id="phone"
+          onChange={handleChange}
         />
-        <TextareaItem
-          title="选择地区"
-          placeholder="省、市、区、街道"
-          data-seed="logId"
-          autoHeight
-          // onClick={showModal}
+      </div>
+      <div>
+        <input
+          type="text"
+          placeholder="详细地址"
+          value={address}
+          id="address"
+          onChange={handleChange}
         />
-        {/* <Modal
-            popup
-            visible={modal}
-            animationType="slide-up"
-        >
-            <PickerView
-                data={province}
-                value={['02', '02-1', '02-1-1']}
-            />
-        </Modal> */}
-        {/* <PickerView
-            data={province}
-            value={['02', '02-1', '02-1-1']}
-        /> */}
-        <TextareaItem
-          title="详细地址"
-          placeholder="小区楼栋/乡村名称"
-          data-seed="logId"
-          autoHeight
-        />
-        <List.Item>
-          <div
-            style={{ width: "100%", color: "#108ee9", textAlign: "center" }}
-            onClick={(e) => console.log(e, "888888")}
-          >
-            {/* <Link to="/address/?title=我的收获地址"> */}
-            <button className="addAddress-btn">保存</button>
-            {/* </Link> */}
-          </div>
-        </List.Item>
-      </List>
+      </div>
+      <button className="address-btn" onClick={handleSubmit}>
+        提交
+      </button>
     </div>
   );
 };
 
-export default addAddress;
+export default AddAddress;
