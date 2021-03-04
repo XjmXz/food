@@ -1,0 +1,32 @@
+    .am-tabs-default-bar-tab-active {
+        color: orangered;
+    }
+    
+    .category {
+        margin: 10px;
+        width: 355px;
+        // height: 100px;
+        .category-item {
+            height: 100px;
+            background-color: #fff;
+            border-radius: 15px;
+            -webkit-border-radius: 15px;
+            -moz-border-radius: 15px;
+            -ms-border-radius: 15px;
+            -o-border-radius: 15px;
+            .grid-item {
+                width: 55px;
+                height: 50px;
+                text-align: center;
+                background-color: transparent;
+                img {
+                    width: 45px;
+                    height: 45px;
+                    border-radius: 50%;
+                }
+                p {
+                    color: #aaa;
+                }
+            }
+        }
+    }

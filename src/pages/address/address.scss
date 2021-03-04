@@ -1,0 +1,101 @@
+.address-none {
+    margin-top: 180px;
+    margin-left: 80px;
+    img {
+        width: 215px;
+        height: 100%;
+    }
+    .p1 {
+        margin-top: 20px;
+        margin-bottom: 5px;
+        margin-left: 40px;
+        font-size: 18px;
+    }
+    .p2 {
+        margin-left: 10px;
+        color: #aaa;
+    }
+}
+
+.address-top {
+    padding: 10px;
+    border-bottom: 1px solid #ddd;
+    position: relative;
+    .address-img {
+        position: absolute;
+        width: 30px;
+        height: 30px;
+        top: 50%;
+        margin-top: -15px;
+        line-height: 30px;
+        overflow: hidden;
+        text-align: center;
+        background-color: blanchedalmond;
+        border-radius: 50%;
+        -webkit-border-radius: 50%;
+        -moz-border-radius: 50%;
+        -ms-border-radius: 50%;
+        -o-border-radius: 50%;
+        .address-img-title {
+            position: absolute;
+            padding: 0 3px;
+            color: orangered;
+            font-size: 14px;
+        }
+    }
+    .address-main {
+        margin-bottom: 10px;
+        margin-left: 40px;
+        width: 200px;
+        .main-name {
+            font-size: 16px;
+        }
+        .main-phone {
+            margin-left: 10px;
+            font-size: 12px;
+            color: #aaa;
+        }
+        .address-address {
+            margin-top: 10px;
+            font-size: 14px;
+            .main-xiu {
+                position: absolute;
+                top: 30px;
+                width: 20px;
+                left: 260px;
+            }
+        }
+    }
+}
+
+.address-cut {
+    margin: 6px 0;
+    margin-right: 5px;
+    font-size: 12px;
+    color: #aaa;
+}
+
+.adbtn {
+    position: fixed;
+    width: 100%;
+    bottom: 0;
+    height: 50px;
+    // z-index: 999;
+    background-color: #fff;
+    .address-btn {
+        border: none;
+        width: 265px;
+        height: 40px;
+        line-height: 40px;
+        text-align: center;
+        margin-top: 5px;
+        margin-left: 55px;
+        color: white;
+        background-color: orangered;
+        border-radius: 20px;
+        -webkit-border-radius: 20px;
+        -moz-border-radius: 20px;
+        -ms-border-radius: 20px;
+        -o-border-radius: 20px;
+    }
+}

@@ -1,0 +1,22 @@
+.login {
+    h1 {
+        font-size: 2em;
+        margin: 2em 1em;
+    }
+    input {
+        border: none;
+        width: 305px;
+        height: 40px;
+        line-height: 40px;
+        margin-left: 35px;
+        border-bottom: 1px solid #ddd;
+        background-color: transparent;
+    }
+    .regis {
+        display: block;
+        font-size: 12px;
+        color: orangered;
+        margin-left: 240px;
+        margin-top: 10px;
+    }
+}
