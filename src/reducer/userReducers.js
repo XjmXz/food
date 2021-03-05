@@ -2,6 +2,9 @@ import {
     USER_ADDRESS_FAIL,
     USER_ADDRESS_REQUEST,
     USER_ADDRESS_SUCCESS,
+    USER_CART_FAIL,
+    USER_CART_REQUEST,
+    USER_CART_SUCCESS,
     USER_LOGIN_FAIL,
     USER_LOGIN_LOGINOUT,
     USER_LOGIN_REQUEST,
@@ -30,6 +33,19 @@ export const addressReducer = (state = { addresss: {} }, action) => {
         case USER_ADDRESS_SUCCESS:
             return { loading: false, addresss: action.payload };
         case USER_ADDRESS_FAIL:
+            return { loading: false, err: action.payload };
+        default:
+            return state;
+    }
+};
+
+export const cartReducer = (state = {}, action) => {
+    switch (action.type) {
+        case USER_CART_REQUEST:
+            return { loading: true, ...state };
+        case USER_CART_SUCCESS:
+            return { loading: false, cartlist: action.payload };
+        case USER_CART_FAIL:
             return { loading: false, err: action.payload };
         default:
             return state;

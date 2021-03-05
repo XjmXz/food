@@ -26,15 +26,20 @@
         margin-top: -75px;
         margin-left: 85px;
         .cart-title {
-            white-space: nowrap;
-            overflow: hidden;
             font-size: 14px;
+            color: black;
             // text-overflow: ellipsis;
         }
         .cart-price {
-            margin-top: 36px;
+            margin-top: 25px;
             font-size: 16px;
             color: orangered;
+        }
+        span {
+            display: block;
+            margin-left: 10px;
+            margin-top: 10px;
+            font-size: 12px;
         }
     }
     .am-card-body::before {
@@ -52,4 +57,52 @@
         transform-origin: 50% 50%;
         transform: scaleY(0.5);
     }
+}
+
+.jiesuan {
+    position: fixed;
+    display: flex;
+    bottom: 50px;
+    width: 375px;
+    height: 40px;
+    line-height: 40px;
+    z-index: 10;
+    background-color: #fff;
+    .jiesuan-select {
+        flex: 3;
+        .am-checkbox {
+            position: relative;
+            top: -77px;
+            display: inline-block;
+            vertical-align: middle;
+            width: 21px;
+            height: 21px;
+        }
+        .jiesuan-radio {
+            flex: 1;
+            margin-left: 20px;
+        }
+        .jiesuan-title {
+            flex: 1;
+            margin-top: -40px;
+            margin-left: 40px;
+        }
+    }
+    .jiesuan-btn {
+        flex: 1;
+        background-color: #cc0004;
+        font-size: 14px;
+        text-align: center;
+        color: #fff;
+    }
+    .jiesuan-all {
+        margin-right: 30px;
+    }
+}
+
+.delete {
+    font-size: 12px;
+    /* margin-top: 50px; */
+    margin-top: 8px;
+    margin-left: 100px;
 }

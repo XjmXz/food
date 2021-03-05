@@ -44,6 +44,19 @@ const User = (props) => {
     props.history.push("/");
   };
 
+  const onLoadImg = () => {
+    // let _this = this;
+    let file1 = document.getElementById("inputId").files[0];
+    if (file1) {
+      var reader = new FileReader();
+      reader.readAsDataURL(file1);
+
+      reader.onload = function (e) {
+        setImg({ img: e.target.result });
+      };
+    }
+  };
+
   return (
     <div className="user">
       <div>

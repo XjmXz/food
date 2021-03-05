@@ -107,7 +107,7 @@ const Tab = (props) => {
           selected={selectedTab === "cart"}
           onPress={() => {
             setSelectedTab("cart");
-            props.history.push("/cart/?title=购物车/1");
+            props.history.push("/cart/?title=购物车/0");
           }}
         ></TabBar.Item>
         <TabBar.Item

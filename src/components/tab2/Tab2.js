@@ -52,9 +52,7 @@ const Tab2 = (props) => {
 
   const addToCart = async () => {
     var { message } = await fetchpost("/api/cart", products);
-    console.log(products, "ppppppppppppp");
   };
-
   const addToCollect = async () => {
     var { message } = await fetchpost("/api/addCollect", products);
     console.log(products, "7777777777777");
@@ -86,6 +84,8 @@ const Tab2 = (props) => {
   };
 
   const select = async () => {
+    // var id = props.location.pathname.split("/")[2];
+    // console.log(id, "hhhhhhhhhhhhhh");
     const state = await judge();
     console.log(state, "sssssssssss");
     state == 0 ? setColor("icon-star-full") : setColor("icon-star-empty");

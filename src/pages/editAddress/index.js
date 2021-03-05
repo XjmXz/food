@@ -29,21 +29,36 @@ const EditAddress = (props) => {
     var { message } = await fetchget(`/api/address/${id}`);
     setEditAddress(...message);
   };
-  //   if (editaddress) {
-  //
-  //     phone = editaddress.phone;
-  //     city = editaddress.city;
-  //     address = editaddress.address;
-  //   }
 
   const handleChange = (e) => {
-    setName(e.target.value);
-    setPhone(e.target.value);
-    setCity(e.target.value);
+    if (e.target.id == "name") {
+      setName(e.target.value);
+      return;
+    }
+    if (e.target.id == "phone") {
+      setPhone(e.target.value);
+      return;
+    }
+    if (e.target.id == "city") {
+      setCity(e.target.value);
+      return;
+    }
     setAddress(e.target.value);
   };
 
-  const handleSubmit = () => {};
+  const handleSubmit = async () => {
+    if (name && phone) {
+      const user = {
+        name: name,
+        phone: phone,
+        city: city,
+        address: address,
+      };
+      console.log(user, "llllllllllllk");
+      var { message } = await fetchpost(`/api/updateaddress/${id}`, user);
+      props.history.push("/address/?title=收货地址/0");
+    }
+  };
 
   return (
     <div>
@@ -55,7 +70,7 @@ const EditAddress = (props) => {
               <input
                 type="text"
                 placeholder="名字"
-                value={name}
+                defaultValue={editaddress.name}
                 className="name"
                 id="name"
                 onChange={(e) => setName(e.target.value)}
@@ -69,7 +84,7 @@ const EditAddress = (props) => {
               <input
                 type="text"
                 placeholder="手机号"
-                value={editaddress.phone}
+                defaultValue={editaddress.phone}
                 id="phone"
                 onChange={handleChange}
               />
@@ -81,7 +96,7 @@ const EditAddress = (props) => {
               <input
                 type="text"
                 placeholder="省、市、区、街道"
-                value={editaddress.city}
+                defaultValue={editaddress.city}
                 id="city"
                 onChange={handleChange}
               />
@@ -93,7 +108,7 @@ const EditAddress = (props) => {
               <input
                 type="text"
                 placeholder="小区楼栋/乡村名称"
-                value={editaddress.address}
+                defaultValue={editaddress.address}
                 id="address"
                 onChange={handleChange}
               />
