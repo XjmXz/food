@@ -1,0 +1,57 @@
+.category-list {
+    margin-left: 15px;
+    margin-bottom: 10px;
+    background-color: #fff;
+    width: 345px;
+    height: 450px;
+    border-radius: 15px;
+    -webkit-border-radius: 15px;
+    -moz-border-radius: 15px;
+    -ms-border-radius: 15px;
+    -o-border-radius: 15px;
+    .category-price {
+        display: block;
+        margin: 10px 0;
+        margin-left: 10px;
+        font-size: 22px;
+        font-weight: bold;
+        color: rgb(255, 69, 0);
+    }
+    img {
+        border-top-right-radius: 15px;
+        border-top-left-radius: 15px;
+    }
+    .category-sales {
+        float: right;
+        margin-right: 20px;
+        margin-top: -30px;
+        color: #ccc;
+    }
+    .category-title {
+        width: 240px;
+        height: 33px;
+        margin-left: 10px;
+        text-indent: 2em;
+        font-size: 15px;
+        color: black;
+        font-weight: bolder;
+        overflow: hidden;
+        // white-space: nowrap;
+        text-overflow: ellipsis;
+        display: -webkit-box; //一定要写
+        -webkit-line-clamp: 2; //控制行数
+        -webkit-box-orient: vertical; //一定要写
+    }
+    .category-detail {
+        width: 70px;
+        height: 33px;
+        line-height: 33px;
+        text-align: center;
+        margin-top: -33px;
+        margin-left: 272px;
+        border-top-left-radius: 15px;
+        border-bottom-left-radius: 15px;
+        color: coral;
+        background-color: blanchedalmond;
+    }
+}

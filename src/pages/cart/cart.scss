@@ -1,0 +1,108 @@
+.am-checkbox-inner {
+    position: absolute;
+    left: 0;
+    margin: 0 10px;
+    margin-top: 75px;
+    width: 21px;
+    height: 21px;
+    border: 1px solid #ccc;
+    border-radius: 50%;
+    transform: rotate(0deg);
+    box-sizing: border-box;
+}
+
+.am-card {
+    min-height: 96px;
+    margin-left: 25px;
+    padding-bottom: 6px;
+    display: flex;
+    flex-direction: column;
+    background-color: #fff;
+    .cart-img {
+        width: 70px;
+        height: 100%;
+    }
+    .cart-right {
+        margin-top: -75px;
+        margin-left: 85px;
+        .cart-title {
+            font-size: 14px;
+            color: black;
+            // text-overflow: ellipsis;
+        }
+        .cart-price {
+            margin-top: 25px;
+            font-size: 16px;
+            color: orangered;
+        }
+        span {
+            display: block;
+            margin-left: 10px;
+            margin-top: 10px;
+            font-size: 12px;
+        }
+    }
+    .am-card-body::before {
+        content: '';
+        position: absolute;
+        /* background-color: #ddd; */
+        display: block;
+        z-index: 1;
+        top: 0;
+        right: auto;
+        bottom: auto;
+        left: 0;
+        width: 100%;
+        height: 1PX;
+        transform-origin: 50% 50%;
+        transform: scaleY(0.5);
+    }
+}
+
+.jiesuan {
+    position: fixed;
+    display: flex;
+    bottom: 50px;
+    width: 375px;
+    height: 40px;
+    line-height: 40px;
+    z-index: 10;
+    background-color: #fff;
+    .jiesuan-select {
+        flex: 3;
+        .am-checkbox {
+            position: relative;
+            top: -77px;
+            display: inline-block;
+            vertical-align: middle;
+            width: 21px;
+            height: 21px;
+        }
+        .jiesuan-radio {
+            flex: 1;
+            margin-left: 20px;
+        }
+        .jiesuan-title {
+            flex: 1;
+            margin-top: -40px;
+            margin-left: 40px;
+        }
+    }
+    .jiesuan-btn {
+        flex: 1;
+        background-color: #cc0004;
+        font-size: 14px;
+        text-align: center;
+        color: #fff;
+    }
+    .jiesuan-all {
+        margin-right: 30px;
+    }
+}
+
+.delete {
+    font-size: 12px;
+    /* margin-top: 50px; */
+    margin-top: 8px;
+    margin-left: 100px;
+}

@@ -1,0 +1,52 @@
+.tabs2 {
+    background-color: #fff;
+    position: fixed;
+    display: flex;
+    bottom: 0px;
+    width: 100%;
+    height: 50px!important;
+    .icon {
+        width: 130px;
+        display: flex;
+        text-align: center;
+        .am-tab-bar {
+            // position: fixed;
+            width: 100%;
+            height: 50px !important;
+            .am-tabs {
+                box-sizing: border-box;
+                display: flex;
+                flex: 1 1;
+                position: relative;
+                /* overflow: hidden; */
+                height: 100%;
+                width: 100%;
+            }
+        }
+    }
+    .btn {
+        width: 245px;
+        display: flex;
+        float: right;
+        margin-top: 5px;
+        margin-right: 5px;
+        height: 40px;
+        line-height: 40px;
+        border-radius: 15px;
+        color: #fff;
+        font-size: 14px;
+        text-align: center;
+        .btn_l {
+            flex: 1;
+            border-top-left-radius: 20px;
+            border-bottom-left-radius: 20px;
+            background-color: rgb(254, 148, 2);
+        }
+        .btn_r {
+            flex: 1;
+            border-top-right-radius: 20px;
+            border-bottom-right-radius: 20px;
+            background-color: orangered;
+        }
+    }
+}
