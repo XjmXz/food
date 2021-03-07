@@ -17,6 +17,7 @@ import Collect from "../pages/collect";
 import Login from "../pages/login";
 import Register from "../pages/register";
 import EditAddress from "../pages/editAddress";
+import Order from "../pages/order";
 
 const RouterMap = () => {
   return (
@@ -34,6 +35,7 @@ const RouterMap = () => {
       <Route path="/category" component={Category}></Route>
       <Route path="/collect" component={Collect}></Route>
       <Route path="/editaddress" component={EditAddress}></Route>
+      <Route path="/order" component={Order}></Route>
       <Route path="/register/:title?" component={Register}></Route>
       <Route path="/search/:keywords?" component={Search}></Route>
       <Route path="/:youpin/:title?" component={Youpin}></Route>

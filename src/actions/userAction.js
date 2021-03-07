@@ -9,6 +9,9 @@ import {
     USER_LOGIN_LOGINOUT,
     USER_LOGIN_REQUEST,
     USER_LOGIN_SUCCESS,
+    USER_ORDERCART_FAIL,
+    USER_ORDERCART_REQUEST,
+    USER_ORDERCART_SUCCESS,
 } from "../contents/userContents";
 import { fetchget, fetchpost } from "../utils/fetch";
 
@@ -41,6 +44,7 @@ export const listAddress = () => async(dispatch) => {
         dispatch({ type: USER_ADDRESS_REQUEST });
         const { message } = await fetchget("/api/address");
         dispatch({ type: USER_ADDRESS_SUCCESS, payload: message });
+        localStorage.setItem("userAddress", JSON.stringify(message));
     } catch (error) {
         dispatch({
             type: USER_ADDRESS_FAIL,
@@ -66,18 +70,18 @@ export const listCart = () => async(dispatch) => {
     }
 };
 
-// export const login = (username, pwd) => async(dispatch) => {
-//     try {
-//         dispatch({ type: USER_LOGIN_REQUEST });
-//         const { message } = await fetchpost("/api/user", { username, pwd });
-//         dispatch({ type: USER_LOGIN_SUCCESS, payload: message });
-//         localStorage.setItem("userInfo", JSON.stringify(message));
-//     } catch (error) {
-//         dispatch({
-//             type: USER_LOGIN_FAIL,
-//             payload: error.reponse && error.reponse.message.message ?
-//                 error.reponse.message.message :
-//                 error.message,
-//         });
-//     }
-// };
+export const listOrder = () => async(dispatch) => {
+    try {
+        dispatch({ type: USER_ORDERCART_REQUEST });
+        const { message } = await fetchget("/api/order");
+        dispatch({ type: USER_ORDERCART_SUCCESS, payload: message });
+        localStorage.setItem("useroder", JSON.stringify(message));
+    } catch (error) {
+        dispatch({
+            type: USER_ORDERCART_FAIL,
+            payload: error.reponse && error.reponse.message.message ?
+                error.reponse.message.message :
+                error.message,
+        });
+    }
+};

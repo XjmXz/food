@@ -34,14 +34,14 @@ const Address = (props) => {
 
   return (
     <div>
-      {addresss.length < 1 && (
+      {addresss.length == 0 && (
         <div className="address-none">
           <img src={address} alt="" />
           <p className="p1">一个地址也没有</p>
           <p className="p2">"赶快添加收获地址，买买买吧"</p>
         </div>
       )}
-      {addresss.length > 0 &&
+      {addresss &&
         addresss.map((item, index) => {
           return (
             <div>

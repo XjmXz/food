@@ -50,8 +50,18 @@ const Tab2 = (props) => {
     setConut(val);
   };
 
+  console.log(products, "222");
+
   const addToCart = async () => {
-    var { message } = await fetchpost("/api/cart", products);
+    var id = props.location.pathname.slice(-4);
+    var title, price, thumbs;
+    // title = products.title;
+    // price = products.price;
+    // thumbs = products.thumbs;
+    var { message } = await fetchpost("/api/cart", {
+      ...products,
+      count: count,
+    });
   };
   const addToCollect = async () => {
     var { message } = await fetchpost("/api/addCollect", products);

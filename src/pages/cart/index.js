@@ -3,7 +3,7 @@ import { useDispatch, useSelector } from "react-redux";
 import { fetchget, fetchpost } from "../../utils/fetch";
 import { login, listCart } from "../../actions/userAction";
 import "./cart.scss";
-import { Card, WingBlank, WhiteSpace, Checkbox } from "antd-mobile";
+import { Card, WingBlank, WhiteSpace, Checkbox, Stepper } from "antd-mobile";
 import { Link } from "react-router-dom";
 
 const Cart = (props) => {
@@ -18,7 +18,7 @@ const Cart = (props) => {
   let [selectlist, setSelectList] = useState();
   let [isallchecked, setallChecked] = useState(false);
   let [isselect, setIsSelect] = useState(false);
-
+  let [count, setCount] = useState();
   useEffect(() => {
     dispatch(listCart());
   }, [dispatch]);
@@ -38,7 +38,7 @@ const Cart = (props) => {
     delteCart();
     getSumPrice();
     getSumCount();
-  }, [cartList, cartlist]);
+  }, [cartlist]);
   let sum = 0;
   const delteCart = async () => {
     var { message } = await fetchpost(`/api/deletecart/${id}`, cartList);
@@ -53,6 +53,8 @@ const Cart = (props) => {
     if (cartlist) {
       if (message[0].sumCount == cartlist.length) {
         setallChecked(true);
+      } else {
+        setallChecked(false);
       }
     }
   };
@@ -70,9 +72,9 @@ const Cart = (props) => {
       } else {
         setallChecked(false);
       }
+
       if (cartlist[i].id == id && cartlist[i].isXuan == 0) {
         var result = await fetchpost("/api/updateXuan", { id: id });
-        sum = sum + cartlist[i].price;
         dispatch(listCart());
       } else if (cartlist[i].id == id && cartlist[i].isXuan == 1) {
         var result = await fetchpost("/api/updateNoXuan", { id: id });
@@ -86,6 +88,7 @@ const Cart = (props) => {
       setallChecked(true);
       for (let i = 0; i < cartlist.length; i++) {
         var result = await fetchpost("/api/updateXuan", { id: cartlist[i].id });
+        // sum = sum + cartlist[i].price * cartlist[i].count;
         dispatch(listCart());
       }
     } else {
@@ -97,6 +100,17 @@ const Cart = (props) => {
         dispatch(listCart());
       }
     }
+  };
+
+  const onChange = async (count, item) => {
+    // console.log(item, "val");
+    // console.log(e, "kkk");
+    setCount(count);
+    var result = await fetchpost("/api/updateCount", {
+      count: count,
+      id: item.id,
+    });
+    getSumPrice();
   };
   return (
     <div>
@@ -121,8 +135,23 @@ const Cart = (props) => {
                       <div className="cart-right">
                         <p className="cart-title">{item.title}</p>
                         <p className="cart-price">￥{item.price}</p>
+
+                        {/* <p className="cart-price">{item.count}</p> */}
                       </div>
                     </Link>
+                    <Stepper
+                      style={{
+                        width: "100px",
+                        minWidth: "50px",
+                        marginTop: "-40px",
+                        marginLeft: "190px",
+                      }}
+                      showNumber
+                      max={10}
+                      min={1}
+                      defaultValue={item.count}
+                      onChange={(count) => onChange(count, item)}
+                    />
                     <div
                       className="delete"
                       onClick={() => {
@@ -149,7 +178,9 @@ const Cart = (props) => {
           <div className="jiesuan-title">全选</div>
         </div>
         <div className="jiesuan-all">合计:￥{sumPrice || 0}</div>
-        <div className="jiesuan-btn">去结算</div>
+        <Link className="jiesuan-btn" to="/order/?title=确认订单/0">
+          去结算
+        </Link>
       </div>
     </div>
   );

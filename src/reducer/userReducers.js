@@ -9,6 +9,9 @@ import {
     USER_LOGIN_LOGINOUT,
     USER_LOGIN_REQUEST,
     USER_LOGIN_SUCCESS,
+    USER_ORDERCART_FAIL,
+    USER_ORDERCART_REQUEST,
+    USER_ORDERCART_SUCCESS,
 } from "../contents/userContents";
 
 export const userLoginReducer = (state = {}, action) => {
@@ -46,6 +49,19 @@ export const cartReducer = (state = {}, action) => {
         case USER_CART_SUCCESS:
             return { loading: false, cartlist: action.payload };
         case USER_CART_FAIL:
+            return { loading: false, err: action.payload };
+        default:
+            return state;
+    }
+};
+
+export const orderReducer = (state = {}, action) => {
+    switch (action.type) {
+        case USER_ORDERCART_REQUEST:
+            return { loading: true, ...state };
+        case USER_ORDERCART_SUCCESS:
+            return { loading: false, orderlist: action.payload };
+        case USER_ORDERCART_FAIL:
             return { loading: false, err: action.payload };
         default:
             return state;
